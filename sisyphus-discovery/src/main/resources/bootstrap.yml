@@ -1,0 +1,17 @@
+server:
+  port: 8000
+spring:
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

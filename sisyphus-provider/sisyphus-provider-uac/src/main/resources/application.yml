@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: @pom.artifactId@
+  boot:
+    admin:
+      username: admin
+      password: admin
+security:
+  user:
+    name: admin
+    password: admin
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

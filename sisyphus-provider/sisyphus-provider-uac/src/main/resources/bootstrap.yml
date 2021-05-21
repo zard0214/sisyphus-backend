@@ -1,0 +1,20 @@
+server:
+  port: 8003
+  servlet:
+    context-path: /uac
+spring:
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-uac
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

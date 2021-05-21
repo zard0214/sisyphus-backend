@@ -1,0 +1,71 @@
+server:
+  port: 8001
+spring:
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8021
+        port: 8719
+      scg:
+        fallback:
+          mode: response
+          response-status: 455
+          response-body: error!
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+                POST
+                DELETE
+                PUT
+                OPTION
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: sisyphus-auth
+          uri: lb://sisyphus-auth
+          predicates:
+            - Path=/auth/**
+        - id: sisyphus-uac
+          uri: lb://sisyphus-uac
+          predicates:
+            - Path=/uac/**
+        - id: sisyphus-udc
+          uri: lb://sisyphus-udc
+          predicates:
+            - Path=/udc/**
+        - id: sisyphus-toc
+          uri: lb://sisyphus-toc
+          predicates:
+            - Path=/toc/**
+        - id: sisyphus-ccc
+          uri: lb://sisyphus-ccc
+          predicates:
+            - Path=/ccc/**
+        - id: sisyphus-scc
+          uri: lb://sisyphus-scc
+          predicates:
+            - Path=/scc/**
+        - id: sisyphus-ucc
+          uri: lb://sisyphus-ucc
+          predicates:
+            - Path=/ucc/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
