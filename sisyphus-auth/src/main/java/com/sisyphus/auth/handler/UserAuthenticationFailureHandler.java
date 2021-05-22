@@ -1,6 +1,7 @@
 package com.sisyphus.auth.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author zhecheng.zhao
  * @date Created in 18/05/2021 08:30
  */
-
+@Slf4j
 @Component
 public class UserAuthenticationFailureHandler implements AuthenticationFailureHandler {
 

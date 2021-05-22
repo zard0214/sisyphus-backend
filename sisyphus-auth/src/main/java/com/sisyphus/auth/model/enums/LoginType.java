@@ -25,7 +25,7 @@ public enum LoginType {
     /**
      * 第三方
      */
-    SOCIAL("social", 2);
+    SOCIAL("social", 3);
 
     /**
      * 名称

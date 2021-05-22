@@ -2,6 +2,7 @@ package com.sisyphus.auth.model;
 
 import com.sisyphus.auth.model.domain.AuthRole;
 import com.sisyphus.auth.model.dto.AuthActionDTO;
+import com.sisyphus.auth.model.dto.AuthRoleDTO;
 import com.sisyphus.auth.model.enums.StatusType;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
@@ -41,11 +42,11 @@ public class SecurityUser implements UserDetails {
 
     private String groupName;
 
-    private List<AuthRole> authRoleList;
+    private List<AuthRoleDTO> authRoleList;
 
-    private List<AuthActionDTO> authPermissionList;
+    private List<AuthActionDTO> authActionList;
 
-    public SecurityUser(Long userId, String userName, String loginName, String loginPwd, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthActionDTO> authPermissionList) {
+    public SecurityUser(Long userId, String userName, String loginName, String loginPwd, Long tenantId, Long groupId, String groupName, List<AuthRoleDTO> authRoleList, List<AuthActionDTO> authActionList) {
         this.userId = userId;
         this.userName = userName;
         this.loginName = loginName;
@@ -54,10 +55,10 @@ public class SecurityUser implements UserDetails {
         this.groupId = groupId;
         this.groupName = groupName;
         this.authRoleList = authRoleList;
-        this.authPermissionList = authPermissionList;
+        this.authActionList = authActionList;
     }
 
-    public SecurityUser(Collection<GrantedAuthority> authorities, Long userId, String userName, String loginName, String loginPwd, String status, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthActionDTO> authPermissionList) {
+    public SecurityUser(Collection<GrantedAuthority> authorities, Long userId, String userName, String loginName, String loginPwd, String status, Long tenantId, Long groupId, String groupName, List<AuthRoleDTO> authRoleList, List<AuthActionDTO> authActionList) {
         this.authorities = authorities;
         this.userId = userId;
         this.userName = userName;
@@ -68,13 +69,13 @@ public class SecurityUser implements UserDetails {
         this.groupId = groupId;
         this.groupName = groupName;
         this.authRoleList = authRoleList;
-        this.authPermissionList = authPermissionList;
+        this.authActionList = authActionList;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
-        List<AuthActionDTO> permissions = this.getAuthPermissionList();
+        List<AuthActionDTO> permissions = this.getAuthActionList();
         if (permissions != null) {
             for (AuthActionDTO permission : permissions) {
                 GrantedAuthority grantedAuthority = new AuthGrantedAuthority(permission.getUrl(), permission.getMethod());

@@ -17,6 +17,9 @@
         <result column="access_token_validity" jdbcType="INTEGER" property="accessTokenValidity"/>
         <result column="refresh_token_validity" jdbcType="INTEGER" property="refreshTokenValidity"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="group_id" property="groupId" jdbcType="BIGINT"/>
+        <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
 
         <result column="creator" jdbcType="VARCHAR" property="creator"/>
         <result column="creator_id" jdbcType="BIGINT" property="creatorId"/>
@@ -24,15 +27,14 @@
         <result column="last_operator" jdbcType="VARCHAR" property="lastOperator"/>
         <result column="last_operator_id" jdbcType="BIGINT" property="lastOperatorId"/>
         <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
-        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
-        <result column="group_id" property="groupId" jdbcType="BIGINT"/>
-        <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
     </resultMap>
+
     <sql id="Base_Column_List">
         id, version, pid, login_name, user_name, user_id, login_ip, login_location, access_token,
         refresh_token, access_token_validity, refresh_token_validity, status, creator, creator_id,
         gmt_created, last_operator, last_operator_id, gmt_modified, os, browser, login_time, group_id, group_name
     </sql>
+
     <select id="selectTokenList" resultType="com.sisyphus.auth.model.domain.AuthUserToken">
 
         SELECT

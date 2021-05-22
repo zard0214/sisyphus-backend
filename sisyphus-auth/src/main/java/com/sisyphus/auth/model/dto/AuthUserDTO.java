@@ -1,29 +1,25 @@
-package com.sisyphus.auth.model.domain;
+package com.sisyphus.auth.model.dto;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sisyphus.common.base.dto.BaseDO;
+import com.sisyphus.common.base.dto.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.apache.ibatis.type.Alias;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zhecheng.zhao
- * @date Created in 22/05/2021 06:50
+ * @date Created in 22/05/2021 10:28
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_user")
-@Alias(value = "authUser")
-public class AuthUser extends BaseDO {
+public class AuthUserDTO extends BaseDTO {
 
+    private Long id;
     /**
      * 版本号
      */
@@ -114,6 +110,12 @@ public class AuthUser extends BaseDO {
     private String remark;
 
     /**
+     * 租户id
+     */
+    @TableField(value = "tenantId")
+    private Long tenantId;
+
+    /**
      * 最后登录时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -143,4 +145,14 @@ public class AuthUser extends BaseDO {
 
     @ApiModelProperty(value = "用户所属的组织名称")
     private String groupName;
+
+    /**
+     * 角色列表
+     */
+    private List<AuthRoleDTO> authRoleList;
+
+    /**
+     * 权限列表
+     */
+    private List<AuthActionDTO> authActionList;
 }

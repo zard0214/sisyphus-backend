@@ -38,4 +38,18 @@ public class AuthActionDTO extends BaseDTO {
     @TableField(value = "url")
     private String url;
 
+    /**
+     * 菜单
+     */
+    @EnumValue
+    @TableField(value = "menu_id")
+    private String menuId;
+
+    /**
+     * 状态
+     */
+    @EnumValue
+    @TableField(value = "status")
+    private String status;
+
 }
