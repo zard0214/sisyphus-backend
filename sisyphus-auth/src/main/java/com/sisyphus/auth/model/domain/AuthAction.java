@@ -14,21 +14,21 @@ import org.apache.ibatis.type.Alias;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_permission")
-@Alias(value = "authPermission")
-public class AuthPermission extends BaseDO {
+@TableName(value = "s_auth_action")
+@Alias(value = "authAction")
+public class AuthAction extends BaseDO {
 
     /**
      * 权限名
      */
-    @TableField(value = "permission_name")
-    private String permissionName;
+    @TableField(value = "action_name")
+    private String actionName;
 
     /**
      * 权限码
      */
-    @TableField(value = "permission_code")
-    private String permissionCode;
+    @TableField(value = "action_code")
+    private String actionCode;
 
     /**
      * 权限类型
@@ -56,4 +56,6 @@ public class AuthPermission extends BaseDO {
      */
     @TableField(value = "remark")
     private String remark;
+
+
 }

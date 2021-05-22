@@ -3,6 +3,7 @@ package com.sisyphus.auth.model.dto;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.sisyphus.common.base.dto.BaseDO;
+import com.sisyphus.common.base.dto.BaseDTO;
 import lombok.Data;
 
 /**
@@ -10,19 +11,19 @@ import lombok.Data;
  * @date Created in 22/05/2021 07:38
  */
 @Data
-public class AuthPermissionDTO extends BaseDO {
+public class AuthActionDTO extends BaseDTO {
 
     /**
      * 权限名
      */
-    @TableField(value = "permission_name")
-    private String permissionName;
+    @TableField(value = "action_name")
+    private String actionName;
 
     /**
      * 权限码
      */
-    @TableField(value = "permission_code")
-    private String permissionCode;
+    @TableField(value = "action_code")
+    private String actionCode;
 
     /**
      * 权限类型

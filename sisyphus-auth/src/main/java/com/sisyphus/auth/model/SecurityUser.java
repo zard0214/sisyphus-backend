@@ -1,7 +1,7 @@
 package com.sisyphus.auth.model;
 
 import com.sisyphus.auth.model.domain.AuthRole;
-import com.sisyphus.auth.model.dto.AuthPermissionDTO;
+import com.sisyphus.auth.model.dto.AuthActionDTO;
 import com.sisyphus.auth.model.enums.StatusType;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
@@ -43,9 +43,9 @@ public class SecurityUser implements UserDetails {
 
     private List<AuthRole> authRoleList;
 
-    private List<AuthPermissionDTO> authPermissionList;
+    private List<AuthActionDTO> authPermissionList;
 
-    public SecurityUser(Long userId, String userName, String loginName, String loginPwd, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthPermissionDTO> authPermissionList) {
+    public SecurityUser(Long userId, String userName, String loginName, String loginPwd, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthActionDTO> authPermissionList) {
         this.userId = userId;
         this.userName = userName;
         this.loginName = loginName;
@@ -57,7 +57,7 @@ public class SecurityUser implements UserDetails {
         this.authPermissionList = authPermissionList;
     }
 
-    public SecurityUser(Collection<GrantedAuthority> authorities, Long userId, String userName, String loginName, String loginPwd, String status, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthPermissionDTO> authPermissionList) {
+    public SecurityUser(Collection<GrantedAuthority> authorities, Long userId, String userName, String loginName, String loginPwd, String status, Long tenantId, Long groupId, String groupName, List<AuthRole> authRoleList, List<AuthActionDTO> authPermissionList) {
         this.authorities = authorities;
         this.userId = userId;
         this.userName = userName;
@@ -74,9 +74,9 @@ public class SecurityUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
-        List<AuthPermissionDTO> permissions = this.getAuthPermissionList();
+        List<AuthActionDTO> permissions = this.getAuthPermissionList();
         if (permissions != null) {
-            for (AuthPermissionDTO permission : permissions) {
+            for (AuthActionDTO permission : permissions) {
                 GrantedAuthority grantedAuthority = new AuthGrantedAuthority(permission.getUrl(), permission.getMethod());
                 authorityList.add(grantedAuthority);
             }
