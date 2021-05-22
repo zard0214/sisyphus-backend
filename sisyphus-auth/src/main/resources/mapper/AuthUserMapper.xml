@@ -39,6 +39,7 @@
         <result column="action_code" jdbcType="VARCHAR" property="actionCode"/>
         <result column="menu_id" jdbcType="VARCHAR" property="menuId"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -52,7 +53,7 @@
     </sql>
 
     <sql id="Action_Column_List">
-        id, action_name, action_code, status, menu_id
+        id, action_name, action_code, status, menu_id, url
     </sql>
 
     <select id="findByLoginName" resultType="com.sisyphus.auth.model.dto.AuthUserDTO">
@@ -80,6 +81,7 @@
         <include refid="Action_Column_List"/>
         from
         s_auth_user u
+        inner join s_auth_menu m on u.id = gu.user_id
         where
         u.login_name= #{loginName,jdbcType=VARCHAR}
     </select>
