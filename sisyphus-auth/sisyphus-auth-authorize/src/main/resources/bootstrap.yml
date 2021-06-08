@@ -77,3 +77,37 @@ management:
     web:
       exposure:
         include: "*"
+sisyphus:
+  security:
+    social:
+      filterProcessesUrl: /qqLogin
+      weixin:
+        app-id: 1
+        app-secret: 1
+        providerId: callback.do
+      qq:
+        app-id: 1
+        app-secret: 1
+        providerId: callback.do
+    code:
+      image:
+        length: 4
+        width: 100
+        height: 30
+        expireIn: 30
+        url: /user/*
+      sms:
+        length: 6
+        expireIn: 60
+        url: /user/*
+    browser:
+      signInPage: /demo-signIn.html
+      signInResponseType: REDIRECT
+      singInSuccessUrl: /manage.html
+      rememberMeSeconds: 294000
+      signOutUrl: /demo-logout.html
+      signUpUrl: /demo-signUp.html
+      session:
+        maximumSessions: 1
+        maxSessionsPreventsLogin: false
+        sessionInvalidUrl: /sisyphus-session-invalid.html

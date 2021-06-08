@@ -17,8 +17,8 @@ import java.io.IOException;
  * @date Created in 18/05/2021 08:37
  */
 @Slf4j
-@Component
-public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+@Component("pcAuthenticationSuccessHandler")
+public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Resource
     private ObjectMapper objectMapper;

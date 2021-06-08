@@ -1,5 +1,6 @@
 package com.sisyphus.auth.app.authentication;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -28,11 +29,8 @@ import java.util.Base64;
 public class IAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
-    //  com.fasterxml.jackson.databind.
-    // spring 是使用jackson来进行处理返回数据的
-    // 所以这里可以得到他的实例
     @Resource
-    private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
     @Resource
     private SecurityProperties securityProperties;

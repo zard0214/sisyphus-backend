@@ -6,7 +6,6 @@ import com.sisyphus.auth.core.authorize.AuthorizeConfigManager;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.auth.core.properties.SessionProperties;
 import com.sisyphus.auth.core.validate.code.ValidateCodeSecurityConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

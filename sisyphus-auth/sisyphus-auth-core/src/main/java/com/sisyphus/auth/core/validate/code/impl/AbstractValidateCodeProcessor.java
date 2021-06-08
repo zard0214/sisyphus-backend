@@ -7,6 +7,7 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -14,6 +15,7 @@ import java.util.Map;
  * @date Created in 08/06/2021 16:41
  */
 public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> implements ValidateCodeProcessor {
+
     /** 由使用方注入具体实现 */
     @Autowired
     private ValidateCodeRepository validateCodeRepository;
@@ -26,7 +28,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
      *  beanName做为key，实现作为value注入这里
      * </pre>
      */
-    @Autowired
+    @Resource
     private Map<String, ValidateCodeGenerator> validateCodeGenerates;
 
     @Override
