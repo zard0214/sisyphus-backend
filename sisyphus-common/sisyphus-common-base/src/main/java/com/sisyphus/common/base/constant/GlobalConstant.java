@@ -5,6 +5,10 @@ package com.sisyphus.common.base.constant;
  * @date Created in 17/05/2021 23:57
  */
 public class GlobalConstant {
+
+    /**
+     * The constant FILE_MAX_SIZE.
+     */
     public static final long FILE_MAX_SIZE = 5 * 1024 * 1024;
     public static final String UNKNOWN = "unknown";
 
@@ -23,13 +27,18 @@ public class GlobalConstant {
     public static final String DEV_PROFILE = "dev";
     public static final String TEST_PROFILE = "test";
     public static final String PRO_PROFILE = "pro";
-
     public static final int TWO_INT = 2;
     public static final int M_SIZE = 1024;
     public static final String ROOT_PREFIX = "sisyphus";
 
     public static final int EXCEPTION_CAUSE_MAX_LENGTH = 2048;
     public static final int EXCEPTION_MESSAGE_MAX_LENGTH = 2048;
+
+    public static final String ZK_REGISTRY_SERVICE_ROOT_PATH = "/sisyphus/registry/service";
+    public static final String ZK_REGISTRY_ID_ROOT_PATH = "/sisyphus/registry/id";
+    public static final String ZK_REGISTRY_PRODUCER_ROOT_PATH = "/sisyphus/registry/producer";
+    public static final String ZK_REGISTRY_CONSUMER_ROOT_PATH = "/sisyphus/registry/consumer";
+    public static final String ZK_REGISTRY_SEQ = "/sisyphus/seq";
 
     public interface Number {
         int THOUSAND_INT = 1000;
@@ -46,6 +55,7 @@ public class GlobalConstant {
         int TEN_INT = 10;
         int EIGHTEEN_INT = 18;
     }
+
 
     /**
      * 系统常量
@@ -89,7 +99,7 @@ public class GlobalConstant {
         /**
          * The constant DEFAULT_FILE_PATH.
          */
-        public static final String DEFAULT_FILE_PATH = "/sisyphus/file/";
+        public static final String DEFAULT_FILE_PATH = "sisyphus/file/";
 
         /**
          * redis key default expire = 1MINUTES
@@ -97,5 +107,129 @@ public class GlobalConstant {
         public static final long REDIS_DEFAULT_EXPIRE = 1L;
     }
 
+    /**
+     * The class Symbol.
+     *
+     * @author sisyphus.net@gmail.com
+     */
+    public static final class Symbol {
+        private Symbol() {
+        }
 
+        /**
+         * The constant COMMA.
+         */
+        public static final String COMMA = ",";
+        public static final String SPOT = ".";
+        /**
+         * The constant UNDER_LINE.
+         */
+        public final static String UNDER_LINE = "_";
+        /**
+         * The constant PER_CENT.
+         */
+        public final static String PER_CENT = "%";
+        /**
+         * The constant AT.
+         */
+        public final static String AT = "@";
+        /**
+         * The constant PIPE.
+         */
+        public final static String PIPE = "||";
+        public final static String SHORT_LINE = "-";
+        public final static String SPACE = " ";
+        public static final String SLASH = "/";
+        public static final String MH = ":";
+
+    }
+
+    /**
+     * The class Oss.
+     *
+     * @author sisyphus.net@gmail.com
+     */
+    public static final class Oss {
+        private Oss() {
+        }
+
+        /**
+         * The constant DEFAULT_FILE_PATH.
+         */
+        public static final String DEFAULT_FILE_PATH = "/default/";
+    }
+
+
+    /**
+     * 图片压缩高度和宽度
+     */
+    public static final int IMAGE_WIDTH = 1920;
+    /**
+     * The constant IMAGE_HEIGHT.
+     */
+    public static final int IMAGE_HEIGHT = 1280;
+
+    /**
+     * The constant Y.
+     */
+    public static final Integer Y = 1;
+    /**
+     * The constant N.
+     */
+    public static final Integer N = 0;
+
+    /**
+     * The enum Payment type enum.
+     *
+     * @author sisyphus.net@gmail.com
+     */
+    public enum PaymentTypeEnum {
+        /**
+         * Online pay payment type enum.
+         */
+        ONLINE_PAY(1, "在线支付");
+
+        PaymentTypeEnum(int code, String value) {
+            this.code = code;
+            this.value = value;
+        }
+
+        private String value;
+        private int code;
+
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Gets code.
+         *
+         * @return the code
+         */
+        public int getCode() {
+            return code;
+        }
+
+        /**
+         * Code of payment type enum.
+         *
+         * @param code the code
+         *
+         * @return the payment type enum
+         */
+        public static PaymentTypeEnum codeOf(int code) {
+            for (PaymentTypeEnum paymentTypeEnum : values()) {
+                if (paymentTypeEnum.getCode() == code) {
+                    return paymentTypeEnum;
+                }
+            }
+            return null;
+        }
+
+    }
 }

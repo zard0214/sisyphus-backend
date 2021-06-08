@@ -39,6 +39,7 @@
         <maven-plugin.version>2.4.5</maven-plugin.version>
         <hutool.version>3.0.7</hutool.version>
         <spring.security.version>4.2.20.RELEASE</spring.security.version>
+        <spring.social.version>1.1.6.RELEASE</spring.social.version>
         <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
         <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
         <spring.security.oauth.starte.version>2.3.4.RELEASE</spring.security.oauth.starte.version>
@@ -52,6 +53,9 @@
         <p6spy.version>3.9.1</p6spy.version>
         <dynamic.version>3.3.5</dynamic.version>
         <mysql.connect.version>8.0.23</mysql.connect.version>
+        <redisson-starter.version>3.13.6</redisson-starter.version>
+        <fastjson.version>1.2.38</fastjson.version>
+        <commons-collections.version>4.2</commons-collections.version>
     </properties>
 
     <modules>
@@ -153,10 +157,39 @@
             </dependency>
             <!-- spring security oauth2 -->
 
+            <!-- spring social -->
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-config</artifactId>
+                <version>${spring.social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-core</artifactId>
+                <version>${spring.social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-security</artifactId>
+                <version>${spring.social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-web</artifactId>
+                <version>${spring.social.version}</version>
+            </dependency>
+            <!-- spring social -->
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections.version}</version>
             </dependency>
 
             <dependency>
@@ -268,6 +301,12 @@
                 <artifactId>jedis</artifactId>
                 <version>${redis.clients.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-starter.version}</version>
+            </dependency>
             <!-- redis -->
 
             <!-- sentinel -->
@@ -329,7 +368,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>1.2.38</version>
+                <version>${fastjson.version}</version>
             </dependency>
 
             <dependency>

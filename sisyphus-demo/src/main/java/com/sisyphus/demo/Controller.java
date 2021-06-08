@@ -1,7 +1,7 @@
 package com.sisyphus.demo;
 
-import com.sisyphus.common.base.wapper.WrapMapper;
-import com.sisyphus.common.base.wapper.Wrapper;
+import com.sisyphus.common.base.wapper.Response;
+import com.sisyphus.common.base.wapper.ResponseDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @PostMapping(value = "/a")
-    public Wrapper<Boolean> a() {
-        return WrapMapper.ok();
+    public ResponseDTO<Boolean> a() {
+        return Response.success();
     }
 }

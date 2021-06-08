@@ -1,6 +1,7 @@
 package com.sisyphus.common.base.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -36,7 +37,8 @@ public class LoginAuthDTO extends User implements Serializable {
         super(username, password, authorities);
     }
 
-    public LoginAuthDTO(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    public LoginAuthDTO(String username, String password, boolean enabled, boolean accountNonExpired,
+                        boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 

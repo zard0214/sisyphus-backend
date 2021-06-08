@@ -1,6 +1,6 @@
 package com.sisyphus.common.base.exception;
 
-import com.sisyphus.common.base.enums.ErrorCode;
+import com.sisyphus.common.base.enums.ErrorCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -42,7 +42,7 @@ public class BizException extends BaseException {
         this.code = code;
     }
 
-    public BizException(ErrorCode codeEnum, Object... args) {
+    public BizException(ErrorCodeEnum codeEnum, Object... args) {
         super(String.format(codeEnum.msg(), args));
         this.code = codeEnum.code();
     }

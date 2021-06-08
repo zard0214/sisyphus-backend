@@ -36,10 +36,18 @@ spring:
           lowerCaseServiceId: true
           enabled: true
       routes:
-        - id: sisyphus-auth
-          uri: lb://sisyphus-auth
+        - id: sisyphus-auth-app
+          uri: lb://sisyphus-auth-app
           predicates:
-            - Path=/auth/**
+            - Path=/auth/app/**
+        - id: sisyphus-auth-browser
+          uri: lb://sisyphus-auth-browser
+          predicates:
+            - Path=/auth/browser/**
+        - id: sisyphus-auth-authorize
+          uri: lb://sisyphus-auth-authorize
+          predicates:
+            - Path=/auth/authorize/**
         - id: sisyphus-uac
           uri: lb://sisyphus-uac
           predicates:

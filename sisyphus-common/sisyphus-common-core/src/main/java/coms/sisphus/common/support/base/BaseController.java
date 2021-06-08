@@ -2,7 +2,7 @@ package coms.sisphus.common.support.base;
 
 import com.sisyphus.common.base.constant.GlobalConstant;
 import com.sisyphus.common.base.dto.LoginAuthDTO;
-import com.sisyphus.common.base.enums.ErrorCode;
+import com.sisyphus.common.base.enums.ErrorCodeEnum;
 import com.sisyphus.common.base.exception.BizException;
 import coms.sisphus.common.support.util.ObjectUtil;
 import coms.sisphus.common.support.util.ThreadLocalMap;
@@ -25,9 +25,8 @@ public class BaseController {
     protected LoginAuthDTO getLoginAuthDTO() {
         LoginAuthDTO loginAuthDto = (LoginAuthDTO) ThreadLocalMap.get(GlobalConstant.Sys.TOKEN_AUTH_DTO);
         if (ObjectUtil.isEmpty(loginAuthDto)) {
-            throw new BizException(ErrorCode.UC1001001);
+            throw new BizException(ErrorCodeEnum.GL99990403);
         }
         return loginAuthDto;
     }
-
 }
