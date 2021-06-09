@@ -13,15 +13,28 @@ import java.util.List;
  */
 @Component
 public class DefaultAuthorizeConfigManager implements AuthorizeConfigManager {
+
     @Autowired
-    private List<AuthorizeConfigProvider> providers;
+    private List<AuthorizeConfigProvider> authorizeConfigProviders;
 
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-        for (AuthorizeConfigProvider provider : providers) {
-            provider.config(config);
+        boolean existAnyRequestConfig = false;
+        String existAnyRequestConfigName = null;
+
+        for (AuthorizeConfigProvider authorizeConfigProvider : authorizeConfigProviders) {
+            boolean currentIsAnyRequestConfig = authorizeConfigProvider.config(config);
+            if (existAnyRequestConfig && currentIsAnyRequestConfig) {
+                throw new RuntimeException("重复的anyRequest配置:" + existAnyRequestConfigName + ","
+                        + authorizeConfigProvider.getClass().getSimpleName());
+            } else if (currentIsAnyRequestConfig) {
+                existAnyRequestConfig = true;
+                existAnyRequestConfigName = authorizeConfigProvider.getClass().getSimpleName();
+            }
         }
-        // 除了上面配置的，其他的都需要登录后才能访问
-//        config.anyRequest().authenticated();
+
+        if (!existAnyRequestConfig) {
+            config.anyRequest().authenticated();
+        }
     }
 }

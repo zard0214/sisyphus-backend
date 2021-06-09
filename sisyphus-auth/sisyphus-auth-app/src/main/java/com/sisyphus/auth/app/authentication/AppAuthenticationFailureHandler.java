@@ -19,8 +19,8 @@ import java.io.IOException;
  * @author zhecheng.zhao
  * @date Created in 08/06/2021 17:43
  */
-@Component("iAuthenticationFailureHandler")
-public class IAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+@Component("appAuthenticationFailureHandler")
+public class AppAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource

@@ -44,24 +44,18 @@ public class BrowserSecurityController {
     @Resource
     private ProviderSignInUtils providerSignInUtils;
 
-    /**
-     * 当需要身份认证时跳转到这里
-     * @param request
-     * @param response
-     * @return
-     */
     @RequestMapping(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public ResponseDTO requirAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest != null) {
             String targetUrl = savedRequest.getRedirectUrl();
-            log.info("引发跳转认证的请求：" + targetUrl);
+            log.info("request：" + targetUrl);
             if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
                 redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
             }
         }
-        return Response.success("访问的服务需要身份认证，请引导用户到登录页");
+        return Response.fail("rediract");
     }
 
     @GetMapping("/social/user")
@@ -78,6 +72,6 @@ public class BrowserSecurityController {
     @GetMapping("/session/invalid")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseDTO sessionInvalid() {
-        return Response.success("session失效");
+        return Response.fail("session invalid");
     }
 }

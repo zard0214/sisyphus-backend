@@ -73,7 +73,7 @@ public class AbstractSessionStrategy {
         if(isConcurrency()){
             message = message + "，有可能是并发登录导致的";
         }
-        return Response.success(message);
+        return Response.fail(message);
     }
 
     /**

@@ -13,9 +13,12 @@ public class BrowserProperties {
     private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
 
     private LoginType loginType = LoginType.JSON;
+
     private int rememberMeSeconds = 60; // 记住我功能默认超时时间60秒
+
     /** 注册页面 */
-    private String signUpUrl = "/sisyphus-signUp.html";
+    private String signUpUrl = "/pc-signUp.html";
+
     /** 退出成功页面 */
     private String signOutUrl;
 

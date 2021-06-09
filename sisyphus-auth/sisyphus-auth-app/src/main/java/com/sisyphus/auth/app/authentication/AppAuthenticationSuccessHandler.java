@@ -25,8 +25,8 @@ import java.util.Base64;
  * @author zhecheng.zhao
  * @date Created in 08/06/2021 17:43
  */
-@Component("iAuthenticationSuccessHandler")
-public class IAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+@Component("appAuthenticationSuccessHandler")
+public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource

@@ -34,13 +34,13 @@ public class IResourcesServerConfig extends ResourceServerConfigurerAdapter {
     private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
     @Resource
-    private SpringSocialConfigurer imoocSocialSecurityConfig;
+    private SpringSocialConfigurer socialSecurityConfig;
 
     @Resource
-    private AuthenticationSuccessHandler iAuthenticationSuccessHandler;
+    private AuthenticationSuccessHandler appAuthenticationSuccessHandler;
 
     @Resource
-    private AuthenticationFailureHandler iAuthenticationFailureHandler;
+    private AuthenticationFailureHandler appAuthenticationFailureHandler;
 
     @Resource
     private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
@@ -58,15 +58,15 @@ public class IResourcesServerConfig extends ResourceServerConfigurerAdapter {
         http.formLogin()
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
-                .successHandler(iAuthenticationSuccessHandler)
-                .failureHandler(iAuthenticationFailureHandler)
+                .successHandler(appAuthenticationSuccessHandler)
+                .failureHandler(appAuthenticationFailureHandler)
         ;
         http
                 .apply(validateCodeSecurityConfig)
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfigs)
                 .and()
-                .apply(imoocSocialSecurityConfig)
+                .apply(socialSecurityConfig)
                 .and()
                 .apply(openIdAuthenticationSecurityConfig)
                 .and()

@@ -20,12 +20,13 @@ public class CommonAuthorizeConfigProvider implements AuthorizeConfigProvider {
     private SecurityProperties securityProperties;
 
     @Override
-    public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
         config.antMatchers(
                 SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
                 SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
                 SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_OPEN_ID,
-                SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
+                SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*", "/pay/alipayCallback",
+                "/druid/**", "/auth/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs",
                 securityProperties.getBrowser().getLoginPage(),
                 securityProperties.getBrowser().getSignUpUrl(),
                 securityProperties.getBrowser().getSession().getSessionInvalidUrl() + ".json",
@@ -36,5 +37,6 @@ public class CommonAuthorizeConfigProvider implements AuthorizeConfigProvider {
         if (signOutUrl != null) {
             config.antMatchers(signOutUrl).permitAll();
         }
+        return false;
     }
 }

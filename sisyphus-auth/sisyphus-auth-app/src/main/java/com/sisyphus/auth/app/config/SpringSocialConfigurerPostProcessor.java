@@ -24,7 +24,7 @@ public class SpringSocialConfigurerPostProcessor  implements BeanPostProcessor {
         /**
          * @see SpringSocialConfig#imoocSocialSecurityConfig()
          */
-        if (beanName.equals("sisyphusSocialSecurityConfig")) {
+        if (beanName.equals("socialSecurityConfig")) {
             SpringSocialConfigurer config = (SpringSocialConfigurer) bean;
             config.signupUrl("/social/signUp");
             return bean;

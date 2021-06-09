@@ -39,7 +39,7 @@ spring:
         - id: sisyphus-auth-authorize
           uri: lb://sisyphus-auth-authorize
           predicates:
-            - Path=/auth/authorize/**
+            - Path=/auth/**
         - id: sisyphus-uac
           uri: lb://sisyphus-uac
           predicates:

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date Created in 20/05/2021 04:23
  */
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/auth")
 public class ApiRestController {
 
     @GetMapping(value = "/")

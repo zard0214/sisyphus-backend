@@ -57,7 +57,7 @@ public class SpringSocialConfig extends SocialConfigurerAdapter {
     }
 
     @Bean
-    public SpringSocialConfigurer imoocSocialSecurityConfig() {
+    public SpringSocialConfigurer socialSecurityConfig() {
         // 默认配置类，进行组件的组装
         // 包括了过滤器SocialAuthenticationFilter 添加到security过滤链中
         ISpringSocialConfigurer springSocialConfigurer = new ISpringSocialConfigurer();
