@@ -35,7 +35,6 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     @Override
     public ValidateCode get(ServletWebRequest request, ValidateCodeType validateCodeType) {
         String key = buildKey(request, validateCodeType);
-        // 拿到创建 create() 存储到session的code验证码对象
         return (ValidateCode) redisTemplate.opsForValue().get(key);
     }
 

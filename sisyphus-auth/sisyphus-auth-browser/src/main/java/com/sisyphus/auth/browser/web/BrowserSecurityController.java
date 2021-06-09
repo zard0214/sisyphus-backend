@@ -1,13 +1,16 @@
-package com.sisyphus.auth.browser.controller;
+package com.sisyphus.auth.browser.web;
 
 import com.sisyphus.auth.browser.support.SocialUserInfo;
 import com.sisyphus.auth.core.properties.SecurityConstants;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.common.base.wapper.Response;
 import com.sisyphus.common.base.wapper.ResponseDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -32,6 +35,8 @@ import java.io.IOException;
  */
 @Slf4j
 @RestController
+@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@Api(value = "Web - BrowserSecurityController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class BrowserSecurityController {
 
     private RequestCache requestCache = new HttpSessionRequestCache();
@@ -46,11 +51,11 @@ public class BrowserSecurityController {
 
     @RequestMapping(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ApiOperation(httpMethod = "POST", value = "重定向")
     public ResponseDTO requirAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest != null) {
             String targetUrl = savedRequest.getRedirectUrl();
-            log.info("request：" + targetUrl);
             if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
                 redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
             }
@@ -59,6 +64,7 @@ public class BrowserSecurityController {
     }
 
     @GetMapping("/social/user")
+    @ApiOperation(httpMethod = "GET", value = "")
     public ResponseDTO getSocialUserInfo(javax.servlet.http.HttpServletRequest request) {
         SocialUserInfo userInfo = new SocialUserInfo();
         Connection<?> connection = providerSignInUtils.getConnectionFromSession(new ServletWebRequest(request));
@@ -71,6 +77,7 @@ public class BrowserSecurityController {
 
     @GetMapping("/session/invalid")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ApiOperation(httpMethod = "GET", value = "")
     public ResponseDTO sessionInvalid() {
         return Response.fail("session invalid");
     }

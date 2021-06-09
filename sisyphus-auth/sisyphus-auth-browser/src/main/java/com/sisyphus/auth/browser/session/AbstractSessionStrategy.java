@@ -43,17 +43,15 @@ public class AbstractSessionStrategy {
         this.destinationUrl = invalidSessionUrl;
     }
 
-
     protected void onSessionInvalid(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (createNewSession) {
             request.getSession();
         }
-
         String sourceUrl = request.getRequestURI();
         String targetUrl;
         if (StringUtils.endsWithIgnoreCase(sourceUrl, ".html")) {
             targetUrl = destinationUrl+".html";
-            log.info("session失效,跳转到"+targetUrl);
+            log.info("session失效,跳转到" + targetUrl);
             redirectStrategy.sendRedirect(request, response, targetUrl);
         }else{
             Object result = buildResponseContent(request);
@@ -61,7 +59,6 @@ public class AbstractSessionStrategy {
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(objectMapper.writeValueAsString(result));
         }
-
     }
 
     /**

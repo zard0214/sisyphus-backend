@@ -14,14 +14,9 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
 
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
-    // ~ Instance fields
-    // ================================================================================================
-
     private final Object principal;
     private String providerId;
 
-    // ~ Constructors
-    // ===================================================================================================
     public OpenIdAuthenticationToken(Object principal, String providerId) {
         super(null);
         this.principal = principal;
@@ -35,10 +30,6 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
         this.principal = principal;
         super.setAuthenticated(true); // must use super, as we override
     }
-
-    // ~ Methods
-    // ========================================================================================================
-
 
     @Override
     public Object getPrincipal() {
@@ -60,7 +51,6 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
             throw new IllegalArgumentException(
                     "Cannot set this token to trusted - use constructor which takes a GrantedAuthority list instead");
         }
-
         super.setAuthenticated(false);
     }
 

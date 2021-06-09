@@ -1,4 +1,4 @@
-package com.sisyphus.auth.app.controller;
+package com.sisyphus.auth.app.web;
 
 
 import com.sisyphus.auth.app.social.AppSignUpUtils;
