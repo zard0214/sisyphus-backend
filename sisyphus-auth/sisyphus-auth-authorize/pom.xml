@@ -48,7 +48,13 @@
 
         <dependency>
             <groupId>com.saas.sisyphus.auth</groupId>
-            <artifactId>sisyphus-auth-core</artifactId>
+            <artifactId>sisyphus-auth-app</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.saas.sisyphus.auth</groupId>
+            <artifactId>sisyphus-auth-browser</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

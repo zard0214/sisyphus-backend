@@ -7,11 +7,11 @@ import com.sisyphus.auth.core.validate.code.ValidateCodeException;
 import com.sisyphus.auth.core.validate.code.ValidateCodeRepository;
 import com.sisyphus.auth.core.validate.code.ValidateCodeType;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
-    @Autowired
+    @Resource
     private RedisTemplate<Object, Object> redisTemplate;
 
     /** 验证码放入redis规则模式：CODE_{TYPE}_{DEVICEId} */

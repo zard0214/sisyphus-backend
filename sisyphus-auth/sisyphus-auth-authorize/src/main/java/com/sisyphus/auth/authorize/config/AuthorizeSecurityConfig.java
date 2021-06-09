@@ -69,7 +69,7 @@ public class AuthorizeSecurityConfig extends AbstractChannelSecurityConfig {
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
-		tokenRepository.setCreateTableOnStartup(true); // 第一次启动创建
+//		tokenRepository.setCreateTableOnStartup(true); // 第一次启动创建
         return tokenRepository;
     }
 

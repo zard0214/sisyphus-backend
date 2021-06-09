@@ -1,12 +1,15 @@
 package com.sisyphus.auth.authorize.service;
 
 import com.sisyphus.auth.authorize.model.SecurityUser;
+import com.sisyphus.auth.authorize.model.SocialUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.social.security.SocialUserDetails;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -18,7 +21,7 @@ import java.util.Collection;
  * @date Created in 22/05/2021 10:20
  */
 @Component
-public class AuthUserDetailsService implements UserDetailsService {
+public class AuthUserDetailsService implements UserDetailsService, SocialUserDetailsService {
 
     @Resource
     private AuthUserService authUserService;
@@ -33,6 +36,20 @@ public class AuthUserDetailsService implements UserDetailsService {
         user = authUserService.findUserInfoByUserId(user.getId());
         grantedAuthorities = authUserService.loadUserAuthorities(user.getId());
         return new SecurityUser(grantedAuthorities, user.getId(), user.getUserName(), user.getLoginName(),
+                user.getLoginPwd(), user.getStatus(), user.getTenantId(), user.getGroupId(), user.getGroupName(),
+                user.getAuthRoleList(), user.getAuthActionList());
+    }
+
+    @Override
+    public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
+        Collection<GrantedAuthority> grantedAuthorities;
+        AuthUserDTO user = authUserService.findUserInfoByUserId(Long.valueOf(userId));
+        if (null == user) {
+            throw new BadCredentialsException("用户名不存在或者密码错误");
+        }
+
+        grantedAuthorities = authUserService.loadUserAuthorities(user.getId());
+        return new SocialUser(grantedAuthorities, user.getId(), user.getUserName(), user.getLoginName(),
                 user.getLoginPwd(), user.getStatus(), user.getTenantId(), user.getGroupId(), user.getGroupName(),
                 user.getAuthRoleList(), user.getAuthActionList());
     }
