@@ -72,5 +72,8 @@ public interface SecurityConstants {
     /**
      * 获取第三方用户信息的url
      */
-    String DEFAULT_SOCIAL_USER_INFO_URL = "/social/user";
+    String DEFAULT_SOCIAL_USER_INFO_URL = "/auth/social/user";
+
+
+    String DEFAULT_AUTH_SESSION_INVALID_URL = "/auth/session/invalid";
 }

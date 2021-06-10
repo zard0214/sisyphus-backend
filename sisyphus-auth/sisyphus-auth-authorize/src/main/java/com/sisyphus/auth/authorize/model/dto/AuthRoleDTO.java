@@ -11,6 +11,11 @@ import lombok.Data;
 public class AuthRoleDTO extends BaseDTO {
 
     /**
+     * 版本号
+     */
+    private Integer version;
+
+    /**
      * 角色名
      */
     private String roleName;

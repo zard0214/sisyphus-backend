@@ -63,8 +63,8 @@ public class PcSecurityController {
         return Response.failed("redirect");
     }
 
-    @GetMapping("/social/user")
-    @ApiOperation(httpMethod = "GET", value = "/social/user")
+    @GetMapping(SecurityConstants.DEFAULT_SOCIAL_USER_INFO_URL)
+    @ApiOperation(httpMethod = "GET", value = "/auth/social/user")
     public ResponseDTO getSocialUserInfo(javax.servlet.http.HttpServletRequest request) {
         SocialUserInfo userInfo = new SocialUserInfo();
         Connection<?> connection = providerSignInUtils.getConnectionFromSession(new ServletWebRequest(request));
@@ -75,7 +75,7 @@ public class PcSecurityController {
         return Response.success(userInfo);
     }
 
-    @GetMapping("/session/invalid")
+    @GetMapping(SecurityConstants.DEFAULT_AUTH_SESSION_INVALID_URL)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ApiOperation(httpMethod = "GET", value = "sessionInvalid")
     public ResponseDTO sessionInvalid() {

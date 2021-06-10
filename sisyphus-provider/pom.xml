@@ -19,6 +19,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sisyphus-provider-uac</module>
+        <module>sisyphus-provider-udc</module>
     </modules>
 
     <dependencies>

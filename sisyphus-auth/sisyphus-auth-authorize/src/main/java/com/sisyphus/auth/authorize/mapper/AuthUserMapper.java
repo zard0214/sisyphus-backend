@@ -4,6 +4,7 @@ import com.sisyphus.auth.authorize.model.domain.AuthUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import coms.sisphus.common.support.mybatis.IMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthUserMapper extends IMapper<AuthUser> {
 
-    AuthUserDTO findByLoginName(String username);
+    AuthUserDTO findByPhone(@Param("phone") String phone);
 
-    AuthUserDTO findUserInfoByUserId(Long userId);
+    AuthUserDTO findByLoginName(@Param("loginName") String loginName);
+
+    AuthUserDTO findUserInfoByUserId(@Param("userId") Long userId);
+
 }

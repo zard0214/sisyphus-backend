@@ -67,6 +67,17 @@
         u.login_name= #{loginName,jdbcType=VARCHAR}
     </select>
 
+    <select id="findByPhone" resultType="com.sisyphus.auth.authorize.model.dto.AuthUserDTO">
+        select
+        <include refid="Base_Column_List">
+            <property name="alias" value="u"></property>
+        </include>
+        from
+        s_auth_user u
+        where
+        u.phone= #{phone,jdbcType=VARCHAR}
+    </select>
+
     <select id="findRolesByUserId" resultMap="RoleResultMap">
         select
         <include refid="Role_Column_List">

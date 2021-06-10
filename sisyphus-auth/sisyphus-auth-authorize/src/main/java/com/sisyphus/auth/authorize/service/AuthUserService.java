@@ -13,7 +13,9 @@ import java.util.Collection;
  */
 public interface AuthUserService extends IService<AuthUser> {
 
-    AuthUserDTO findByLoginName(String username);
+    AuthUserDTO findByPhone(String phone);
+
+    AuthUserDTO findByLoginName(String loginName);
 
     AuthUserDTO findUserInfoByUserId(Long userId);
 
