@@ -59,6 +59,7 @@
     </properties>
 
     <modules>
+        <module>sisyphus-discovery</module>
         <module>sisyphus-example</module>
         <module>sisyphus-demo</module>
         <module>sisyphus-monitor</module>

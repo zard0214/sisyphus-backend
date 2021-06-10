@@ -20,7 +20,7 @@
     <modules>
         <module>sisyphus-auth-app</module>
         <module>sisyphus-auth-authorize</module>
-        <module>sisyphus-auth-browser</module>
+        <module>sisyphus-auth-pc</module>
         <module>sisyphus-auth-core</module>
     </modules>
 
