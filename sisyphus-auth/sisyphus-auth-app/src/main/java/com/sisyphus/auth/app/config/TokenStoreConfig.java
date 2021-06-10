@@ -21,7 +21,6 @@ import javax.annotation.Resource;
  */
 public class TokenStoreConfig {
 
-
     @Configuration
     @ConditionalOnProperty(prefix = "sisyphus.security.oauth2", name = "tokenStore", havingValue = "redis")
     public static class RedisConfig {

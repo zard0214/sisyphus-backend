@@ -12,7 +12,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @date Created in 08/06/2021 18:58
  */
 @Component
-public class BrowserSignUpUtils implements SignUpUtils {
+public class PcSignUpUtils implements SignUpUtils {
 
     @Autowired
     private ProviderSignInUtils providerSignInUtils;

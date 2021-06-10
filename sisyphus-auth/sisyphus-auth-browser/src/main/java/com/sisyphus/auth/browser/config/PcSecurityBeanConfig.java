@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @date Created in 08/06/2021 19:03
  */
 @Configuration
-public class BrowserSecurityBeanConfig {
+public class PcSecurityBeanConfig {
 
     @Resource
     private SecurityProperties securityProperties;

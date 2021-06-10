@@ -41,7 +41,7 @@
         <spring.security.version>4.2.20.RELEASE</spring.security.version>
         <spring.social.version>1.1.6.RELEASE</spring.social.version>
         <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
-        <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
+        <spring.security.jwt.version>1.1.0.RELEASE</spring.security.jwt.version>
         <spring.security.oauth.starte.version>2.3.4.RELEASE</spring.security.oauth.starte.version>
         <spring-boot-starter.version>2.3.1.RELEASE</spring-boot-starter.version>
         <spring-boot-starter-redis.version>2.3.0.RELEASE</spring-boot-starter-redis.version>
@@ -140,6 +140,14 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-taglibs</artifactId>
                 <version>${spring.security.version}</version>
+            </dependency>
+            <!-- spring security -->
+
+            <!-- spring security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring.security.jwt.version}</version>
             </dependency>
             <!-- spring security -->
 

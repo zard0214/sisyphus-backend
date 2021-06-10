@@ -20,7 +20,7 @@ public class ISessionInformationExpiredStrategy
     }
 
     @Override
-    public void onExpiredSessionDetected(SessionInformationExpiredEvent event) throws IOException, ServletException {
+    public void onExpiredSessionDetected(SessionInformationExpiredEvent event) throws IOException {
         onSessionInvalid(event.getRequest(), event.getResponse());
     }
 

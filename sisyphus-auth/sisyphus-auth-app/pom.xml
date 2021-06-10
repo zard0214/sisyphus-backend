@@ -55,6 +55,14 @@
 
         <!-- spring security -->
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>${spring.security.jwt.version}</version>
+        </dependency>
+        <!-- spring security -->
+
+        <!-- spring security -->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.security.starte.version}</version>

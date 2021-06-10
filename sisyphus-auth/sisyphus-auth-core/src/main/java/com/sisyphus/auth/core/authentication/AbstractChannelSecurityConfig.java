@@ -1,7 +1,6 @@
 package com.sisyphus.auth.core.authentication;
 
 import com.sisyphus.auth.core.properties.SecurityConstants;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

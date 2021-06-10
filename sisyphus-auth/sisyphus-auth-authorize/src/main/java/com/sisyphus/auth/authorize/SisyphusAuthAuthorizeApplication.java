@@ -13,7 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
         scanBasePackages = {
                 "com.sisyphus.auth.authorize",
                 "com.sisyphus.auth.core",
-                "com.sisyphus.auth.browser"
+                "com.sisyphus.auth.browser",
+                "com.sisyphus.auth.app"
         },
         exclude = {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,

@@ -36,8 +36,8 @@ import java.io.IOException;
 @Slf4j
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-@Api(value = "Web - BrowserSecurityController", produces = MediaType.APPLICATION_JSON_VALUE)
-public class BrowserSecurityController {
+@Api(value = "Web - PcSecurityController", produces = MediaType.APPLICATION_JSON_VALUE)
+public class PcSecurityController {
 
     private RequestCache requestCache = new HttpSessionRequestCache();
 

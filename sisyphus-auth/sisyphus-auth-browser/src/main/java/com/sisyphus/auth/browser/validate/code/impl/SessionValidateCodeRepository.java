@@ -3,6 +3,7 @@ package com.sisyphus.auth.browser.validate.code.impl;
 import com.sisyphus.auth.core.validate.code.ValidateCode;
 import com.sisyphus.auth.core.validate.code.ValidateCodeRepository;
 import com.sisyphus.auth.core.validate.code.ValidateCodeType;
+import org.springframework.context.annotation.Primary;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @author zhecheng.zhao
  * @date Created in 08/06/2021 19:03
  */
+
 @Component
 public class SessionValidateCodeRepository implements ValidateCodeRepository {
 

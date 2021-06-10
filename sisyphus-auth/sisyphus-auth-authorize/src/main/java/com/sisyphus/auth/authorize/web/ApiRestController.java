@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date Created in 20/05/2021 04:23
  */
 @RestController
-@RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApiRestController {
 
     @GetMapping(value = "/")

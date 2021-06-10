@@ -7,6 +7,7 @@ import com.sisyphus.auth.core.validate.code.ValidateCodeException;
 import com.sisyphus.auth.core.validate.code.ValidateCodeRepository;
 import com.sisyphus.auth.core.validate.code.ValidateCodeType;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @author zhecheng.zhao
  * @date Created in 08/06/2021 17:47
  */
+@Primary
 @Component
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
