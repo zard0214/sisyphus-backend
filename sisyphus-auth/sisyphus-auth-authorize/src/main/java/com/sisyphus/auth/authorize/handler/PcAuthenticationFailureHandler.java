@@ -37,7 +37,7 @@ public class PcAuthenticationFailureHandler implements AuthenticationFailureHand
         }
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(Response.fail(message)));
+        response.getWriter().write(objectMapper.writeValueAsString(Response.failed(message)));
 
     }
 }

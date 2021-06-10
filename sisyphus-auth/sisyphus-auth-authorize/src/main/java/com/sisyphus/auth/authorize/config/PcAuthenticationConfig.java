@@ -77,13 +77,18 @@ public class PcAuthenticationConfig extends AbstractChannelSecurityConfig {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void applyPasswordAuthenticationConfig(HttpSecurity http) throws Exception {
         http.formLogin()
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
                 .successHandler(pcAuthenticationSuccessHandler)
                 .failureHandler(pcAuthenticationFailureHandler)
         ;
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        this.applyPasswordAuthenticationConfig(http);
         SessionProperties session = securityProperties.getBrowser().getSession();
         http
                 .apply(validateCodeSecurityConfig)
@@ -99,9 +104,9 @@ public class PcAuthenticationConfig extends AbstractChannelSecurityConfig {
                 .and()
                 .sessionManagement()
                 .invalidSessionStrategy(invalidSessionStrategy)
-                .maximumSessions(session.getMaximumSessions()) //限制同一个用户只能有一个session登录
-                .maxSessionsPreventsLogin(session.isMaxSessionsPreventsLogin())  // 当session达到最大后，阻止后登录的行为
-                .expiredSessionStrategy(sessionInformationExpiredStrategy)  // 失效后的策略。定制型更高，失效前的请求还能拿到
+                .maximumSessions(session.getMaximumSessions())
+                .maxSessionsPreventsLogin(session.isMaxSessionsPreventsLogin())
+                .expiredSessionStrategy(sessionInformationExpiredStrategy)
                 .and()
                 .and()
                 .logout()

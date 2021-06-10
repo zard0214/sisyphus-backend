@@ -95,7 +95,7 @@ public class Response {
      *
      * @return the wrapper
      */
-    public static <E> ResponseDTO<E> fail() {
+    public static <E> ResponseDTO<E> failed() {
         return wrap(ResponseDTO.ERROR_CODE, ResponseDTO.ERROR_MESSAGE);
     }
 
@@ -108,7 +108,7 @@ public class Response {
      *
      * @return the wrapper
      */
-    public static <E> ResponseDTO<E> fail(String message) {
+    public static <E> ResponseDTO<E> failed(String message) {
         return wrap(ResponseDTO.ERROR_CODE, StringUtils.isBlank(message) ? ResponseDTO.ERROR_MESSAGE : message);
     }
 

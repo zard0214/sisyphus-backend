@@ -48,13 +48,8 @@ public class IResourcesServerConfig extends ResourceServerConfigurerAdapter {
     @Resource
     private AuthorizeConfigManager authorizeConfigManager;
 
-    // 有三个configure的方法，这里使用http参数的
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        // 最简单的修改默认配置的方法
-        // 在v5+中，该配置（表单登录）应该是默认配置了
-        // basic登录（也就是弹框登录的）应该是v5-的版本默认
-
         http.formLogin()
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)

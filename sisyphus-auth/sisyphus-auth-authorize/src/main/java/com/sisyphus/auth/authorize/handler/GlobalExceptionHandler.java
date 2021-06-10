@@ -93,6 +93,6 @@ public class GlobalExceptionHandler {
 //            GlobalExceptionLogDto globalExceptionLogDto = new GlobalExceptionLogDto().getGlobalExceptionLogDto(e, profile, applicationName);
 //            mdcExceptionLogFeignApi.saveAndSendExceptionLog(globalExceptionLogDto);
 //        });
-        return Response.fail();
+        return Response.failed();
     }
 }

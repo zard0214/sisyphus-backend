@@ -14,7 +14,7 @@ public class BrowserProperties {
 
     private LoginType loginType = LoginType.JSON;
 
-    private int rememberMeSeconds = 60; // 记住我功能默认超时时间60秒
+    private int rememberMeSeconds = 60;
 
     /** 注册页面 */
     private String signUpUrl = "/pc-signUp.html";

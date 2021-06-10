@@ -2,9 +2,9 @@ package com.sisyphus.auth.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisyphus.auth.core.properties.SecurityProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -25,9 +25,9 @@ import java.util.Base64;
  * @author zhecheng.zhao
  * @date Created in 08/06/2021 17:43
  */
+@Slf4j
 @Component("appAuthenticationSuccessHandler")
 public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-    private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private ObjectMapper objectMapper;
@@ -62,8 +62,6 @@ public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
         }
 
         // 解析请Authorization 获取client信息
-        // client-id: myid
-        // client-secret: myid
         String[] tokens = extractAndDecodeHeader(header, request);
         assert tokens.length == 2;
         String clientId = tokens[0];
@@ -77,21 +75,9 @@ public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
             throw new UnapprovedClientAuthenticationException("clientSecret不匹配:" + clientId);
         }
 
-        /**  @see DefaultOAuth2RequestFactory#createTokenRequest(java.util.Map, org.springframework.security.oauth2.provider.ClientDetails)
-         * requestParameters,不同的授权模式有不同的参数，这里自定义的模式，没有参数
-         * String clientId,
-         * Collection<String> scope, 给自己的前段使用，默认用所有的即可
-         * String grantType 自定义
-         *
-         * 在这里我就有一个疑问了：这个token应该代表的是不同的用户，这里使用我们配置的同一个client？那么获取到的不就是相同的token？
-         * 难道说是根据用户名和密码创建的？以后明白了再来填坑
-         * */
         TokenRequest tokenRequest = new TokenRequest(MapUtils.EMPTY_SORTED_MAP, clientId, clientDetails.getScope(), "costom");
         OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
 
-        /**
-         * @see org.springframework.security.oauth2.provider.token.AbstractTokenGranter#getOAuth2Authentication(org.springframework.security.oauth2.provider.ClientDetails, org.springframework.security.oauth2.provider.TokenRequest)
-         * */
         OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
 
         OAuth2AccessToken accessToken = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
@@ -100,7 +86,6 @@ public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
     }
 
     private String[] extractAndDecodeHeader(String header, HttpServletRequest request) throws IOException {
-
         byte[] base64Token = header.substring(6).getBytes("UTF-8");
         byte[] decoded;
         try {
@@ -109,11 +94,8 @@ public class AppAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
             throw new BadCredentialsException(
                     "Failed to decode basic authentication token");
         }
-
         String token = new String(decoded, "UTF-8");
-
         int delim = token.indexOf(":");
-
         if (delim == -1) {
             throw new BadCredentialsException("Invalid basic authentication token");
         }

@@ -21,13 +21,24 @@ import javax.annotation.Resource;
  */
 public class TokenStoreConfig {
 
-    @Resource
-    private RedisConnectionFactory redisConnectionFactory;
 
-    @Bean
+    @Configuration
     @ConditionalOnProperty(prefix = "sisyphus.security.oauth2", name = "tokenStore", havingValue = "redis")
-    public TokenStore tokenStore() {
-        return new IRedisTokenStore(redisConnectionFactory);
+    public static class RedisConfig {
+
+        @Resource
+        private RedisConnectionFactory redisConnectionFactory;
+
+        /**
+         * Redis token store token store.
+         *
+         * @return token store
+         */
+        @Bean
+        public TokenStore redisTokenStore() {
+            return new IRedisTokenStore(redisConnectionFactory);
+        }
+
     }
 
     @Configuration
