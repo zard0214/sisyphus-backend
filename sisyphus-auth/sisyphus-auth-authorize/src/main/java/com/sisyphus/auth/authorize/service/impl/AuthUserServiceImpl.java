@@ -6,9 +6,9 @@ import com.sisyphus.auth.authorize.mapper.AuthUserMapper;
 import com.sisyphus.auth.authorize.model.domain.AuthAction;
 import com.sisyphus.auth.authorize.model.domain.AuthUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
+import com.sisyphus.auth.authorize.model.dto.LoginRespDTO;
 import com.sisyphus.auth.authorize.service.AuthActionService;
 import com.sisyphus.auth.authorize.service.AuthUserService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -59,5 +59,10 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
             authList.add(grantedAuthority);
         }
         return authList;
+    }
+
+    @Override
+    public LoginRespDTO loginResp(Long applicationId) {
+        return null;
     }
 }

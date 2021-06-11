@@ -26,16 +26,15 @@ public class WebSecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .exceptionHandling()
-                .authenticationEntryPoint((swe, e) -> Mono.fromRunnable(() -> {
-                    swe.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                })).accessDeniedHandler((swe, e) -> Mono.fromRunnable(() -> {
-                    swe.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                })).and()
+                .authenticationEntryPoint((swe, e) -> Mono.fromRunnable(() ->
+                        swe.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED))).
+                 accessDeniedHandler((swe, e) -> Mono.fromRunnable(() ->
+                         swe.getResponse().setStatusCode(HttpStatus.FORBIDDEN))).and()
                 .authorizeExchange()
                 .pathMatchers(SecurityConstants.DEFAULT_PERMIT_URL).permitAll()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
-                .anyExchange().authenticated()
-                .and().csrf().disable()
+                .anyExchange().authenticated().and()
+                .csrf().disable()
                 .build();
     }
 

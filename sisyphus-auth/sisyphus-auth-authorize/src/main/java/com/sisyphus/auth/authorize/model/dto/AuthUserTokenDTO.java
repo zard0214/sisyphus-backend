@@ -1,8 +1,5 @@
 package com.sisyphus.auth.authorize.model.dto;
 
-import com.baomidou.mybatisplus.annotation.EnumValue;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.Version;
 import com.sisyphus.common.base.dto.BaseDTO;
 import lombok.Data;
 

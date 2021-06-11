@@ -2,6 +2,7 @@ package com.sisyphus.auth.authorize.service;
 
 import com.sisyphus.auth.authorize.model.domain.AuthUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
+import com.sisyphus.auth.authorize.model.dto.LoginRespDTO;
 import coms.sisphus.common.support.service.IService;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -20,4 +21,6 @@ public interface AuthUserService extends IService<AuthUser> {
     AuthUserDTO findUserInfoByUserId(Long userId);
 
     Collection<GrantedAuthority> loadUserAuthorities(Long userId);
+
+    LoginRespDTO loginResp(Long applicationId);
 }

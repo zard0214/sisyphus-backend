@@ -20,8 +20,8 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SecurityUtils {
 
-    private static final String AUTH_LOGIN_AFTER_URL = "/user/loginAfter/*";
-    private static final String AUTH_LOGOUT_URL = "/user/logout";
+    private static final String AUTH_LOGIN_AFTER_URL = "/auth/user/loginInfo/*";
+    private static final String AUTH_LOGOUT_URL = "/auth/user/logout";
 
     /**
      * Gets current login name.
