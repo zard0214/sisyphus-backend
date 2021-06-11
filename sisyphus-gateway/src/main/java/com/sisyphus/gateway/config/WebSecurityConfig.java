@@ -1,5 +1,6 @@
 package com.sisyphus.gateway.config;
 
+import com.sisyphus.auth.core.properties.SecurityConstants;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,7 @@ public class WebSecurityConfig {
                     swe.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
                 })).and()
                 .authorizeExchange()
-                .pathMatchers("/auth/**").permitAll()
+                .pathMatchers(SecurityConstants.DEFAULT_PERMIT_URL).permitAll()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyExchange().authenticated()
                 .and().csrf().disable()

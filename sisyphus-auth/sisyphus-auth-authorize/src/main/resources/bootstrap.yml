@@ -9,14 +9,12 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         file-extension: yml
+        prefix: sisyphus-auth-authorize
       discovery:
         group: SISYPHUS
         server-addr: localhost:8848
         service: sisyphus-authorize
   datasource:
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-    url: jdbc:p6spy:h2:mem:test
-    type: com.alibaba.druid.pool.DruidDataSource
     dynamic:
       primary: master
       datasource:
@@ -36,6 +34,9 @@ spring:
             password: 123456
             driver-class-name: com.mysql.cj.jdbc.Driver
             url: jdbc:mysql://127.0.0.1:3306/sisyphus_uac?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:h2:mem:test
+    type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initialSize: 5
       minIdle: 5
