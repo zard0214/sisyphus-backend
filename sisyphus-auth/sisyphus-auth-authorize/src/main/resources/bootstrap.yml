@@ -101,11 +101,11 @@ sisyphus:
         expireIn: 60
         url: /user/*
     browser:
-      signInPage: /sisyphus-signIn.html
+      signInPage: /login.html
       signInResponseType: REDIRECT
       singInSuccessUrl: /manage.html
       rememberMeSeconds: 294000
-      signOutUrl: /sisyphus-logout.html
+      signOutUrl: /logout.html
       signUpUrl: /sisyphus-signUp.html
       session:
         maximumSessions: 1

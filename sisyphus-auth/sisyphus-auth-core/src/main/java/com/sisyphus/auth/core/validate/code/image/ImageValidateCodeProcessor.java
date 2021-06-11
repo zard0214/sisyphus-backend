@@ -1,11 +1,17 @@
 package com.sisyphus.auth.core.validate.code.image;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.validate.code.impl.AbstractValidateCodeProcessor;
+import com.sisyphus.common.base.wapper.Response;
+import com.sisyphus.common.base.wapper.ResponseDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 
 /**
  * @author zhecheng.zhao
@@ -14,13 +20,20 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class ImageValidateCodeProcessor extends AbstractValidateCodeProcessor<ImageCode> {
 
+    @Resource
+    private ObjectMapper objectMapper;
+
     @Override
     public void send(ServletWebRequest request, ImageCode imageCode) throws Exception {
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(imageCode.getImage(), "JPEG", bos);
+
+        SecurityResult result = SecurityResult.ok(bos.toByteArray());
+
+        String json = objectMapper.writeValueAsString(result);
         HttpServletResponse response = request.getResponse();
-        response.setContentType("image/jpeg");
-        //禁止图像缓存。
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Cache-Control", "no-cache");
-        ImageIO.write(imageCode.getImage(), "JPEG", response.getOutputStream());
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
     }
 }

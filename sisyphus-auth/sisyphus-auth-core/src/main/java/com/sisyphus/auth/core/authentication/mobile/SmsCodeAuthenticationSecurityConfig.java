@@ -28,7 +28,7 @@ public class SmsCodeAuthenticationSecurityConfig
     private UserDetailsService userDetailsService;
 
     @Override
-    public void configure(HttpSecurity http) {
+    public void configure(HttpSecurity http) throws Exception {
         SmsCodeAuthenticationFilter filter = new SmsCodeAuthenticationFilter();
         filter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         filter.setAuthenticationFailureHandler(authenticationFailureHandler);

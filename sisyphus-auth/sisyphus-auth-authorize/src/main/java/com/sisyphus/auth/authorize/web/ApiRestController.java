@@ -2,6 +2,7 @@ package com.sisyphus.auth.authorize.web;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApiRestController {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/s")
     public String success() {
+        return "success";
+    }
+
+    @PostMapping(value = "/s")
+    public String psuccess() {
         return "success";
     }
 

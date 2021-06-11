@@ -82,8 +82,7 @@ public class PcAuthenticationConfig extends AbstractChannelSecurityConfig {
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
                 .successHandler(pcAuthenticationSuccessHandler)
-                .failureHandler(pcAuthenticationFailureHandler)
-        ;
+                .failureHandler(pcAuthenticationFailureHandler);
     }
 
     @Override
@@ -110,7 +109,7 @@ public class PcAuthenticationConfig extends AbstractChannelSecurityConfig {
                 .and()
                 .and()
                 .logout()
-//                .logoutUrl("/singout")  // 退出请求路径
+                .logoutUrl(securityProperties.getBrowser().getSignOutUrl())  // 退出请求路径
                 // 与logoutSuccessUrl互斥，有handler则logoutSuccessUrl失效
                 // 通过处理器增加配置了页面则跳转到页面，没有则输出json
                 .logoutSuccessHandler(logoutSuccessHandler)
