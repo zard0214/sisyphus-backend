@@ -89,10 +89,10 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseDTO exception(Exception e) {
         log.info("保存全局异常信息 ex={}", e.getMessage(), e);
-//        taskExecutor.execute(() -> {
+        taskExecutor.execute(() -> {
 //            GlobalExceptionLogDto globalExceptionLogDto = new GlobalExceptionLogDto().getGlobalExceptionLogDto(e, profile, applicationName);
 //            mdcExceptionLogFeignApi.saveAndSendExceptionLog(globalExceptionLogDto);
-//        });
+        });
         return Response.failed();
     }
 }

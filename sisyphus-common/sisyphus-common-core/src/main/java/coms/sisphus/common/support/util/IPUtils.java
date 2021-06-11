@@ -6,13 +6,13 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 /**
  * @author zhecheng.zhao
  * @date Created in 18/05/2021 08:56
  */
 public class IPUtils {
     private static Logger logger = LoggerFactory.getLogger(IPUtils.class);
-
 
     public static String getIpAddr(HttpServletRequest request) {
         String ip = null;

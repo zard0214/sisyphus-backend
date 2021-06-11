@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Configuration
 @EnableAuthorizationServer
-public class IAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
 
@@ -45,7 +45,7 @@ public class IAuthorizationServerConfig extends AuthorizationServerConfigurerAda
     @Autowired(required = false)
     private TokenEnhancer jwtTokenEnhancer;
 
-    public IAuthorizationServerConfig(
+    public AuthAuthorizationServerConfig(
             AuthenticationConfiguration authenticationConfiguration) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
     }

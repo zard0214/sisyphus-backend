@@ -3,6 +3,7 @@ package com.sisyphus.common.base.wapper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -67,7 +68,7 @@ public class ResponseDTO<T> implements Serializable {
     /**
      * Instantiates a new wrapper. default code=200
      */
-    ResponseDTO() {
+    public ResponseDTO() {
         this(SUCCESS_CODE, SUCCESS_MESSAGE);
     }
 
@@ -77,7 +78,7 @@ public class ResponseDTO<T> implements Serializable {
      * @param code    the code
      * @param message the message
      */
-    ResponseDTO(int code, String message) {
+    public ResponseDTO(int code, String message) {
         this(code, message, null);
     }
 
@@ -88,7 +89,7 @@ public class ResponseDTO<T> implements Serializable {
      * @param message the message
      * @param result  the result
      */
-    ResponseDTO(int code, String message, T result) {
+    public ResponseDTO(int code, String message, T result) {
         super();
         this.code(code).message(message).result(result);
     }
@@ -147,6 +148,10 @@ public class ResponseDTO<T> implements Serializable {
     @JsonIgnore
     public boolean error() {
         return !success();
+    }
+
+    public static ResponseDTO error(String message, Object data) {
+        return new ResponseDTO(ERROR_CODE, StringUtils.isEmpty(message) ? ERROR_MESSAGE : message, data);
     }
 
 }

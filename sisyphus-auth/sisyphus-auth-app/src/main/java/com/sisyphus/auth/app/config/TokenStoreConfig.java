@@ -1,6 +1,6 @@
 package com.sisyphus.auth.app.config;
 
-import com.sisyphus.auth.app.jwt.IJwtTokenEnhancer;
+import com.sisyphus.auth.app.jwt.AuthJwtTokenEnhancer;
 import com.sisyphus.auth.core.IRedisTokenStore;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -62,7 +62,7 @@ public class TokenStoreConfig {
         @Bean
         @ConditionalOnBean(TokenEnhancer.class)
         public TokenEnhancer jwtTokenEnhancer() {
-            return new IJwtTokenEnhancer();
+            return new AuthJwtTokenEnhancer();
         }
     }
 }

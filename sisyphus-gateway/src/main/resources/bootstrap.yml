@@ -1,6 +1,8 @@
 server:
   port: 8001
 spring:
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       config:
@@ -36,8 +38,8 @@ spring:
           lowerCaseServiceId: true
           enabled: true
       routes:
-        - id: sisyphus-auth-authorize
-          uri: lb://sisyphus-auth-authorize
+        - id: sisyphus-authorize
+          uri: lb://sisyphus-authorize
           predicates:
             - Path=/auth/**
         - id: sisyphus-uac

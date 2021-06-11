@@ -22,7 +22,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 @EnableResourceServer
-public class IResourcesServerConfig extends ResourceServerConfigurerAdapter {
+public class AuthResourcesServerConfig extends ResourceServerConfigurerAdapter {
 
     @Resource
     private SecurityProperties securityProperties;
@@ -54,8 +54,7 @@ public class IResourcesServerConfig extends ResourceServerConfigurerAdapter {
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
                 .successHandler(appAuthenticationSuccessHandler)
-                .failureHandler(appAuthenticationFailureHandler)
-        ;
+                .failureHandler(appAuthenticationFailureHandler);
         http
                 .apply(validateCodeSecurityConfig)
                 .and()

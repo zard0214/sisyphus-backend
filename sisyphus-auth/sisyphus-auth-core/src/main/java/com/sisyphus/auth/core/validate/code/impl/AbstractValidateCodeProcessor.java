@@ -60,7 +60,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
         if (codeInSession == null) {
             throw new ValidateCodeException("验证码不存在");
         }
-        if (codeInSession.isExpried()) {
+        if (codeInSession.isExpired()) {
             validateCodeRepository.remove(request, type);
             throw new ValidateCodeException("验证码已过期");
         }
@@ -68,6 +68,33 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
             throw new ValidateCodeException("验证码不匹配");
         }
         validateCodeRepository.remove(request, type);
+    }
+
+    @Override
+    public void check(ServletWebRequest request) {
+        ValidateCodeType codeType = getValidateCodeType();
+
+        C codeInSession = (C) validateCodeRepository.get(request, codeType);
+
+        String codeInRequest;
+        try {
+            codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(), codeType.getParamNameOnValidate());
+        } catch (ServletRequestBindingException e) {
+            throw new ValidateCodeException("获取验证码的值失败");
+        }
+
+        if (StringUtils.isBlank(codeInRequest)) {
+            throw new ValidateCodeException(codeType + "验证码的值不能为空");
+        }
+
+        if (codeInSession == null || codeInSession.isExpired()) {
+            validateCodeRepository.remove(request, codeType);
+            throw new ValidateCodeException(codeType + "验证码已过期");
+        }
+
+        if (!StringUtils.equals(codeInSession.getCode(), codeInRequest)) {
+            throw new ValidateCodeException(codeType + "验证码不匹配");
+        }
     }
 
     /**

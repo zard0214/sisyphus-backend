@@ -9,6 +9,7 @@ import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import com.sisyphus.auth.authorize.service.AuthActionService;
 import com.sisyphus.auth.authorize.service.AuthUserService;
 import org.checkerframework.checker.units.qual.A;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,8 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
     private AuthActionService authActionService;
     @Resource
     private AuthUserMapper authUserMapper;
+    @Resource
+    private TaskExecutor taskExecutor;
 
     @Override
     public AuthUserDTO findByPhone(String phone) {

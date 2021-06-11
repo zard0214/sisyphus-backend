@@ -7,12 +7,27 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @date Created in 08/06/2021 16:39
  */
 public interface ValidateCodeProcessor {
+
     /**
-     * 创建校验码：创建、存入session、发送
-     * org.springframework.web.context.request.ServletWebRequest 工具类可以存放request和response
-     * @param request
+     * 创建校验码
+     *
+     * @param request the request
+     *
+     * @throws Exception the exception
      */
     void create(ServletWebRequest request) throws Exception;
 
-    void validate(ServletWebRequest request);
+    /**
+     * 校验验证码(验证后删除)
+     *
+     * @param servletWebRequest the servlet web request
+     */
+    void validate(ServletWebRequest servletWebRequest);
+
+    /**
+     * 校验验证码(验证后不删除)
+     *
+     * @param servletWebRequest the servlet web request
+     */
+    void check(ServletWebRequest servletWebRequest);
 }
