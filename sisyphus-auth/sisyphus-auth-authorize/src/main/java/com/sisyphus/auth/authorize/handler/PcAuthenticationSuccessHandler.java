@@ -1,6 +1,7 @@
 package com.sisyphus.auth.authorize.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.common.base.wapper.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,6 @@ import java.util.Base64;
 @Slf4j
 @Component("pcAuthenticationSuccessHandler")
 public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-
 
     @Resource
     private ObjectMapper objectMapper;
@@ -84,7 +84,8 @@ public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
         OAuth2AccessToken accessToken = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(accessToken));
+        SecurityResult result = SecurityResult.ok(accessToken);
+        response.getWriter().write(objectMapper.writeValueAsString(result));
     }
 
     private String[] extractAndDecodeHeader(String header, HttpServletRequest request) throws IOException {

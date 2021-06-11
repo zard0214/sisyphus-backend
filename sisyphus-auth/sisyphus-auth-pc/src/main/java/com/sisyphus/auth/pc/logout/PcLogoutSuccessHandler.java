@@ -1,6 +1,7 @@
 package com.sisyphus.auth.pc.logout;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.common.base.wapper.Response;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +29,8 @@ public class PcLogoutSuccessHandler implements LogoutSuccessHandler {
         String signOutUrl = securityProperties.getBrowser().getSignOutUrl();
         if (StringUtils.isBlank(signOutUrl)) {
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(objectMapper.writeValueAsString(Response.success("退出成功")));
+            SecurityResult result = SecurityResult.ok("退出成功");
+            response.getWriter().write(objectMapper.writeValueAsString(result));
         } else {
             response.sendRedirect(signOutUrl);
         }

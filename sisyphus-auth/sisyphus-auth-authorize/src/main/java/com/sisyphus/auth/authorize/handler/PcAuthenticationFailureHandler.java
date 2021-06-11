@@ -1,6 +1,7 @@
 package com.sisyphus.auth.authorize.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.validate.code.ValidateCodeException;
 import com.sisyphus.common.base.enums.ErrorCodeEnum;
 import com.sisyphus.common.base.wapper.Response;
@@ -37,7 +38,8 @@ public class PcAuthenticationFailureHandler implements AuthenticationFailureHand
         }
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(Response.failed(message)));
+        SecurityResult result = SecurityResult.error(message);
+        response.getWriter().write(objectMapper.writeValueAsString(result));
 
     }
 }

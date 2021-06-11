@@ -79,6 +79,18 @@ management:
         include: "*"
 sisyphus:
   security:
+    oauth2:
+      tokenStore: jwt
+      clients[0]:
+        clientId: sisyphus-client-uac
+        clientSecret: sisyphusClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[1]:
+        clientId: sisyphus-client-gateway
+        clientSecret: sisyphusClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
     social:
       filterProcessesUrl: /qqLogin
       weixin:

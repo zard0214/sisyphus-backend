@@ -3,8 +3,6 @@ package com.sisyphus.auth.core.validate.code.image;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.validate.code.impl.AbstractValidateCodeProcessor;
-import com.sisyphus.common.base.wapper.Response;
-import com.sisyphus.common.base.wapper.ResponseDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -30,7 +28,6 @@ public class ImageValidateCodeProcessor extends AbstractValidateCodeProcessor<Im
         ImageIO.write(imageCode.getImage(), "JPEG", bos);
 
         SecurityResult result = SecurityResult.ok(bos.toByteArray());
-
         String json = objectMapper.writeValueAsString(result);
         HttpServletResponse response = request.getResponse();
         response.setCharacterEncoding("UTF-8");

@@ -38,6 +38,9 @@ public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurer
     @Autowired(required = false)
     public TokenStore tokenStore;
 
+    @Resource
+    private RestClientDetailsServiceImpl restClientDetailsService;
+
     @Autowired(required = false)
     // 只有当使用jwt的时候才会有该对象
     private JwtAccessTokenConverter jwtAccessTokenConverter;
@@ -49,6 +52,7 @@ public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurer
             AuthenticationConfiguration authenticationConfiguration) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
     }
+
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {

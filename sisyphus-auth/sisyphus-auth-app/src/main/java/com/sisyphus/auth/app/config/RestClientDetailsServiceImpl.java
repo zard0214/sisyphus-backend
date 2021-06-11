@@ -1,4 +1,4 @@
-package com.sisyphus.auth.authorize.service.impl;
+package com.sisyphus.auth.app.config;
 
 import com.sisyphus.auth.core.properties.OAuth2ClientProperties;
 import com.sisyphus.auth.core.properties.SecurityProperties;
