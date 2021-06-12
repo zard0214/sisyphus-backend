@@ -17,6 +17,9 @@ import java.util.List;
 @Data
 public class LoginRespDTO implements Serializable {
 
+    public LoginRespDTO() {
+    }
+
     @ApiModelProperty(value = "loginAuthDTO")
     private LoginAuthDTO loginAuthDTO;
 

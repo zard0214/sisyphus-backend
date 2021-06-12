@@ -1,14 +1,23 @@
 package com.sisyphus.auth.authorize.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.sisyphus.auth.authorize.mapper.AuthUserMapper;
 import com.sisyphus.auth.authorize.model.domain.AuthAction;
 import com.sisyphus.auth.authorize.model.domain.AuthUser;
+import com.sisyphus.auth.authorize.model.dto.AuthRoleDTO;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import com.sisyphus.auth.authorize.model.dto.LoginRespDTO;
+import com.sisyphus.auth.authorize.model.vo.AuthMenuVO;
 import com.sisyphus.auth.authorize.service.AuthActionService;
 import com.sisyphus.auth.authorize.service.AuthUserService;
+import com.sisyphus.auth.authorize.uitls.SecurityUtils;
+import com.sisyphus.common.base.dto.LoginAuthDTO;
+import com.sisyphus.common.base.enums.ErrorCodeEnum;
+import com.sisyphus.common.base.exception.BizException;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +32,7 @@ import java.util.List;
  * @author zhecheng.zhao
  * @date Created in 22/05/2021 10:24
  */
+@Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> implements AuthUserService {
@@ -63,6 +73,21 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
 
     @Override
     public LoginRespDTO loginResp(Long applicationId) {
-        return null;
+        String loginName = SecurityUtils.getCurrentLoginName();
+        if (StringUtils.isEmpty(loginName)) {
+            log.error("操作超时, 请重新登录 loginName={}", loginName);
+            Preconditions.checkArgument(StringUtils.isNotEmpty(loginName), "操作超时, 请重新登录");
+        }
+        AuthUserDTO authUserDTO = this.findByLoginName(loginName);
+//        if (PublicUtil.isEmpty(authUserDTO)) {
+//            log.info("找不到用户信息 loginName={}", loginName);
+//            throw new BizException(ErrorCodeEnum.UAC10011002, loginName);
+//        }
+//        LoginAuthDTO loginAuthDTO = new LoginAuthDTO();
+//        List<AuthMenuVO> authMenus = new LoginAuthDTO();
+//        List<AuthRoleDTO> authRoles = new LoginAuthDTO();
+//        LoginRespDTO loginRespDTO = new LoginRespDTO(loginAuthDTO, authMenus, authRoles);
+//        return loginRespDTO;
+        return new LoginRespDTO();
     }
 }

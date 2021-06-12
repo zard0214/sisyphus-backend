@@ -10,48 +10,74 @@
     <groupId>com.saas.sisyphus.demo</groupId>
     <artifactId>sisyphus-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sisyphus-demo</name>
+    <name>sisyphus-common</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>sisyphus-demo-mybatisplus</module>
+        <module>sisyphus-demo-druid</module>
+        <module>sisyphus-demo-kafka</module>
+        <module>sisyphus-demo-rocketmq</module>
+        <module>sisyphus-demo-rabbitmq</module>
+        <module>sisyphus-demo-mysql</module>
+        <module>sisyphus-demo-tidb</module>
+        <module>sisyphus-demo-mongodb</module>
+        <module>sisyphus-demo-redis</module>
+        <module>sisyphus-demo-elasticsearch</module>
+        <module>sisyphus-demo-hystrik</module>
+        <module>sisyphus-demo-sentinel</module>
+        <module>sisyphus-demo-zookeeper</module>
+        <module>sisyphus-demo-dubbo</module>
+        <module>sisyphus-demo-swagger</module>
+        <module>sisyphus-demo-mybatis</module>
+        <module>sisyphus-demo-ehcache</module>
+        <module>sisyphus-demo-skywalking</module>
+        <module>sisyphus-demo-nginx</module>
+        <module>sisyphus-demo-linux</module>
+        <module>sisyphus-demo-netty</module>
+    </modules>
+
     <dependencies>
-
         <dependency>
-            <groupId>com.saas.sisyphus.common</groupId>
-            <artifactId>sisyphus-common-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
+        <!-- starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.4</version>
+        </dependency>
+        <!--JSON-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.38</version>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${maven-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -33,7 +33,6 @@ public class AuthLoginController {
     @PostMapping(value = "/user/loginInfo/{applicationId}")
     @ApiOperation(httpMethod = "POST", value = "登录成功获取用户菜单")
     public ResponseDTO<LoginRespDTO> loginResp(@PathVariable Long applicationId) {
-        log.info("登录成功获取用户菜单. applicationId={}", applicationId);
         LoginRespDTO result = authUserService.loginResp(applicationId);
         return Response.success(result);
     }

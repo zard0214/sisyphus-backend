@@ -20,7 +20,7 @@ public class AliyunSmsConstants {
     public enum SmsTempletEnum {
 
         /**
-         * 通用模板(短信内容:验证码${code}, 您正在注册成为paasCloud用户, 感谢您的支持！)
+         * 通用模板(短信内容:验证码${code}, 您正在注册成为sisyphusCloud用户, 感谢您的支持！)
          */
         UAC_PC_GLOBAL_TEMPLATE("UAC_PC_GLOBAL_TEMPLATE", "SMS_105115057", "code"),;
 
