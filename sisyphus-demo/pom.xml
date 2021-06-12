@@ -69,7 +69,7 @@
         <!-- spring-cloud -->
         <module>sisyphus-demo-eureka</module>
         <module>sisyphus-demo-ribbon</module>
-        <module>sisyphus-demo-openFeign</module>
+        <module>sisyphus-demo-openfeign</module>
         <module>sisyphus-demo-zuul</module>
         <module>sisyphus-demo-config</module>
         <module>sisyphus-demo-bus</module>
