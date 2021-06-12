@@ -90,26 +90,25 @@
         <module>sisyphus-demo-linux</module>
         <module>sisyphus-demo-netty</module>
         <module>sisyphus-demo-xxl-sso</module>
-<!--        <module>sisyphus-demo-arthas</module>-->
-<!--        <module>sisyphus-demo-spring-batch</module>-->
-<!--        <module>sisyphus-demo-social</module>-->
-<!--        <module>sisyphus-demo-jersey</module>-->
-<!--        <module>sisyphus-demo-caffeine</module>-->
-<!--        <module>sisyphus-demo-mail</module>-->
-<!--        <module>sisyphus-demo-logback</module>-->
-<!--        <module>sisyphus-demo-log4j</module>-->
-<!--        <module>sisyphus-demo-canal</module>-->
-<!--        <module>sisyphus-demo-quartz</module>-->
-<!--        <module>sisyphus-demo-velocity</module>-->
-<!--        <module>sisyphus-demo-freemaker</module>-->
-<!--        <module>sisyphus-demo-thymeleaf</module>-->
-
-<!--        <module>sisyphus-demo-pinpoint</module>-->
-<!--        <module>sisyphus-demo-drools</module>-->
-<!--        <module>sisyphus-demo-k8s</module>-->
-<!--        <module>sisyphus-demo-docker-compose</module>-->
-<!--        <module>sisyphus-demo-apollo</module>-->
-<!--        <module>sisyphus-demo-xxl-job</module>-->
+        <module>sisyphus-demo-arthas</module>
+        <module>sisyphus-demo-spring-batch</module>
+        <module>sisyphus-demo-social</module>
+        <module>sisyphus-demo-jersey</module>
+        <module>sisyphus-demo-caffeine</module>
+        <module>sisyphus-demo-mail</module>
+        <module>sisyphus-demo-logback</module>
+        <module>sisyphus-demo-log4j</module>
+        <module>sisyphus-demo-canal</module>
+        <module>sisyphus-demo-quartz</module>
+        <module>sisyphus-demo-velocity</module>
+        <module>sisyphus-demo-freemaker</module>
+        <module>sisyphus-demo-thymeleaf</module>
+        <module>sisyphus-demo-pinpoint</module>
+        <module>sisyphus-demo-drools</module>
+        <module>sisyphus-demo-k8s</module>
+        <module>sisyphus-demo-docker-compose</module>
+        <module>sisyphus-demo-apollo</module>
+        <module>sisyphus-demo-xxl-job</module>
 <!--        <module>sisyphus-demo-elasticjob</module>-->
 <!--        <module>sisyphus-demo-webflux</module>-->
 <!--        <module>sisyphus-demo-ktor</module>-->
