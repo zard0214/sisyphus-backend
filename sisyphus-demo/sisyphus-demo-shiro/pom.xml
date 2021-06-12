@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>com.saas.sisyphus.demo</groupId>
-    <artifactId>sisyphus-demo-mongodb</artifactId>
+    <artifactId>sisyphus-demo-shiro</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
