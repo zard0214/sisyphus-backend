@@ -11,7 +11,7 @@ public interface SecurityConstants {
             SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
             SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_OPEN_ID,
             SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*", "/pay/alipayCallback",
-            "/druid/**", "/auth/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs"};
+            "/druid/**", "/auth/**",  "/actuator/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs"};
 
     /** session失效时跳转的地址 */
     String DEFAULT_SESSION_INVALID_URL = "/sisyphus-session-invalid";
