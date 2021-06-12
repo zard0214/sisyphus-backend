@@ -60,8 +60,6 @@
 
     <modules>
         <module>sisyphus-discovery</module>
-        <module>sisyphus-example</module>
-        <module>sisyphus-demo</module>
         <module>sisyphus-monitor</module>
         <module>sisyphus-skywalking</module>
         <module>sisyphus-auth</module>
@@ -70,6 +68,11 @@
         <module>sisyphus-common</module>
         <module>sisyphus-provider</module>
         <module>sisyphus-generator</module>
+
+        <module>sisyphus-example</module>
+        <module>sisyphus-demo</module>
+        <module>sisyphus-designpattern</module>
+        <module>sisyphus-algorithm</module>
     </modules>
 
     <developers>

@@ -10,7 +10,7 @@
     <groupId>com.saas.sisyphus.demo</groupId>
     <artifactId>sisyphus-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sisyphus-common</name>
+    <name>sisyphus-demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -18,27 +18,120 @@
 
     <packaging>pom</packaging>
     <modules>
+        <!-- rpc -->
+        <module>sisyphus-demo-hessian</module>
+        <module>sisyphus-demo-dubbo</module>
+        <module>sisyphus-demo-grpc</module>
+        <module>sisyphus-demo-thrift</module>
+        <module>sisyphus-demo-sofa</module>
+
+        <!-- database -->
+        <module>sisyphus-demo-mysql</module>
         <module>sisyphus-demo-mybatisplus</module>
+        <module>sisyphus-demo-dynamic-datasource</module>
         <module>sisyphus-demo-druid</module>
+        <module>sisyphus-demo-hicaricp</module>
+        <module>sisyphus-demo-tidb</module>
+        <module>sisyphus-demo-mongodb</module>
+        <module>sisyphus-demo-mybatis</module>
+        <module>sisyphus-demo-data-jpa</module>
+        <module>sisyphus-demo-jdbctemplate</module>
+        <module>sisyphus-demo-oracle</module>
+        <!-- mq -->
         <module>sisyphus-demo-kafka</module>
         <module>sisyphus-demo-rocketmq</module>
         <module>sisyphus-demo-rabbitmq</module>
-        <module>sisyphus-demo-mysql</module>
-        <module>sisyphus-demo-tidb</module>
-        <module>sisyphus-demo-mongodb</module>
-        <module>sisyphus-demo-redis</module>
+        <!-- bigdata -->
         <module>sisyphus-demo-elasticsearch</module>
-        <module>sisyphus-demo-hystrik</module>
-        <module>sisyphus-demo-sentinel</module>
-        <module>sisyphus-demo-zookeeper</module>
-        <module>sisyphus-demo-dubbo</module>
-        <module>sisyphus-demo-swagger</module>
-        <module>sisyphus-demo-mybatis</module>
+        <module>sisyphus-demo-hadoop</module>
+        <module>sisyphus-demo-spark</module>
+        <module>sisyphus-demo-spark-streaming</module>
+        <module>sisyphus-demo-flink</module>
+        <module>sisyphus-demo-hive</module>
+        <module>sisyphus-demo-hbase</module>
+        <!-- activit -->
+        <module>sisyphus-demo-flowable</module>
+        <module>sisyphus-demo-activiti</module>
+        <!-- sm -->
+        <module>sisyphus-demo-squirrel</module>
+        <!-- security -->
+        <module>sisyphus-demo-shiro</module>
+        <module>sisyphus-demo-security</module>
+        <module>sisyphus-demo-ldap</module>
+        <module>sisyphus-demo-oauth</module>
+        <!-- data version -->
+        <module>sisyphus-demo-liquibase</module>
+        <module>sisyphus-demo-flyway</module>
+        <!-- cache -->
+        <module>sisyphus-demo-redis</module>
         <module>sisyphus-demo-ehcache</module>
+        <module>sisyphus-demo-memcache</module>
+        <!-- spring-cloud -->
+        <module>sisyphus-demo-eureka</module>
+        <module>sisyphus-demo-ribbon</module>
+        <module>sisyphus-demo-openFeign</module>
+        <module>sisyphus-demo-zuul</module>
+        <module>sisyphus-demo-config</module>
+        <module>sisyphus-demo-bus</module>
+        <module>sisyphus-demo-hystrik</module>
+        <module>sisyphus-demo-sleuth</module>
+        <module>sisyphus-demo-consul</module>
+        <module>sisyphus-demo-gateway</module>
+        <module>sisyphus-demo-admin</module>
+        <module>sisyphus-demo-nacos</module>
+        <module>sisyphus-demo-sentinel</module>
+        <module>sisyphus-demo-actuator</module>
+
+        <module>sisyphus-demo-seata</module>
+        <module>sisyphus-demo-zookeeper</module>
+        <module>sisyphus-demo-swagger</module>
         <module>sisyphus-demo-skywalking</module>
         <module>sisyphus-demo-nginx</module>
         <module>sisyphus-demo-linux</module>
         <module>sisyphus-demo-netty</module>
+        <module>sisyphus-demo-xxl-sso</module>
+        <module>sisyphus-demo-arthas</module>
+        <module>sisyphus-demo-spring-batch</module>
+        <module>sisyphus-demo-social</module>
+        <module>sisyphus-demo-jersey</module>
+        <module>sisyphus-demo-caffeine</module>
+        <module>sisyphus-demo-mail</module>
+        <module>sisyphus-demo-logback</module>
+        <module>sisyphus-demo-log4j</module>
+        <module>sisyphus-demo-canal</module>
+        <module>sisyphus-demo-quartz</module>
+        <module>sisyphus-demo-velocity</module>
+        <module>sisyphus-demo-freemaker</module>
+        <module>sisyphus-demo-thymeleaf</module>
+
+        <module>sisyphus-demo-pinpoint</module>
+        <module>sisyphus-demo-drools</module>
+        <module>sisyphus-demo-k8s</module>
+        <module>sisyphus-demo-docker-compose</module>
+        <module>sisyphus-demo-apollo</module>
+        <module>sisyphus-demo-xxl-job</module>
+        <module>sisyphus-demo-elasticjob</module>
+        <module>sisyphus-demo-webflux</module>
+        <module>sisyphus-demo-ktor</module>
+        <module>sisyphus-demo-vertx</module>
+        <module>sisyphus-demo-servicemesh</module>
+        <module>sisyphus-demo-shareding-jdbc</module>
+        <module>sisyphus-demo-graylog</module>
+        <module>sisyphus-demo-neo4j</module>
+        <module>sisyphus-demo-urule</module>
+        <module>sisyphus-demo-uflo</module>
+        <module>sisyphus-demo-socketio</module>
+        <module>sisyphus-demo-websocket</module>
+        <module>sisyphus-demo-session</module>
+        <module>sisyphus-demo-upload</module>
+        <module>sisyphus-demo-beetlsql</module>
+
+        <module>sisyphus-demo-poi</module>
+        <module>sisyphus-demo-sturts2</module>
+        <module>sisyphus-demo-springmvn</module>
+        <module>sisyphus-demo-hibernate</module>
+        <module>sisyphus-demo-ibatis</module>
+
     </modules>
 
     <dependencies>
