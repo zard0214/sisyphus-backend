@@ -24,7 +24,6 @@
         <module>sisyphus-demo-grpc</module>
         <module>sisyphus-demo-thrift</module>
         <module>sisyphus-demo-sofa</module>
-
         <!-- database -->
         <module>sisyphus-demo-mysql</module>
         <module>sisyphus-demo-mybatisplus</module>
@@ -75,6 +74,7 @@
         <module>sisyphus-demo-bus</module>
         <module>sisyphus-demo-hystrik</module>
         <module>sisyphus-demo-sleuth</module>
+
         <module>sisyphus-demo-consul</module>
         <module>sisyphus-demo-gateway</module>
         <module>sisyphus-demo-admin</module>
@@ -90,48 +90,46 @@
         <module>sisyphus-demo-linux</module>
         <module>sisyphus-demo-netty</module>
         <module>sisyphus-demo-xxl-sso</module>
-        <module>sisyphus-demo-arthas</module>
-        <module>sisyphus-demo-spring-batch</module>
-        <module>sisyphus-demo-social</module>
-        <module>sisyphus-demo-jersey</module>
-        <module>sisyphus-demo-caffeine</module>
-        <module>sisyphus-demo-mail</module>
-        <module>sisyphus-demo-logback</module>
-        <module>sisyphus-demo-log4j</module>
-        <module>sisyphus-demo-canal</module>
-        <module>sisyphus-demo-quartz</module>
-        <module>sisyphus-demo-velocity</module>
-        <module>sisyphus-demo-freemaker</module>
-        <module>sisyphus-demo-thymeleaf</module>
+<!--        <module>sisyphus-demo-arthas</module>-->
+<!--        <module>sisyphus-demo-spring-batch</module>-->
+<!--        <module>sisyphus-demo-social</module>-->
+<!--        <module>sisyphus-demo-jersey</module>-->
+<!--        <module>sisyphus-demo-caffeine</module>-->
+<!--        <module>sisyphus-demo-mail</module>-->
+<!--        <module>sisyphus-demo-logback</module>-->
+<!--        <module>sisyphus-demo-log4j</module>-->
+<!--        <module>sisyphus-demo-canal</module>-->
+<!--        <module>sisyphus-demo-quartz</module>-->
+<!--        <module>sisyphus-demo-velocity</module>-->
+<!--        <module>sisyphus-demo-freemaker</module>-->
+<!--        <module>sisyphus-demo-thymeleaf</module>-->
 
-        <module>sisyphus-demo-pinpoint</module>
-        <module>sisyphus-demo-drools</module>
-        <module>sisyphus-demo-k8s</module>
-        <module>sisyphus-demo-docker-compose</module>
-        <module>sisyphus-demo-apollo</module>
-        <module>sisyphus-demo-xxl-job</module>
-        <module>sisyphus-demo-elasticjob</module>
-        <module>sisyphus-demo-webflux</module>
-        <module>sisyphus-demo-ktor</module>
-        <module>sisyphus-demo-vertx</module>
-        <module>sisyphus-demo-servicemesh</module>
+<!--        <module>sisyphus-demo-pinpoint</module>-->
+<!--        <module>sisyphus-demo-drools</module>-->
+<!--        <module>sisyphus-demo-k8s</module>-->
+<!--        <module>sisyphus-demo-docker-compose</module>-->
+<!--        <module>sisyphus-demo-apollo</module>-->
+<!--        <module>sisyphus-demo-xxl-job</module>-->
+<!--        <module>sisyphus-demo-elasticjob</module>-->
+<!--        <module>sisyphus-demo-webflux</module>-->
+<!--        <module>sisyphus-demo-ktor</module>-->
+<!--        <module>sisyphus-demo-vertx</module>-->
+<!--        <module>sisyphus-demo-servicemesh</module>-->
+<!--        <module>sisyphus-demo-graylog</module>-->
+<!--        <module>sisyphus-demo-neo4j</module>-->
+<!--        <module>sisyphus-demo-urule</module>-->
+<!--        <module>sisyphus-demo-uflo</module>-->
+<!--        <module>sisyphus-demo-socketio</module>-->
+<!--        <module>sisyphus-demo-websocket</module>-->
+<!--        <module>sisyphus-demo-session</module>-->
+<!--        <module>sisyphus-demo-upload</module>-->
+<!--        <module>sisyphus-demo-beetlsql</module>-->
         <module>sisyphus-demo-shareding-jdbc</module>
-        <module>sisyphus-demo-graylog</module>
-        <module>sisyphus-demo-neo4j</module>
-        <module>sisyphus-demo-urule</module>
-        <module>sisyphus-demo-uflo</module>
-        <module>sisyphus-demo-socketio</module>
-        <module>sisyphus-demo-websocket</module>
-        <module>sisyphus-demo-session</module>
-        <module>sisyphus-demo-upload</module>
-        <module>sisyphus-demo-beetlsql</module>
-
-        <module>sisyphus-demo-poi</module>
-        <module>sisyphus-demo-sturts2</module>
-        <module>sisyphus-demo-springmvn</module>
-        <module>sisyphus-demo-hibernate</module>
-        <module>sisyphus-demo-ibatis</module>
-
+<!--        <module>sisyphus-demo-poi</module>-->
+<!--        <module>sisyphus-demo-sturts2</module>-->
+<!--        <module>sisyphus-demo-springmvn</module>-->
+<!--        <module>sisyphus-demo-hibernate</module>-->
+<!--        <module>sisyphus-demo-ibatis</module>-->
     </modules>
 
     <dependencies>
