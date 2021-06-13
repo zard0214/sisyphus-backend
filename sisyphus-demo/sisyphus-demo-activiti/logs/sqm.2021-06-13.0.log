@@ -1,0 +1,664 @@
+2021-06-13 19:41:15.723 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor:212 - LOCAL_SNAPSHOT_PATH:/Users/zard/nacos/config
+2021-06-13 19:41:15.770 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter:54 - limitTime:5.0
+2021-06-13 19:41:15.807 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti] & group[SISYPHUS]
+2021-06-13 19:41:15.813 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti.yml] & group[SISYPHUS]
+2021-06-13 19:41:15.820 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti-dev.yml] & group[SISYPHUS]
+2021-06-13 19:41:15.822 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration:112 - Located property source: [BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti-dev.yml,SISYPHUS'}, BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti.yml,SISYPHUS'}, BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti,SISYPHUS'}]
+2021-06-13 19:41:20.867 [main] INFO  c.s.d.a.SisyphusDemoActivitiApplicationTests:655 - The following profiles are active: dev
+2021-06-13 19:41:21.623 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:41:21.629 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:41:22.059 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:41:22.338 [main] INFO  o.springframework.cloud.context.scope.GenericScope:295 - BeanFactory id=e01c3249-5c61-34ac-b3c6-bb2b3616801d
+2021-06-13 19:41:22.700 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:41:22.707 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$3b869e74] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:41:23.015 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:41:23.330 [main] ERROR com.alibaba.druid.pool.DruidDataSource:1193 - testWhileIdle is true, validationQuery not set
+2021-06-13 19:41:23.346 [main] INFO  com.alibaba.druid.pool.DruidDataSource:990 - {dataSource-1,master} inited
+2021-06-13 19:41:23.349 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:144 - dynamic-datasource - add a datasource named [master] success
+2021-06-13 19:41:23.350 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:235 - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2021-06-13 19:41:23.416 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-13 19:41:25.455 [main] INFO  o.a.e.c.DefaultActiviti5CompatibilityHandlerFactory:38 - Activiti 5 compatibility handler implementation not found or error during instantiation : org.activiti.compatibility.DefaultActiviti5CompatibilityHandler. Activiti 5 backwards compatibility disabled.
+2021-06-13 19:41:25.620 [main] INFO  org.activiti.engine.impl.ProcessEngineImpl:87 - ProcessEngine default created
+2021-06-13 19:41:25.622 [main] INFO  o.a.e.impl.asyncexecutor.DefaultAsyncJobExecutor:169 - Starting up the default async job executor [org.activiti.spring.SpringAsyncExecutor].
+2021-06-13 19:41:25.623 [Thread-409] INFO  o.a.e.i.asyncexecutor.AcquireAsyncJobsDueRunnable:45 - {} starting to acquire async jobs due
+2021-06-13 19:41:25.623 [Thread-410] INFO  o.a.e.impl.asyncexecutor.AcquireTimerJobsRunnable:49 - {} starting to acquire async jobs due
+2021-06-13 19:41:25.624 [Thread-411] INFO  o.a.e.impl.asyncexecutor.ResetExpiredJobsRunnable:51 - {} starting to reset expired jobs
+2021-06-13 19:41:26.116 [main] ERROR o.activiti.engine.impl.interceptor.CommandContext:122 - Error while closing command context
+org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:280)
+	at org.activiti.engine.impl.bpmn.parser.BpmnParse.execute(BpmnParse.java:148)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.createBpmnParseFromResource(ParsedDeploymentBuilder.java:96)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.build(ParsedDeploymentBuilder.java:55)
+	at org.activiti.engine.impl.bpmn.deployer.BpmnDeployer.deploy(BpmnDeployer.java:71)
+	at org.activiti.engine.impl.persistence.deploy.DeploymentManager.deploy(DeploymentManager.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.executeDeploy(DeployCmd.java:110)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:40)
+	at org.activiti.engine.impl.interceptor.CommandInvoker$1.run(CommandInvoker.java:37)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:78)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:57)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:42)
+	at org.activiti.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:48)
+	at org.activiti.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:63)
+	at org.activiti.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:47)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.activiti.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:45)
+	at org.activiti.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:29)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:44)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:39)
+	at org.activiti.engine.impl.RepositoryServiceImpl.deploy(RepositoryServiceImpl.java:86)
+	at org.activiti.engine.impl.repository.DeploymentBuilderImpl.deploy(DeploymentBuilderImpl.java:188)
+	at org.activiti.spring.autodeployment.DefaultAutoDeploymentStrategy.deployResources(DefaultAutoDeploymentStrategy.java:63)
+	at org.activiti.spring.SpringProcessEngineConfiguration.autoDeployResources(SpringProcessEngineConfiguration.java:109)
+	at org.activiti.spring.SpringProcessEngineConfiguration.buildProcessEngine(SpringProcessEngineConfiguration.java:67)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:57)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:32)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:171)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:101)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1821)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1266)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:221)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.error(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.reportSchemaError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processOneAttribute(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processAttributes(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.handleStartElement(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.startElement(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.jaxp.validation.StreamValidatorHelper.validate(Unknown Source)
+	at org.apache.xerces.jaxp.validation.ValidatorImpl.validate(Unknown Source)
+	at javax.xml.validation.Validator.validate(Validator.java:124)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.validateModel(BpmnXMLConverter.java:214)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:269)
+	... 146 common frames omitted
+2021-06-13 19:41:26.124 [main] WARN  o.s.w.context.support.GenericWebApplicationContext:559 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitTaskController': Unsatisfied dependency expressed through field 'activitiTaskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitiTaskService': Unsatisfied dependency expressed through field 'taskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+2021-06-13 19:41:26.125 [main] INFO  o.a.e.impl.asyncexecutor.DefaultAsyncJobExecutor:208 - Shutting down the default async job executor [org.activiti.spring.SpringAsyncExecutor].
+2021-06-13 19:41:26.125 [activiti-acquire-timer-jobs] INFO  o.a.e.impl.asyncexecutor.AcquireTimerJobsRunnable:115 - {} stopped async job due acquisition
+2021-06-13 19:41:26.125 [activiti-reset-expired-jobs] INFO  o.a.e.impl.asyncexecutor.ResetExpiredJobsRunnable:99 - {} stopped resetting expired jobs
+2021-06-13 19:41:26.125 [activiti-acquire-async-jobs] INFO  o.a.e.i.asyncexecutor.AcquireAsyncJobsDueRunnable:115 - {} stopped async job due acquisition
+2021-06-13 19:41:26.125 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-13 19:41:26.126 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:215 - dynamic-datasource start closing ....
+2021-06-13 19:41:26.128 [main] INFO  com.alibaba.druid.pool.DruidDataSource:2043 - {dataSource-1} closing ...
+2021-06-13 19:41:26.138 [main] INFO  com.alibaba.druid.pool.DruidDataSource:2116 - {dataSource-1} closed
+2021-06-13 19:41:26.139 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:219 - dynamic-datasource all closed success,bye
+2021-06-13 19:41:26.155 [main] ERROR org.springframework.boot.SpringApplication:837 - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitTaskController': Unsatisfied dependency expressed through field 'activitiTaskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitiTaskService': Unsatisfied dependency expressed through field 'taskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:221)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitiTaskService': Unsatisfied dependency expressed through field 'taskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 82 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:797)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 95 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:178)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:101)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1821)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1266)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 108 common frames omitted
+Caused by: org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:280)
+	at org.activiti.engine.impl.bpmn.parser.BpmnParse.execute(BpmnParse.java:148)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.createBpmnParseFromResource(ParsedDeploymentBuilder.java:96)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.build(ParsedDeploymentBuilder.java:55)
+	at org.activiti.engine.impl.bpmn.deployer.BpmnDeployer.deploy(BpmnDeployer.java:71)
+	at org.activiti.engine.impl.persistence.deploy.DeploymentManager.deploy(DeploymentManager.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.executeDeploy(DeployCmd.java:110)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:40)
+	at org.activiti.engine.impl.interceptor.CommandInvoker$1.run(CommandInvoker.java:37)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:78)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:57)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:42)
+	at org.activiti.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:48)
+	at org.activiti.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:63)
+	at org.activiti.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:47)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.activiti.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:45)
+	at org.activiti.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:29)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:44)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:39)
+	at org.activiti.engine.impl.RepositoryServiceImpl.deploy(RepositoryServiceImpl.java:86)
+	at org.activiti.engine.impl.repository.DeploymentBuilderImpl.deploy(DeploymentBuilderImpl.java:188)
+	at org.activiti.spring.autodeployment.DefaultAutoDeploymentStrategy.deployResources(DefaultAutoDeploymentStrategy.java:63)
+	at org.activiti.spring.SpringProcessEngineConfiguration.autoDeployResources(SpringProcessEngineConfiguration.java:109)
+	at org.activiti.spring.SpringProcessEngineConfiguration.buildProcessEngine(SpringProcessEngineConfiguration.java:67)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:57)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:32)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:171)
+	... 118 common frames omitted
+Caused by: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.error(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.reportSchemaError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processOneAttribute(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processAttributes(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.handleStartElement(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.startElement(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.jaxp.validation.StreamValidatorHelper.validate(Unknown Source)
+	at org.apache.xerces.jaxp.validation.ValidatorImpl.validate(Unknown Source)
+	at javax.xml.validation.Validator.validate(Validator.java:124)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.validateModel(BpmnXMLConverter.java:214)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:269)
+	... 146 common frames omitted
+2021-06-13 19:41:26.159 [main] ERROR o.springframework.test.context.TestContextManager:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@7fd7a283] to prepare test instance [com.sisyphus.demo.activiti.SisyphusDemoActivitiApplicationTests@7a1ddbf1]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:221)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitTaskController': Unsatisfied dependency expressed through field 'activitiTaskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitiTaskService': Unsatisfied dependency expressed through field 'taskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	... 63 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activitiTaskService': Unsatisfied dependency expressed through field 'taskService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 82 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskService' defined in class path resource [com/sisyphus/demo/activiti/config/ActivitiConfig.class]: Unsatisfied dependency expressed through method 'taskService' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:797)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 95 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngine': FactoryBean threw exception on object creation; nested exception is org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:178)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:101)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1821)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1266)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 108 common frames omitted
+Caused by: org.activiti.bpmn.exceptions.XMLException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:280)
+	at org.activiti.engine.impl.bpmn.parser.BpmnParse.execute(BpmnParse.java:148)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.createBpmnParseFromResource(ParsedDeploymentBuilder.java:96)
+	at org.activiti.engine.impl.bpmn.deployer.ParsedDeploymentBuilder.build(ParsedDeploymentBuilder.java:55)
+	at org.activiti.engine.impl.bpmn.deployer.BpmnDeployer.deploy(BpmnDeployer.java:71)
+	at org.activiti.engine.impl.persistence.deploy.DeploymentManager.deploy(DeploymentManager.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.executeDeploy(DeployCmd.java:110)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:60)
+	at org.activiti.engine.impl.cmd.DeployCmd.execute(DeployCmd.java:40)
+	at org.activiti.engine.impl.interceptor.CommandInvoker$1.run(CommandInvoker.java:37)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:78)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:57)
+	at org.activiti.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:42)
+	at org.activiti.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:48)
+	at org.activiti.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:63)
+	at org.activiti.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:47)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.activiti.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:45)
+	at org.activiti.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:29)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:44)
+	at org.activiti.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:39)
+	at org.activiti.engine.impl.RepositoryServiceImpl.deploy(RepositoryServiceImpl.java:86)
+	at org.activiti.engine.impl.repository.DeploymentBuilderImpl.deploy(DeploymentBuilderImpl.java:188)
+	at org.activiti.spring.autodeployment.DefaultAutoDeploymentStrategy.deployResources(DefaultAutoDeploymentStrategy.java:63)
+	at org.activiti.spring.SpringProcessEngineConfiguration.autoDeployResources(SpringProcessEngineConfiguration.java:109)
+	at org.activiti.spring.SpringProcessEngineConfiguration.buildProcessEngine(SpringProcessEngineConfiguration.java:67)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:57)
+	at org.activiti.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:32)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:171)
+	... 118 common frames omitted
+Caused by: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: '1' is not a valid value for 'NCName'.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.error(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.reportSchemaError(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processOneAttribute(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.processAttributes(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.handleStartElement(Unknown Source)
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.startElement(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.jaxp.validation.StreamValidatorHelper.validate(Unknown Source)
+	at org.apache.xerces.jaxp.validation.ValidatorImpl.validate(Unknown Source)
+	at javax.xml.validation.Validator.validate(Validator.java:124)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.validateModel(BpmnXMLConverter.java:214)
+	at org.activiti.bpmn.converter.BpmnXMLConverter.convertToBpmnModel(BpmnXMLConverter.java:269)
+	... 146 common frames omitted
+2021-06-13 19:42:53.861 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor:212 - LOCAL_SNAPSHOT_PATH:/Users/zard/nacos/config
+2021-06-13 19:42:53.900 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter:54 - limitTime:5.0
+2021-06-13 19:42:53.930 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti] & group[SISYPHUS]
+2021-06-13 19:42:53.935 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti.yml] & group[SISYPHUS]
+2021-06-13 19:42:53.940 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder:87 - Ignore the empty nacos configuration and get it based on dataId[sisyphus-demo-activiti-dev.yml] & group[SISYPHUS]
+2021-06-13 19:42:53.941 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration:112 - Located property source: [BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti-dev.yml,SISYPHUS'}, BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti.yml,SISYPHUS'}, BootstrapPropertySource {name='bootstrapProperties-sisyphus-demo-activiti,SISYPHUS'}]
+2021-06-13 19:42:58.973 [main] INFO  c.s.d.a.SisyphusDemoActivitiApplicationTests:655 - The following profiles are active: dev
+2021-06-13 19:42:59.640 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:42:59.644 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:42:59.978 [main] WARN  o.springframework.boot.actuate.endpoint.EndpointId:155 - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-06-13 19:43:00.163 [main] INFO  o.springframework.cloud.context.scope.GenericScope:295 - BeanFactory id=e01c3249-5c61-34ac-b3c6-bb2b3616801d
+2021-06-13 19:43:00.483 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:43:00.489 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$3b869e74] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:43:00.724 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335 - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-13 19:43:01.038 [main] ERROR com.alibaba.druid.pool.DruidDataSource:1193 - testWhileIdle is true, validationQuery not set
+2021-06-13 19:43:01.047 [main] INFO  com.alibaba.druid.pool.DruidDataSource:990 - {dataSource-1,master} inited
+2021-06-13 19:43:01.049 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:144 - dynamic-datasource - add a datasource named [master] success
+2021-06-13 19:43:01.049 [main] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:235 - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2021-06-13 19:43:01.109 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-13 19:43:02.991 [main] INFO  o.a.e.c.DefaultActiviti5CompatibilityHandlerFactory:38 - Activiti 5 compatibility handler implementation not found or error during instantiation : org.activiti.compatibility.DefaultActiviti5CompatibilityHandler. Activiti 5 backwards compatibility disabled.
+2021-06-13 19:43:03.118 [main] INFO  org.activiti.engine.impl.ProcessEngineImpl:87 - ProcessEngine default created
+2021-06-13 19:43:03.120 [main] INFO  o.a.e.impl.asyncexecutor.DefaultAsyncJobExecutor:169 - Starting up the default async job executor [org.activiti.spring.SpringAsyncExecutor].
+2021-06-13 19:43:03.121 [Thread-411] INFO  o.a.e.impl.asyncexecutor.ResetExpiredJobsRunnable:51 - {} starting to reset expired jobs
+2021-06-13 19:43:03.121 [Thread-410] INFO  o.a.e.impl.asyncexecutor.AcquireTimerJobsRunnable:49 - {} starting to acquire async jobs due
+2021-06-13 19:43:03.121 [Thread-409] INFO  o.a.e.i.asyncexecutor.AcquireAsyncJobsDueRunnable:45 - {} starting to acquire async jobs due
+2021-06-13 19:43:04.386 [main] WARN  com.netflix.config.sources.URLConfigurationSource:121 - No URLs will be polled as dynamic configuration sources.
+2021-06-13 19:43:04.387 [main] INFO  com.netflix.config.sources.URLConfigurationSource:122 - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-06-13 19:43:04.395 [main] WARN  com.netflix.config.sources.URLConfigurationSource:121 - No URLs will be polled as dynamic configuration sources.
+2021-06-13 19:43:04.395 [main] INFO  com.netflix.config.sources.URLConfigurationSource:122 - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-06-13 19:43:05.554 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler:181 - Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2021-06-13 19:43:05.573 [main] INFO  com.alibaba.nacos.client.naming:64 - initializer namespace from System Property :null
+2021-06-13 19:43:05.574 [main] INFO  com.alibaba.nacos.client.naming:73 - initializer namespace from System Environment :null
+2021-06-13 19:43:05.575 [main] INFO  com.alibaba.nacos.client.naming:83 - initializer namespace from System Property :null
+2021-06-13 19:43:21.659 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-13 19:43:26.863 [main] INFO  com.alibaba.nacos.client.naming:191 - new ips(1) service: SISYPHUS@@sisyphus-activiti@@DEFAULT -> [{"instanceId":"192.168.3.81#8083#DEFAULT#SISYPHUS@@sisyphus-activiti","ip":"192.168.3.81","port":8083,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"SISYPHUS@@sisyphus-activiti","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}]
+2021-06-13 19:43:26.872 [main] INFO  com.alibaba.nacos.client.naming:228 - current ips:(1) service: SISYPHUS@@sisyphus-activiti@@DEFAULT -> [{"instanceId":"192.168.3.81#8083#DEFAULT#SISYPHUS@@sisyphus-activiti","ip":"192.168.3.81","port":8083,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"SISYPHUS@@sisyphus-activiti","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}]
+2021-06-13 19:43:26.873 [main] INFO  com.alibaba.nacos.client.naming:83 - [LISTENER] adding SISYPHUS@@sisyphus-activiti with DEFAULT to listener map
+2021-06-13 19:43:26.895 [main] INFO  c.s.d.a.SisyphusDemoActivitiApplicationTests:61 - Started SisyphusDemoActivitiApplicationTests in 53.95 seconds (JVM running for 55.106)
+2021-06-13 19:43:26.902 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker:262 - [fixed-localhost_8848] [subscribe] sisyphus-demo-activiti.yml+SISYPHUS
+2021-06-13 19:43:26.903 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData:93 - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=sisyphus-demo-activiti.yml, group=SISYPHUS, cnt=1
+2021-06-13 19:43:26.903 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker:262 - [fixed-localhost_8848] [subscribe] sisyphus-demo-activiti-dev.yml+SISYPHUS
+2021-06-13 19:43:26.903 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData:93 - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=sisyphus-demo-activiti-dev.yml, group=SISYPHUS, cnt=1
+2021-06-13 19:43:26.904 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker:262 - [fixed-localhost_8848] [subscribe] sisyphus-demo-activiti+SISYPHUS
+2021-06-13 19:43:26.904 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData:93 - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=sisyphus-demo-activiti, group=SISYPHUS, cnt=1
+2021-06-13 19:43:27.313 [com.alibaba.nacos.naming.push.receiver] INFO  com.alibaba.nacos.client.naming:86 - received push data: {"type":"dom","data":"{\"name\":\"SISYPHUS@@sisyphus-activiti\",\"clusters\":\"DEFAULT\",\"cacheMillis\":10000,\"hosts\":[{\"instanceId\":\"192.168.3.81#8083#DEFAULT#SISYPHUS@@sisyphus-activiti\",\"ip\":\"192.168.3.81\",\"port\":8083,\"weight\":1.0,\"healthy\":true,\"enabled\":true,\"ephemeral\":true,\"clusterName\":\"DEFAULT\",\"serviceName\":\"SISYPHUS@@sisyphus-activiti\",\"metadata\":{\"preserved.register.source\":\"SPRING_CLOUD\"},\"instanceHeartBeatInterval\":5000,\"ipDeleteTimeout\":30000,\"instanceHeartBeatTimeOut\":15000}],\"lastRefTime\":1623584607316,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,\"valid\":true}","lastRefTime":350742602999214} from /192.168.3.81
+2021-06-13 19:43:28.422 [com.alibaba.nacos.naming.push.receiver] INFO  com.alibaba.nacos.client.naming:86 - received push data: {"type":"dom","data":"{\"name\":\"SISYPHUS@@sisyphus-activiti\",\"clusters\":\"DEFAULT\",\"cacheMillis\":10000,\"hosts\":[{\"instanceId\":\"192.168.3.81#8083#DEFAULT#SISYPHUS@@sisyphus-activiti\",\"ip\":\"192.168.3.81\",\"port\":8083,\"weight\":1.0,\"healthy\":true,\"enabled\":true,\"ephemeral\":true,\"clusterName\":\"DEFAULT\",\"serviceName\":\"SISYPHUS@@sisyphus-activiti\",\"metadata\":{\"preserved.register.source\":\"SPRING_CLOUD\"},\"instanceHeartBeatInterval\":5000,\"ipDeleteTimeout\":30000,\"instanceHeartBeatTimeOut\":15000}],\"lastRefTime\":1623584608428,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,\"valid\":true}","lastRefTime":350743714549614} from /192.168.3.81
+2021-06-13 19:43:29.264 [main] INFO  c.s.d.a.SisyphusDemoActivitiApplicationTests:59 -  当前流程：????
+2021-06-13 19:43:29.353 [main] INFO  c.s.d.a.SisyphusDemoActivitiApplicationTests:63 -  当前流程：????
+2021-06-13 19:43:29.467 [main] INFO  o.a.e.impl.asyncexecutor.DefaultAsyncJobExecutor:208 - Shutting down the default async job executor [org.activiti.spring.SpringAsyncExecutor].
+2021-06-13 19:43:29.468 [activiti-reset-expired-jobs] INFO  o.a.e.impl.asyncexecutor.ResetExpiredJobsRunnable:99 - {} stopped resetting expired jobs
+2021-06-13 19:43:29.468 [activiti-acquire-async-jobs] INFO  o.a.e.i.asyncexecutor.AcquireAsyncJobsDueRunnable:115 - {} stopped async job due acquisition
+2021-06-13 19:43:29.468 [activiti-acquire-timer-jobs] INFO  o.a.e.impl.asyncexecutor.AcquireTimerJobsRunnable:115 - {} stopped async job due acquisition
+2021-06-13 19:43:29.493 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler:218 - Shutting down ExecutorService 'Nacos-Watch-Task-Scheduler'
+2021-06-13 19:43:29.494 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:104 - [LISTENER] removing SISYPHUS@@sisyphus-activiti with DEFAULT from listener map
+2021-06-13 19:43:29.498 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:147 - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
+2021-06-13 19:43:29.499 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:149 - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
+2021-06-13 19:43:29.499 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:149 - com.alibaba.nacos.client.naming.core.EventDispatcher do shutdown begin
+2021-06-13 19:43:32.507 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:152 - com.alibaba.nacos.client.naming.core.EventDispatcher do shutdown stop
+2021-06-13 19:43:32.507 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:370 - com.alibaba.nacos.client.naming.core.HostReactor do shutdown begin
+2021-06-13 19:43:35.518 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:118 - com.alibaba.nacos.client.naming.core.PushReceiver do shutdown begin
+2021-06-13 19:43:38.531 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:122 - com.alibaba.nacos.client.naming.core.PushReceiver do shutdown stop
+2021-06-13 19:43:38.532 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:132 - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
+2021-06-13 19:43:38.532 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:134 - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
+2021-06-13 19:43:38.533 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:374 - com.alibaba.nacos.client.naming.core.HostReactor do shutdown stop
+2021-06-13 19:43:38.533 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:715 - com.alibaba.nacos.client.naming.net.NamingProxy do shutdown begin
+2021-06-13 19:43:38.534 [SpringContextShutdownHook] WARN  com.alibaba.nacos.client.naming:72 - [NamingHttpClientManager] Start destroying NacosRestTemplate
+2021-06-13 19:43:38.534 [SpringContextShutdownHook] WARN  com.alibaba.nacos.client.naming:79 - [NamingHttpClientManager] Destruction of the end
+2021-06-13 19:43:38.534 [com.alibaba.nacos.naming.push.receiver] ERROR com.alibaba.nacos.client.naming:110 - [NA] error while receiving push data
+java.net.SocketException: Socket closed
+	at java.net.PlainDatagramSocketImpl.receive0(Native Method)
+	at java.net.AbstractPlainDatagramSocketImpl.receive(AbstractPlainDatagramSocketImpl.java:149)
+	at java.net.DatagramSocket.receive(DatagramSocket.java:812)
+	at com.alibaba.nacos.client.naming.core.PushReceiver.run(PushReceiver.java:83)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-06-13 19:43:38.534 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming:718 - com.alibaba.nacos.client.naming.net.NamingProxy do shutdown stop
+2021-06-13 19:43:38.538 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-13 19:43:38.539 [SpringContextShutdownHook] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:215 - dynamic-datasource start closing ....
+2021-06-13 19:43:38.541 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource:2043 - {dataSource-1} closing ...
+2021-06-13 19:43:38.550 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource:2116 - {dataSource-1} closed
+2021-06-13 19:43:38.550 [SpringContextShutdownHook] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource:219 - dynamic-datasource all closed success,bye

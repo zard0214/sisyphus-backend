@@ -41,23 +41,29 @@
         <spring.security.version>4.2.20.RELEASE</spring.security.version>
         <spring.social.version>1.1.6.RELEASE</spring.social.version>
         <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
-        <spring.security.jwt.version>1.1.0.RELEASE</spring.security.jwt.version>
+        <spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
         <spring.security.oauth.starte.version>2.3.4.RELEASE</spring.security.oauth.starte.version>
         <spring-boot-starter.version>2.3.1.RELEASE</spring-boot-starter.version>
         <spring-boot-starter-redis.version>2.3.0.RELEASE</spring-boot-starter-redis.version>
         <spring.boot.plugin.version>1.5.13.RELEASE</spring.boot.plugin.version>
         <redis.clients.version>3.3.0</redis.clients.version>
-        <pagehelper.version>1.3.0</pagehelper.version>
-        <flyway.version>7.0.4</flyway.version>
+        <pagehelper.version>1.2.13</pagehelper.version>
+        <flyway.version>7.10.0</flyway.version>
         <druid-starter.version>1.2.6</druid-starter.version>
         <p6spy.version>3.9.1</p6spy.version>
         <dynamic.version>3.3.5</dynamic.version>
         <mysql.connect.version>8.0.23</mysql.connect.version>
         <redisson-starter.version>3.13.6</redisson-starter.version>
         <fastjson.version>1.2.38</fastjson.version>
+        <activiti.version>6.0.0</activiti.version>
+        <activiti-json.version>6.0.0</activiti-json.version>
+        <batik.version>1.8</batik.version>
+        <thymeleaf.start.version>2.5.1</thymeleaf.start.version>
         <commons-collections.version>4.2</commons-collections.version>
+        <commons-io.version>2.2</commons-io.version>
     </properties>
 
+    <!-- https://maven.aliyun.com/mvn/search !-->
     <modules>
         <module>sisyphus-discovery</module>
         <module>sisyphus-monitor</module>
@@ -161,7 +167,7 @@
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${security.oauth.version}</version>
             </dependency>
-            
+
             <!-- spring security oauth2 -->
 
             <!-- spring social -->
@@ -251,11 +257,11 @@
             <!-- pagehelper -->
 
             <!-- flywaydb -->
-<!--            <dependency>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-core</artifactId>-->
-<!--                <version>${flyway.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
             <!-- flywaydb -->
 
             <!-- kafka -->
@@ -366,9 +372,15 @@
             </dependency>
 
             <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.12</version>
+                <version>${lombok.version}</version>
             </dependency>
 
             <!--JSON-->
@@ -379,11 +391,65 @@
             </dependency>
 
             <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-basic</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-json-converter</artifactId>
+                <version>${activiti-json.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.activiti</groupId>
+                        <artifactId>activiti-bpmn-model</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--activiti相关依赖-->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+<!--                <version>${thymeleaf.start.version}</version>-->
+            </dependency>
+
+            <!--xml解析依赖-->
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-codec</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-css</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-svg-dom</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-svggen</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.nekohtml</groupId>
+                <artifactId>nekohtml</artifactId>
+                <version>${nekohtml.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot-starter.version}</version>
                 <scope>test</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
