@@ -30,6 +30,13 @@
             <version>${dubbo-boot-starter.version}</version>
         </dependency>
         <!-- dubbo -->
+        <!-- zookeeper -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
+        </dependency>
+        <!-- zookeeper -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -51,6 +51,21 @@
         </dependency>
         <!-- dubbo -->
 
+        <!-- dubbo -->
+        <dependency>
+            <groupId>com.saas.sisyphus.demo</groupId>
+            <artifactId>sisyphus-demo-dubbo-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- dubbo -->
+        <!-- zookeeper -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
+        </dependency>
+        <!-- zookeeper -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
