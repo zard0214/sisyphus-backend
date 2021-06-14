@@ -129,6 +129,7 @@
         <module>sisyphus-demo-springmvn</module>
         <module>sisyphus-demo-hibernate</module>
         <module>sisyphus-demo-ibatis</module>
+<!--        <module>sisyphus-demo-atomikos</module>-->
     </modules>
 
     <dependencies>

@@ -44,6 +44,7 @@
         <spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
         <spring.security.oauth.starte.version>2.3.4.RELEASE</spring.security.oauth.starte.version>
         <spring-boot-starter.version>2.3.1.RELEASE</spring-boot-starter.version>
+        <spring-data-mongodb.version>3.0.1.RELEASE</spring-data-mongodb.version>
         <spring-boot-starter-redis.version>2.3.0.RELEASE</spring-boot-starter-redis.version>
         <spring.boot.plugin.version>1.5.13.RELEASE</spring.boot.plugin.version>
         <redis.clients.version>3.3.0</redis.clients.version>
@@ -62,7 +63,7 @@
         <thymeleaf.start.version>2.5.1</thymeleaf.start.version>
         <commons-collections.version>4.2</commons-collections.version>
         <commons-io.version>2.2</commons-io.version>
-        <dockerfile-version>1.4.19</dockerfile-version>
+        <dockerfile-version>1.4.9</dockerfile-version>
     </properties>
 
     <!-- https://maven.aliyun.com/mvn/search !-->
@@ -342,6 +343,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-mongodb</artifactId>
                 <version>${spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring-data-mongodb.version}</version>
             </dependency>
             <!-- mongo -->
 
