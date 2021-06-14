@@ -33,4 +33,14 @@ public class LoginAuthDTO implements Serializable {
     @ApiModelProperty(value = "性别")
     private Integer gender;
 
+    public LoginAuthDTO() {
+    }
+
+    public LoginAuthDTO(Long userId, String loginName, String nickName) {
+        this.userId = userId;
+        this.loginName = loginName;
+        this.nickName = nickName;
+    }
+
+
 }

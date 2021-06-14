@@ -1,4 +1,4 @@
-package com.sisyhus.demo.dubbo.provider;
+package com.sisyphus.demo.dubbo.provider;
 
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;

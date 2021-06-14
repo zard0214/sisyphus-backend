@@ -1,4 +1,4 @@
-package com.sisyhus.demo.dubbo.provider.service;
+package com.sisyphus.demo.dubbo.provider.api;
 
 /**
  * @author zhecheng.zhao

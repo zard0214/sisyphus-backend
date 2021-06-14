@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.saas.sisyphus.provider.api</groupId>
-        <artifactId>sisyphus-provider-api</artifactId>
+        <groupId>com.saas.sisyphus.demo</groupId>
+        <artifactId>sisyphus-demo-dubbo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.saas.sisyphus.provider.api</groupId>
-    <artifactId>sisyphus-provider-udc-api</artifactId>
+    <groupId>com.saas.sisyphus.demo</groupId>
+    <artifactId>sisyphus-demo-dubbo-provider-api</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

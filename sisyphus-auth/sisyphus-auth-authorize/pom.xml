@@ -80,13 +80,13 @@
         <dependency>
             <groupId>com.saas.sisyphus.common</groupId>
             <artifactId>sisyphus-common-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${com.saas.sisyphus.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.saas.sisyphus.common</groupId>
             <artifactId>sisyphus-common-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${com.saas.sisyphus.version}</version>
         </dependency>
 
         <dependency>

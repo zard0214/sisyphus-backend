@@ -28,6 +28,12 @@
             <groupId>com.alibaba.spring.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo-boot-starter.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- dubbo -->
 
@@ -36,6 +42,12 @@
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- zookeeper -->
 
@@ -47,8 +59,8 @@
 
         <dependency>
             <groupId>com.saas.sisyphus.common</groupId>
-            <artifactId>sisyphus-common-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>sisyphus-common-core</artifactId>
+            <version>${com.saas.sisyphus.version}</version>
         </dependency>
     </dependencies>
 

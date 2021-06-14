@@ -18,6 +18,13 @@
     </properties>
     <dependencies>
 
+        <!--provider-api-->
+        <dependency>
+            <groupId>com.saas.sisyphus.demo</groupId>
+            <artifactId>sisyphus-demo-dubbo-provider-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--nacos-discovery-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -51,6 +58,7 @@
         </dependency>
         <!-- dubbo -->
 
+        <!-- dubbo -->
         <!-- zookeeper -->
         <dependency>
             <groupId>com.101tec</groupId>

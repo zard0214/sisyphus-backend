@@ -9,5 +9,10 @@ import com.sisyphus.provider.udc.api.model.dto.GlobalExceptionLogDTO;
  */
 public interface UdcExceptionLogDubboApi {
 
+    /**
+     * save exception and send message
+     * @param exceptionLogDTO
+     * @return
+     */
     ResponseDTO saveAndSendExceptionLog(GlobalExceptionLogDTO exceptionLogDTO);
 }

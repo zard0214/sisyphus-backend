@@ -1,9 +1,23 @@
 package com.sisyphus.provide.udc;
 
+import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
+import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication
+@SpringBootApplication(
+        exclude = {DataSourceAutoConfiguration.class,
+                DataSourceTransactionManagerAutoConfiguration.class,
+                MybatisAutoConfiguration.class})
+@EnableDiscoveryClient
+@MapperScan(basePackages = {
+        "com.sisyphus.provide.udc.mapper",
+})
+@EnableDubboConfiguration
 public class SisyphusProviderUdcApplication {
 
     public static void main(String[] args) {

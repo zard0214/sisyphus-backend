@@ -261,14 +261,6 @@
             </dependency>
             <!-- pagehelper -->
 
-            <!-- flywaydb -->
-            <dependency>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-core</artifactId>
-                <version>${flyway.version}</version>
-            </dependency>
-            <!-- flywaydb -->
-
             <!-- kafka -->
             <dependency>
                 <groupId>org.springframework.kafka</groupId>

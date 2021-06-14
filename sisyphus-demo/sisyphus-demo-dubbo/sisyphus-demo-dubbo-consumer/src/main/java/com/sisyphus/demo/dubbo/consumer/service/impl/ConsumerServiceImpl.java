@@ -1,8 +1,8 @@
 package com.sisyphus.demo.dubbo.consumer.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.sisyhus.demo.dubbo.provider.service.ProviderService;
 import com.sisyphus.demo.dubbo.consumer.service.ConsumerService;
+import com.sisyphus.demo.dubbo.provider.api.ProviderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
