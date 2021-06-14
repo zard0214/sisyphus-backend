@@ -14,6 +14,16 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         service: sisyphus-authorize
+  dubbo:
+    application:
+      id: com-saas-sisyphus
+      name: sisyphus
+    registry:
+      address: zookeeper://127.0.0.1:2181
+    server: true
+    protocol:
+      name: dubbo
+      port: 20880
   datasource:
     dynamic:
       primary: master

@@ -66,6 +66,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.saas.sisyphus.provider.api</groupId>
+            <artifactId>sisyphus-provider-udc-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>
             <version>${p6spy.version}</version>

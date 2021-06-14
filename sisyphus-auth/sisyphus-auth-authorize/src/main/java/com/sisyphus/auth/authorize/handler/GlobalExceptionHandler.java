@@ -1,9 +1,12 @@
 package com.sisyphus.auth.authorize.handler;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.sisyphus.common.base.enums.ErrorCodeEnum;
 import com.sisyphus.common.base.exception.BizException;
 import com.sisyphus.common.base.wapper.Response;
 import com.sisyphus.common.base.wapper.ResponseDTO;
+import com.sisyphus.provider.udc.api.model.dto.GlobalExceptionLogDTO;
+import com.sisyphus.provider.udc.api.service.UdcExceptionLogDubboApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.task.TaskExecutor;
@@ -26,6 +29,8 @@ public class GlobalExceptionHandler {
 
     @Resource
     private TaskExecutor taskExecutor;
+    @Reference
+    private UdcExceptionLogDubboApi udcExceptionLogDubboApi;
     @Value("${spring.profiles.active}")
     private String profile;
     @Value("${spring.application.name}")
@@ -90,8 +95,8 @@ public class GlobalExceptionHandler {
     public ResponseDTO exception(Exception e) {
         log.info("保存全局异常信息 ex={}", e.getMessage(), e);
         taskExecutor.execute(() -> {
-//            GlobalExceptionLogDto globalExceptionLogDto = new GlobalExceptionLogDto().getGlobalExceptionLogDto(e, profile, applicationName);
-//            mdcExceptionLogFeignApi.saveAndSendExceptionLog(globalExceptionLogDto);
+            GlobalExceptionLogDTO exceptionLogDTO = new GlobalExceptionLogDTO();
+            udcExceptionLogDubboApi.saveAndSendExceptionLog(exceptionLogDTO);
         });
         return Response.failed();
     }

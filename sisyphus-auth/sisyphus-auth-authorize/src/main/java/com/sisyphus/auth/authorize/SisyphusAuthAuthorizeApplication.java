@@ -1,5 +1,6 @@
 package com.sisyphus.auth.authorize;
 
+import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +25,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
         "com.sisyphus.auth.authorize.mapper",
 })
 @EnableWebSecurity
+@EnableDubboConfiguration
 public class SisyphusAuthAuthorizeApplication {
 
     public static void main(String[] args) {

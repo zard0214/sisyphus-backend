@@ -1,10 +1,10 @@
-package com.sisyphus.provider.api;
+package com.sisyphus.provider.uac.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SisyphusProviderApiApplicationTests {
+class SisyphusProviderUacApiApplicationTests {
 
     @Test
     void contextLoads() {
