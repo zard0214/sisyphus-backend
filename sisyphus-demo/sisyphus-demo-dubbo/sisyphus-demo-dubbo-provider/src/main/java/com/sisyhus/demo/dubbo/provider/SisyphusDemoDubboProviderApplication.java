@@ -1,13 +1,13 @@
-package com.sisyphus.demo.dubbo;
+package com.sisyhus.demo.dubbo.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SisyphusDemoDubboApplication {
+public class SisyphusDemoDubboProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SisyphusDemoDubboApplication.class, args);
+        SpringApplication.run(SisyphusDemoDubboProviderApplication.class, args);
     }
 
 }

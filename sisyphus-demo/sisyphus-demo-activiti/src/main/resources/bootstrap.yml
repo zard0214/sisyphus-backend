@@ -86,12 +86,6 @@ mybatis-plus:
   activiti:
     database-schema-update: true
     check-process-definitions: false
-  freemarker:
-    mode: HTML5
-    encoding: UTF-8
-    content-type: text/html
-    cache: false
-    tempalte-loader-path: classpath:/templates
 #配置日志
 logging:
   config: classpath:logging-config.xml

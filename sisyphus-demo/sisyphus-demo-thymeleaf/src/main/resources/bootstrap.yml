@@ -1,0 +1,30 @@
+server:
+  port: 8083
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: sisyphus-demo-activiti
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-activiti
+  thymeleaf:
+    prefix: classpath:templates/
+    check-process-definitions: false
+    cache: false
+    encoding: UTF-8
+    suffix=: .html
+    servlet:
+      content-type: text/html
+# 启动工程部署流程标识
+process:
+  deploy: false
+
+
+

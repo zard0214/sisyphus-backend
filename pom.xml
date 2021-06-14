@@ -48,7 +48,7 @@
         <spring.boot.plugin.version>1.5.13.RELEASE</spring.boot.plugin.version>
         <redis.clients.version>3.3.0</redis.clients.version>
         <pagehelper.version>1.2.13</pagehelper.version>
-        <flyway.version>7.10.0</flyway.version>
+        <flyway.version>7.0.4</flyway.version>
         <druid-starter.version>1.2.6</druid-starter.version>
         <p6spy.version>3.9.1</p6spy.version>
         <dynamic.version>3.3.5</dynamic.version>
@@ -58,9 +58,11 @@
         <activiti.version>6.0.0</activiti.version>
         <activiti-json.version>6.0.0</activiti-json.version>
         <batik.version>1.8</batik.version>
+        <squirrel-foundation.version>0.3.8</squirrel-foundation.version>
         <thymeleaf.start.version>2.5.1</thymeleaf.start.version>
         <commons-collections.version>4.2</commons-collections.version>
         <commons-io.version>2.2</commons-io.version>
+        <dockerfile-version>1.4.19</dockerfile-version>
     </properties>
 
     <!-- https://maven.aliyun.com/mvn/search !-->
@@ -383,7 +385,7 @@
                 <version>${lombok.version}</version>
             </dependency>
 
-            <!--JSON-->
+            <!-- JSON -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
@@ -407,7 +409,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!--activiti相关依赖-->
+            <!-- activiti相关依赖 -->
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -415,7 +417,7 @@
 <!--                <version>${thymeleaf.start.version}</version>-->
             </dependency>
 
-            <!--xml解析依赖-->
+            <!-- xml解析依赖 -->
             <dependency>
                 <groupId>org.apache.xmlgraphics</groupId>
                 <artifactId>batik-codec</artifactId>
@@ -441,6 +443,13 @@
                 <groupId>net.sourceforge.nekohtml</groupId>
                 <artifactId>nekohtml</artifactId>
                 <version>${nekohtml.version}</version>
+            </dependency>
+
+            <!-- sm -->
+            <dependency>
+                <groupId>org.squirrelframework</groupId>
+                <artifactId>squirrel-foundation</artifactId>
+                <version>${squirrel-foundation.version}</version>
             </dependency>
 
             <dependency>
@@ -504,6 +513,18 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-version}</version>
+                    <configuration>
+                        <repository>${project.build.finalName}</repository>
+                        <tag>${project.version}</tag>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
