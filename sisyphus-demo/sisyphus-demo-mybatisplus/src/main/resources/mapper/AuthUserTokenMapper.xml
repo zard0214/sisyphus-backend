@@ -35,7 +35,7 @@
         gmt_created, last_operator, last_operator_id, gmt_modified, os, browser, login_time, group_id, group_name
     </sql>
 
-    <select id="selectTokenList" resultType="com.sisyphus.auth.authorize.model.domain.AuthUserToken">
+    <select id="selectTokenList" resultType="com.sisyphus.demo.mybatisplus.model.domain.AuthUserToken">
 
         select
         <include refid="Base_Column_List"/>,

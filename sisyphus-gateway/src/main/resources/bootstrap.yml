@@ -9,9 +9,11 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         file-extension: yml
+        prefix: sisyphus-gateway
       discovery:
         group: SISYPHUS
         server-addr: localhost:8848
+        service: sisyphus-gateway
     sentinel:
       transport:
         dashboard: localhost:8021
