@@ -23,6 +23,13 @@
     </modules>
 
     <dependencies>
+        <!-- dubbo -->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-boot-starter.version}</version>
+        </dependency>
+        <!-- dubbo -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

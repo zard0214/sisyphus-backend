@@ -55,6 +55,7 @@
         <dynamic.version>3.3.5</dynamic.version>
         <mysql.connect.version>8.0.23</mysql.connect.version>
         <redisson-starter.version>3.13.6</redisson-starter.version>
+        <dubbo-boot-starter.version>2.0.0</dubbo-boot-starter.version>
         <fastjson.version>1.2.38</fastjson.version>
         <activiti.version>6.0.0</activiti.version>
         <activiti-json.version>6.0.0</activiti-json.version>
@@ -352,6 +353,14 @@
             </dependency>
             <!-- mongo -->
 
+            <!-- dubbo -->
+            <dependency>
+                <groupId>com.alibaba.spring.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-boot-starter.version}</version>
+            </dependency>
+            <!-- dubbo -->
+
             <!-- flyway -->
             <dependency>
                 <groupId>org.flywaydb</groupId>
@@ -421,7 +430,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
-<!--                <version>${thymeleaf.start.version}</version>-->
+                <version>${thymeleaf.start.version}</version>
             </dependency>
 
             <!-- xml解析依赖 -->

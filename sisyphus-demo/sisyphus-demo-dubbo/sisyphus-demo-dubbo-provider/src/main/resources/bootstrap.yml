@@ -1,0 +1,37 @@
+server:
+  port: 8086
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: sisyphus-demo-dubbo-provider
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-demo-dubbo-provider
+  dubbo:
+    application:
+      id: sisyphus-demo-dubbo
+      name: sisyphus-demo-dubbo
+    registry:
+      address: zookeeper://127.0.0.1:2181
+    server: true
+    protocol:
+      name: dubbo
+      port: 20880
+#配置日志
+logging:
+  config: classpath:logging-config.xml
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+# 启动工程部署流程标识
+process:
+  deploy: false
+
+
+

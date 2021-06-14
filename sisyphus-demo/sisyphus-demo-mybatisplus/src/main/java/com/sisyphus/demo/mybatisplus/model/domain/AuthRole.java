@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
-import com.sisyphus.common.base.dto.BaseDO;
+import com.sisyphus.demo.mybatisplus.dto.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.ibatis.type.Alias;
