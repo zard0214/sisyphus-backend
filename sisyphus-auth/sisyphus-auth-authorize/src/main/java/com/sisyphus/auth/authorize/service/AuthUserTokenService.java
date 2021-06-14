@@ -1,7 +1,7 @@
 package com.sisyphus.auth.authorize.service;
 
 import com.sisyphus.auth.authorize.model.domain.AuthUserToken;
-import coms.sisphus.common.support.service.IService;
+import com.sisphus.common.support.service.IService;
 
 /**
  * @author zhecheng.zhao

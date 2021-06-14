@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisyphus.demo.mybatisplus.mapper.AuthUserMapper">
+    <resultMap id="BaseResultMap" type="com.sisyphus.demo.mybatisplus.model.dto.AuthUserDTO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
+        <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd"/>
+        <result column="user_code" jdbcType="VARCHAR" property="userCode"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="user_source" jdbcType="VARCHAR" property="userSource"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+        <result column="last_login_location" jdbcType="VARCHAR" property="lastLoginLocation"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="pwd_error_count" jdbcType="INTEGER" property="pwdErrorCount"/>
+        <result column="pwd_error_time" jdbcType="TIMESTAMP" property="pwdErrorTime"/>
+        <collection property="authRoleList" column="id" javaType="ArrayList"
+                    ofType="com.sisyphus.demo.mybatisplus.model.dto.AuthRoleDTO" select="findRolesByUserId"/>
+        <collection property="authActionList" column="id" javaType="ArrayList"
+                    ofType="com.sisyphus.demo.mybatisplus.model.dto.AuthActionDTO" select="findActionsByUserId"/>
+    </resultMap>
+
+    <resultMap id="RoleResultMap" type="com.sisyphus.demo.mybatisplus.model.dto.AuthRoleDTO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_code" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="data_scope" jdbcType="VARCHAR" property="dataScope"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+    </resultMap>
+
+    <resultMap id="ActionResultMap" type="com.sisyphus.demo.mybatisplus.model.dto.AuthActionDTO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="action_name" jdbcType="VARCHAR" property="actionName"/>
+        <result column="action_code" jdbcType="VARCHAR" property="actionCode"/>
+        <result column="menu_id" jdbcType="VARCHAR" property="menuId"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ${alias}.id, ${alias}.version, ${alias}.login_name, ${alias}.login_pwd, ${alias}.user_code, ${alias}.user_name, ${alias}.phone, ${alias}.email,
+        ${alias}.status, ${alias}.user_source, ${alias}.type, ${alias}.last_login_ip, ${alias}.last_login_location, ${alias}.last_login_time,
+        ${alias}.remark, ${alias}.pwd_error_count, ${alias}.pwd_error_time
+    </sql>
+
+    <sql id="Role_Column_List">
+        ${alias}.id, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status
+    </sql>
+
+    <sql id="Action_Column_List">
+        ${alias}.id, ${alias}.action_name, ${alias}.action_code, ${alias}.status, ${alias}.menu_id
+    </sql>
+
+    <select id="findByLoginName" resultType="com.sisyphus.demo.mybatisplus.model.dto.AuthUserDTO">
+        select
+        <include refid="Base_Column_List">
+            <property name="alias" value="u"></property>
+        </include>
+        from
+        s_auth_user u
+        where
+        u.login_name= #{loginName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findByPhone" resultType="com.sisyphus.demo.mybatisplus.model.dto.AuthUserDTO">
+        select
+        <include refid="Base_Column_List">
+            <property name="alias" value="u"></property>
+        </include>
+        from
+        s_auth_user u
+        where
+        u.phone= #{phone,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findRolesByUserId" resultMap="RoleResultMap">
+        select
+        <include refid="Role_Column_List">
+            <property name="alias" value="ar"></property>
+        </include>
+        from
+        s_auth_user u
+        inner join s_auth_user_role ur on u.id = ur.user_id
+        inner join s_auth_role ar on ar.id = ur.role_id
+        where
+        u.login_name= #{loginName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findActionsByUserId"  resultMap="ActionResultMap">
+        select
+        am.url,
+        <include refid="Action_Column_List">
+            <property name="alias" value="aa"></property>
+        </include>
+        from
+        s_auth_user u
+        inner join s_auth_user_role au on u.id = au.user_id
+        inner join s_auth_role ar on ar.id = au.role_id
+        inner join s_auth_role_menu arm on ar.id = arm.role_id
+        inner join s_auth_menu am on am.id = arm.menu_id
+        inner join s_auth_action aa on aa.menu_id = am.id
+        where
+        u.login_name= #{loginName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findUserInfoByUserId" resultMap="BaseResultMap">
+        select
+        g.id as groupId,
+        g.group_name as groupName,
+        <include refid="Base_Column_List">
+            <property name="alias" value="u"></property>
+        </include>
+        from
+        s_auth_user u
+        left join s_uac_group_user gu on u.id = gu.user_id
+        left join s_uac_group g on gu.group_id = g.id
+        where u.id = #{userId}
+    </select>
+
+</mapper>

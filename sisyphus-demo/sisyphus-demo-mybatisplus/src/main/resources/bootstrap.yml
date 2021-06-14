@@ -1,0 +1,77 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /
+spring:
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: sisyphus-demo-batisplus
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-demo-batisplus
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: root
+          password: 123456
+          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+          url: jdbc:p6spy:mysql://127.0.0.1:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+        salve:
+          one:
+            username: root
+            password: 123456
+            driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+            url: jdbc:p6spy:mysql://127.0.0.1:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+          two:
+            username: root
+            password: 123456
+            driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+            url: jdbc:p6spy:mysql://127.0.0.1:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:h2:mem:test
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 30
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j,config
+      useGlobalDataSourceStat: true
+      stat:
+        log-slow-sql: true
+        merge-sql: true
+        slow-sql-millis: 2000
+mybatis:
+  type-aliases-package: com.sisyphus.demo.mybatisplus.model.domain
+  mapper-locations: classpath*:mapper/*.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-value: 2
+      logic-not-delete-value: 0
+  mapper-locations: classpath:/mapper/*.xml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

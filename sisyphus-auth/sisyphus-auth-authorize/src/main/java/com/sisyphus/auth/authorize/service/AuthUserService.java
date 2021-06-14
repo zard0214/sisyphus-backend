@@ -3,7 +3,7 @@ package com.sisyphus.auth.authorize.service;
 import com.sisyphus.auth.authorize.model.domain.AuthUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import com.sisyphus.auth.authorize.model.dto.LoginRespDTO;
-import coms.sisphus.common.support.service.IService;
+import com.sisphus.common.support.service.IService;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;

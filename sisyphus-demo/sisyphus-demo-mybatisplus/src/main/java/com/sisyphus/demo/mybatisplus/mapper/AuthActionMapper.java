@@ -1,7 +1,7 @@
-package com.sisyphus.auth.authorize.mapper;
+package com.sisyphus.demo.mybatisplus.mapper;
 
-import com.sisyphus.auth.authorize.model.domain.AuthAction;
-import com.sisphus.common.support.mybatis.IMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sisyphus.demo.mybatisplus.model.domain.AuthAction;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Mapper
 @Repository
-public interface AuthActionMapper extends IMapper<AuthAction> {
+public interface AuthActionMapper extends BaseMapper<AuthAction>, com.baomidou.mybatisplus.core.mapper.Mapper<AuthAction> {
 
     List<AuthAction> getOwnUacActionListByUserId(@Param("userId") Long userId);
 }

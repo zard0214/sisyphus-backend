@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisyphus.demo.mybatisplus.mapper.AuthRoleMapper">
+    <resultMap id="BaseResultMap" type="com.sisyphus.demo.mybatisplus.model.dto.AuthRoleDTO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_code" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="data_scope" jdbcType="VARCHAR" property="dataScope"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status
+    </sql>
+
+</mapper>

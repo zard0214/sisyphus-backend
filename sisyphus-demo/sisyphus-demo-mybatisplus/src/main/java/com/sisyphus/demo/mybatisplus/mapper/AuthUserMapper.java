@@ -1,8 +1,8 @@
-package com.sisyphus.auth.authorize.mapper;
+package com.sisyphus.demo.mybatisplus.mapper;
 
-import com.sisyphus.auth.authorize.model.domain.AuthUser;
-import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
-import com.sisphus.common.support.mybatis.IMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sisyphus.demo.mybatisplus.model.domain.AuthUser;
+import com.sisyphus.demo.mybatisplus.model.dto.AuthUserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface AuthUserMapper extends IMapper<AuthUser> {
+public interface AuthUserMapper extends BaseMapper<AuthUser>, com.baomidou.mybatisplus.core.mapper.Mapper<AuthUser> {
 
     AuthUserDTO findByPhone(@Param("phone") String phone);
 
