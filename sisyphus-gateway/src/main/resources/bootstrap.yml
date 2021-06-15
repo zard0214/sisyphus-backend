@@ -15,9 +15,22 @@ spring:
         server-addr: localhost:8848
         service: sisyphus-gateway
     sentinel:
+      enabled: true
+      eager: true
       transport:
         dashboard: localhost:8021
         port: 8719
+        # 本地机器ip
+        client-ip: localhost
+      datasource:
+        # 网关限流规则，gw-flow为key，随便定义
+        gw-flow:
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: ${spring.application.name}-gw-flow-rules # 流控规则配置文件名：youlai-gateway-gw-flow-rules
+            groupId: SENTINEL_GROUP
+            data-type: json
+            rule-type: gw-flow
       scg:
         fallback:
           mode: response

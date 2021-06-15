@@ -34,7 +34,7 @@
         <mybatis-starter.version>1.2.0</mybatis-starter.version>
         <kafka.version>2.6.7</kafka.version>
         <sentinel-datasource.version>1.7.2</sentinel-datasource.version>
-        <sentinel-start.version>2.0.0.RELEASE</sentinel-start.version>
+        <sentinel-start.version>2.1.0.RELEASE</sentinel-start.version>
         <flyway-core.version>7.9.0</flyway-core.version>
         <maven-plugin.version>2.4.5</maven-plugin.version>
         <hutool.version>3.0.7</hutool.version>
@@ -328,6 +328,11 @@
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel-datasource.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
                 <version>${sentinel-datasource.version}</version>
             </dependency>
             <!-- sentinel -->
