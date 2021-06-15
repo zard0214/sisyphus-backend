@@ -7,6 +7,7 @@ import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBloc
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
+import com.sisyphus.gateway.handler.SentinelFallbackHandler;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;

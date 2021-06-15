@@ -1,4 +1,4 @@
-package com.sisyphus.gateway.config;
+package com.sisyphus.gateway.handler;
 
 import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
@@ -11,6 +11,7 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -33,6 +34,29 @@ public class SentinelFallbackHandler extends SentinelGatewayBlockExceptionHandle
         this.messageWriters = serverCodecConfigurer.getWriters();
     }
 
+    @Override
+    public Mono<Void> handle(ServerWebExchange serverWebExchange, Throwable throwable) {
+        //定义错误码返回
+        if(throwable instanceof ResponseStatusException){
+            HttpStatus status = ((ResponseStatusException) throwable).getStatus();
+            if(HttpStatus.SERVICE_UNAVAILABLE.equals(status)){
+                return handleBlockedRequest(serverWebExchange, throwable).flatMap(response -> writeErrorResponse(response, serverWebExchange));
+            }
+        }
+        if(serverWebExchange.getResponse().isCommitted()){
+            return Mono.error(throwable);
+        }
+        if(!BlockException.isBlockException(throwable)){
+            return Mono.error(throwable);
+        }
+        return handleBlockedRequest(serverWebExchange, throwable).flatMap(response -> writeResponse(response, serverWebExchange));
+    }
+
+
+    private Mono<ServerResponse> handleBlockedRequest(ServerWebExchange exchange, Throwable throwable) {
+        return GatewayCallbackManager.getBlockHandler().handleRequest(exchange, throwable);
+    }
+
     private Mono<Void> writeResponse(ServerResponse response, ServerWebExchange exchange) {
         ServerHttpResponse serverHttpResponse = exchange.getResponse();
         serverHttpResponse.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
@@ -46,20 +70,17 @@ public class SentinelFallbackHandler extends SentinelGatewayBlockExceptionHandle
         return serverHttpResponse.writeWith(Mono.just(buffer));
     }
 
-    @Override
-    public Mono<Void> handle(ServerWebExchange serverWebExchange, Throwable throwable) {
-
-        if(serverWebExchange.getResponse().isCommitted()){
-            return Mono.error(throwable);
-        }
-        if(!BlockException.isBlockException(throwable)){
-            return Mono.error(throwable);
-        }
-        return handleBlockedRequest(serverWebExchange, throwable).flatMap(response -> writeResponse(response, serverWebExchange));
-    }
-
-    private Mono<ServerResponse> handleBlockedRequest(ServerWebExchange exchange, Throwable throwable) {
-        return GatewayCallbackManager.getBlockHandler().handleRequest(exchange, throwable);
+    private Mono<Void> writeErrorResponse(ServerResponse response, ServerWebExchange exchange) {
+        ServerHttpResponse serverHttpResponse = exchange.getResponse();
+        serverHttpResponse.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
+        serverHttpResponse.setStatusCode(HttpStatus.SERVICE_UNAVAILABLE);
+        String data = "{\n" +
+                "\"code\": 503,\n" +
+                "\"message\": \"微服务故障, 请稍后再试\"\n" +
+                "}";
+        byte[] datas = data.getBytes(StandardCharsets.UTF_8);
+        DataBuffer buffer = serverHttpResponse.bufferFactory().wrap(datas);
+        return serverHttpResponse.writeWith(Mono.just(buffer));
     }
 
 }
