@@ -27,13 +27,13 @@ import java.util.Set;
  * @date Created in 15/06/2021 09:51
  */
 @Configuration
-public class GatewayConfig {
+public class SentinelConfig {
 
     private final List<ViewResolver> viewResolvers;
     private final ServerCodecConfigurer serverCodecConfigurer;
 
-    public GatewayConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
-                                ServerCodecConfigurer serverCodecConfigurer) {
+    public SentinelConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
+                          ServerCodecConfigurer serverCodecConfigurer) {
         this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
         this.serverCodecConfigurer = serverCodecConfigurer;
     }
@@ -67,11 +67,11 @@ public class GatewayConfig {
     }
 
     private void initDegradeRules() {
-        DegradeRule degradeRule = new DegradeRule("sisyphus-provider-api") // 资源名称
-                    .setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_RATIO) // 异常比率模式(秒级)
-                    .setCount(0.5) // 异常比率阈值(50%)
+        DegradeRule degradeRule = new DegradeRule("sisyphus-provider-api")
+                    .setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_RATIO)
+                    .setCount(0.5)
                     .setMinRequestAmount(10)
-                    .setTimeWindow(10); // 熔断降级时间(10s)
+                    .setTimeWindow(10);
         DegradeRuleManager.loadRules(Collections.singletonList(degradeRule));
     }
 
