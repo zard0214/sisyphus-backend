@@ -1,0 +1,27 @@
+server:
+  port: 8085
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: sisyphus-demo-kafka
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-demo-kafka
+#配置日志
+logging:
+  config: classpath:logging-config.xml
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+# 启动工程部署流程标识
+process:
+  deploy: false
+
+
+

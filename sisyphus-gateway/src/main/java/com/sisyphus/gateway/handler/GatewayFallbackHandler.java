@@ -23,12 +23,12 @@ import java.util.List;
  * @date Created in 22/05/2021 12:16
  */
 @Component
-public class SentinelFallbackHandler extends SentinelGatewayBlockExceptionHandler {
+public class GatewayFallbackHandler extends SentinelGatewayBlockExceptionHandler {
 
     private List<ViewResolver> viewResolvers;
     private List<HttpMessageWriter<?>> messageWriters;
 
-    public SentinelFallbackHandler(List<ViewResolver> viewResolvers, ServerCodecConfigurer serverCodecConfigurer) {
+    public GatewayFallbackHandler(List<ViewResolver> viewResolvers, ServerCodecConfigurer serverCodecConfigurer) {
         super(viewResolvers,serverCodecConfigurer);
         this.viewResolvers = viewResolvers;
         this.messageWriters = serverCodecConfigurer.getWriters();

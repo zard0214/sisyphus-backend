@@ -7,7 +7,7 @@ import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBloc
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
-import com.sisyphus.gateway.handler.SentinelFallbackHandler;
+import com.sisyphus.gateway.handler.GatewayFallbackHandler;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
@@ -42,7 +42,7 @@ public class SentinelConfig {
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
-        return new SentinelFallbackHandler(viewResolvers, serverCodecConfigurer);
+        return new GatewayFallbackHandler(viewResolvers, serverCodecConfigurer);
     }
 
     @Bean
@@ -56,7 +56,6 @@ public class SentinelConfig {
         initGatewayRules();
         initDegradeRules();
     }
-
 
     private void initGatewayRules() {
          Set<GatewayFlowRule> rules = new HashSet<>();

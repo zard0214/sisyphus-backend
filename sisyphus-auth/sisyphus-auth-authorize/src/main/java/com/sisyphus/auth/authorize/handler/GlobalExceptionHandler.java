@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
 
     @Resource
     private TaskExecutor taskExecutor;
-    @Reference
+    @Reference(check = false)
     private UdcExceptionLogDubboApi udcExceptionLogDubboApi;
     @Value("${spring.profiles.active}")
     private String profile;

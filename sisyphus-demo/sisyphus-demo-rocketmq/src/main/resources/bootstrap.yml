@@ -1,0 +1,31 @@
+server:
+  port: 8084
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: sisyphus-demo-rocketmq
+      discovery:
+        group: SISYPHUS
+        server-addr: localhost:8848
+        service: sisyphus-demo-rocketmq
+  rocketmq:
+    nameServer: 127.0.0.1:9876
+    producer:
+      group: boot_producer_group
+#配置日志
+logging:
+  config: classpath:logging-config.xml
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+# 启动工程部署流程标识
+process:
+  deploy: false
+
+
+

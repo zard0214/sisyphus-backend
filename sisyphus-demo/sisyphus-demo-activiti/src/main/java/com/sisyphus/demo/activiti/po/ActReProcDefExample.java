@@ -1,9 +1,14 @@
 package com.sisyphus.demo.activiti.po;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ActReProcDefExample {
+
     protected String orderByClause;
 
     protected boolean distinct;

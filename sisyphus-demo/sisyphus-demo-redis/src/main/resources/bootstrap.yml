@@ -14,18 +14,28 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         service: sisyphus-demo-redis
-#  redis:
-#    cluster:
-#      nodes: "192.168.52.1:7000,192.168.52.1:7001,192.168.52.1:7002,192.168.52.1:7003,192.168.52.1:7004,192.168.52.1:7005"
-#      password: 123456
-#      lettuce:
-#        pool:
-#          max-active: 1500
-#          max-wait: 5000
-#          max-idle: 500
-#          min-idle: 100
-#          shutdown-timeout: 1000
-#      timeout: 60000
+jetcache:
+  areaInCacheName: false  # 是否加入缓存key前缀
+  local:
+    default:
+      keyConvertor: fastjson
+      type: linkedhashmap   # 缓存类型。tair、redis为当前支持的远程缓存；linkedhashmap、caffeine为当前支持的本地缓存类型
+  remote:
+    default:
+      type: redis #使用lettuce
+      keyConvertor: fastjson  # Key的转换器
+      uri:
+        - redis://127.0.0.1:6379
+      host: 127.0.0.1
+      port: 6379
+      valueDecoder: java  # 采用Java序列化存储
+      valueEncoder: java
+      poolConfig:
+        minIdle: 1
+        maxIdle: 50
+        maxTotal: 1000
+        maxWait: 1000
+  statIntervalMinutes: 15  # 控制台输出统计数据，统计间隔，0表示不统计
 #配置日志
 logging:
   config: classpath:logging-config.xml
