@@ -7,21 +7,20 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: localhost:8848
+        server-addr: 172.17.0.8:8848
         file-extension: yml
         prefix: sisyphus-gateway
       discovery:
         group: SISYPHUS
-        server-addr: localhost:8848
+        server-addr: 172.17.0.8:8848
         service: sisyphus-gateway
     sentinel:
       enabled: true
       eager: true
       transport:
-        dashboard: localhost:8021
+        dashboard: 172.17.0.3:8021
         port: 8719
-        # 本地机器ip
-        client-ip: localhost
+        client-ip: 172.17.0.3
       scg:
         fallback:
           mode: response
