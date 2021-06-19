@@ -24,17 +24,27 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>${spring-cloud-alibaba.version}</version>
         </dependency>
+
+        <!--nacos-config-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>${spring-cloud-alibaba.version}</version>
+        </dependency>
+
         <!--web + actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot-starter.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot-starter.version}</version>
         </dependency>
+
         <!--一般基础配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,5 +70,34 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <finalName>sisyphus-uac</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-version}</version>
+                <configuration>
+                    <repository>${project.build.finalName}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
