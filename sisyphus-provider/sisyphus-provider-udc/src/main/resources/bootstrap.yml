@@ -9,11 +9,11 @@ spring:
         group: SISYPHUS
         server-addr: 172.17.0.8:8848
         file-extension: yml
-        prefix: sisyphus-provider-udc
+        prefix: sisyphus-udc
       discovery:
         group: SISYPHUS
         server-addr: 172.17.0.8:8848
-        service: sisyphus-provider-udc
+        service: sisyphus-udc
   dubbo:
     application:
       id: com-saas-sisyphus
