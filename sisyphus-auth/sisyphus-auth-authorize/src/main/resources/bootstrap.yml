@@ -14,31 +14,6 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         service: sisyphus-authorize
-  redis:
-    host: redis://127.0.0.1
-    port: 6379
-    jedis:
-      pool:
-        max-active: 200
-        min-idle: 20
-        max-wait: 3000ms
-    redisson:
-      config:
-        singleServerConfig:
-          idleConnectionTimeout: 10000
-          connectTimeout: 10000
-          timeout: 3000
-          retryAttempts: 3
-          retryInterval: 1500
-          address: redis://127.0.0.1:6379
-          password: null
-          clientName: null
-          keepAlive: false
-          tcpNoDelay: false
-          threads: 16
-          nettyThreads: 32
-          codec: "org.redisson.codec.JsonJacksonCodec"
-          transportMode: "NIO"
   dubbo:
     application:
       id: com-saas-sisyphus
