@@ -16,7 +16,7 @@ spring:
         service: sisyphus-authorize
   redis:
     redisson:
-      config: classpath:redisson-config.yml
+      file: classpath:redisson-config.yml
   dubbo:
     application:
       id: com-saas-sisyphus
