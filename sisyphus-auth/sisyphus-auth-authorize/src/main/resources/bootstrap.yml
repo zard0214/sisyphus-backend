@@ -14,6 +14,9 @@ spring:
         group: SISYPHUS
         server-addr: localhost:8848
         service: sisyphus-authorize
+  redis:
+    redisson:
+      config: classpath:redisson-config.yml
   dubbo:
     application:
       id: com-saas-sisyphus
