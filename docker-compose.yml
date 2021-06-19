@@ -1,0 +1,86 @@
+version : '3'
+services:
+  nacos:
+    image: nacos/nacos-server:2.0.0-bugfix
+    container_name: nacos-standalone-mysql
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos_devtest
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=nacos
+      - MYSQL_SERVICE_PASSWORD=nacos
+      - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+    volumes:
+      - ./standalone-logs/:/home/nacos/logs
+#      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9555:9555"
+    depends_on:
+      - mysql
+    restart: on-failure
+    networks:
+      default:
+        ipv4_address: 192.18.0.2
+  mysql:
+    container_name: mysql
+    image: nacos/nacos-mysql:5.7
+    environment:
+      - YSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=nacos_devtest
+      - MYSQL_USER=nacos
+      - MYSQL_PASSWORD=nacos
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=root
+      - MYSQL_RANDOM_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      default:
+        ipv4_address: 192.18.0.3
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      default:
+        ipv4_address: 192.18.0.4
+  zookeeper_1:
+    image: zookeeper:latest
+    restart: always
+    ports:
+      - 2181:2181
+    networks:
+      default:
+        ipv4_address: 192.18.0.5
+  zookeeper_2:
+    image: zookeeper:latest
+    restart: always
+    ports:
+      - 2182:2181
+    networks:
+      default:
+        ipv4_address: 192.18.0.6
+  zookeeper_3:
+    image: zookeeper:latest
+    restart: always
+    ports:
+      - 2183:2181
+    networks:
+      default:
+        ipv4_address: 192.18.0.7
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.18.0.1/16
+          gateway: 192.18.0.1
