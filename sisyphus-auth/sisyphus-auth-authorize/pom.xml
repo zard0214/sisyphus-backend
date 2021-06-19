@@ -104,7 +104,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <finalName>sisyphus-auth-authorize</finalName>
+        <finalName>sisyphus-authorize</finalName>
         <plugins>
             <plugin>
                 <groupId>com.spotify</groupId>
