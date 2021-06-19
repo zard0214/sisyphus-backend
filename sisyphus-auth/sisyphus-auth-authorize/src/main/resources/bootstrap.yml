@@ -15,7 +15,7 @@ spring:
         server-addr: localhost:8848
         service: sisyphus-authorize
   redis:
-    host: 127.0.0.1
+    host: redis://127.0.0.1
     port: 6379
     jedis:
       pool:
