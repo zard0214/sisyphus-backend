@@ -26,6 +26,8 @@ services:
     networks:
       default:
         ipv4_address: 192.18.0.2
+        aliases:
+          - nacos
   mysql:
     container_name: mysql
     image: nacos/nacos-mysql:5.7
@@ -44,14 +46,19 @@ services:
     networks:
       default:
         ipv4_address: 192.18.0.3
+        aliases:
+          - mysql
   redis:
     image: redis:alpine
     restart: always
     ports:
       - 6379:6379
+    IPAddress: 192.18.0.4
     networks:
       default:
         ipv4_address: 192.18.0.4
+        aliases:
+          - redis
   zookeeper_1:
     image: zookeeper:latest
     restart: always
@@ -60,6 +67,8 @@ services:
     networks:
       default:
         ipv4_address: 192.18.0.5
+        aliases:
+          - zookeeper_1
   zookeeper_2:
     image: zookeeper:latest
     restart: always
@@ -68,6 +77,8 @@ services:
     networks:
       default:
         ipv4_address: 192.18.0.6
+        aliases:
+          - zookeeper_2
   zookeeper_3:
     image: zookeeper:latest
     restart: always
@@ -76,6 +87,8 @@ services:
     networks:
       default:
         ipv4_address: 192.18.0.7
+        aliases:
+          - zookeeper_3
 networks:
   default:
     driver: bridge

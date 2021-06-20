@@ -7,19 +7,42 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: 192.18.0.2:8848
+        server-addr: nacos:8848
         file-extension: yml
         prefix: sisyphus-authorize
       discovery:
         group: SISYPHUS
-        server-addr: 192.18.0.2:8848
+        server-addr: nacos:8848
         service: sisyphus-authorize
+  redis:
+    hostname: redis
+    port: 6379
+    pool:
+      maxActive: 600
+      maxIdle: 300
+      maxWait: 3000
+    redisson:
+      config:
+        singleServerConfig:
+          idleConnectionTimeout: 10000
+          connectTimeout: 10000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          address: redis://redis:6379
+          password: null
+          clientName: null
+          keepAlive: false
+        threads: 16
+        nettyThreads: 32
+        codec: org.redisson.codec.JsonJacksonCodec
+        transportMode: "NIO"
   dubbo:
     application:
       id: com-saas-sisyphus
       name: sisyphus
     registry:
-      address: zookeeper://192.18.0.5:2181
+      address: zookeeper://zookeeper_1:2181
     server: true
     protocol:
       name: dubbo
@@ -32,18 +55,18 @@ spring:
           username: root
           password: 123456
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://192.18.0.3:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+          url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
         salve:
           one:
             username: root
             password: 123456
             driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-            url: jdbc:p6spy:mysql://192.18.0.3:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+            url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
           two:
             username: root
             password: 123456
             driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-            url: jdbc:p6spy:mysql://192.18.0.3:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+            url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     url: jdbc:p6spy:h2:mem:test
     type: com.alibaba.druid.pool.DruidDataSource
