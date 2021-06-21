@@ -1,48 +1,58 @@
 server:
   port: 8080
-  servlet:
-    context-path: /
 spring:
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: nacos:8848
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         file-extension: yml
         prefix: sisyphus-authorize
       discovery:
         group: SISYPHUS
-        server-addr: nacos:8848
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         service: sisyphus-authorize
   redis:
-    hostname: redis
-    port: 6379
-    pool:
-      maxActive: 600
-      maxIdle: 300
-      maxWait: 3000
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 0
     redisson:
       config:
         singleServerConfig:
+          address: rediss://${REDIS_HOST:host.docker.internal}:${REDIS_PORT:6379}
+          password: null
+          clientName: null
+          database: 7
           idleConnectionTimeout: 10000
+          pingTimeout: 1000
           connectTimeout: 10000
           timeout: 3000
           retryAttempts: 3
           retryInterval: 1500
-          address: redis://redis:6379
-          password: null
-          clientName: null
-          keepAlive: false
-        threads: 16
-        nettyThreads: 32
-        codec: org.redisson.codec.JsonJacksonCodec
+          reconnectionTimeout: 3000
+          failedAttempts: 3
+          subscriptionsPerConnection: 5
+          subscriptionConnectionMinimumIdleSize: 1
+          subscriptionConnectionPoolSize: 50
+          connectionMinimumIdleSize: 32
+          connectionPoolSize: 64
+          dnsMonitoringInterval: 5000
+        nettyThreads: 0
+        codec:
+          class: "org.redisson.codec.JsonJacksonCodec"
         transportMode: "NIO"
   dubbo:
     application:
       id: com-saas-sisyphus
       name: sisyphus
     registry:
-      address: zookeeper://zookeeper_1:2181
+      address: zookeeper://${ZOOKEEPER_HOST:host.docker.internal}:${ZOOKEEPER_PORT:2181}
     server: true
     protocol:
       name: dubbo
@@ -52,21 +62,21 @@ spring:
       primary: master
       datasource:
         master:
-          username: root
-          password: 123456
+          username: ${DATASOURCE_USERNAME:nacos}
+          password: ${DATASOURCE_PASSWORD:nacos}
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+          url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
         salve:
           one:
-            username: root
-            password: 123456
+            username: ${DATASOURCE_USERNAME:nacos}
+            password: ${DATASOURCE_PASSWORD:nacos}
             driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-            url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+            url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
           two:
-            username: root
-            password: 123456
+            username: ${DATASOURCE_USERNAME:nacos}
+            password: ${DATASOURCE_PASSWORD:nacos}
             driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-            url: jdbc:p6spy:mysql://mysql:3306/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+            url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     url: jdbc:p6spy:h2:mem:test
     type: com.alibaba.druid.pool.DruidDataSource

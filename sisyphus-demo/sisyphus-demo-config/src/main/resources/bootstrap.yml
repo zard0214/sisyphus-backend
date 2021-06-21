@@ -9,27 +9,16 @@ spring:
         group: SISYPHUS
         server-addr: nacos
         file-extension: yml
-        prefix: sisyphus-demo-redis
+        prefix: sisyphus-demo-mongodb
       discovery:
         group: SISYPHUS
         server-addr: nacos
-        service: sisyphus-demo-redis
-  redis:
-    database: 0
-    host: redis
-    port: 6379
-    password:
-    jedis:
-      pool:
-        max-active: 8
-        max-wait: -1
-        max-idle: 8
-        min-idle: 0
-    timeout: 0
+        service: sisyphus-demo-config
 #配置日志
 logging:
   config: classpath:logging-config.xml
   level:
     org.springframework.boot.autoconfigure: ERROR
+
 
 

@@ -1,11 +1,7 @@
 package com.sisyphus.demo.redis.service;
 
-import com.alicp.jetcache.anno.*;
-import com.sisyphus.demo.redis.model.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -16,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class DataService {
 
-    @Cached(name = "userCache", key = "#userId", expire = 3600, cacheType = CacheType.BOTH, timeUnit =  TimeUnit.MINUTES)
+//    @Cached(name = "userCache", key = "#userId", expire = 3600, cacheType = CacheType.BOTH, timeUnit =  TimeUnit.MINUTES)
     public String userCache(String userId){
 //        Data data = new Data("abc");
         return System.currentTimeMillis() + "";

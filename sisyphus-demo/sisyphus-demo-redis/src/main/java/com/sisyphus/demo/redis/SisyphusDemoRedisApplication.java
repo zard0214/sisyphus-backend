@@ -1,14 +1,12 @@
 package com.sisyphus.demo.redis;
 
-import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
-import com.alicp.jetcache.anno.config.EnableMethodCache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@EnableMethodCache(basePackages="com.sisyphus.demo.redis.model")
-@SpringBootApplication(scanBasePackages = {"com.sisyphus.demo.redis","com.alicp.jetcache.autoconfigure"})
-@EnableCreateCacheAnnotation
+@SpringBootApplication(scanBasePackages = {"com.sisyphus.demo.redis"})
+@EnableDiscoveryClient
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
 public class SisyphusDemoRedisApplication {
 
