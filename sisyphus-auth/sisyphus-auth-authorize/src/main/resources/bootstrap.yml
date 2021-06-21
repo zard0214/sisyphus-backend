@@ -15,6 +15,8 @@ spring:
         server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         service: sisyphus-authorize
   redis:
+    host: ${REDIS_HOST:host.docker.internal}
+    port: ${REDIS_PORT:6379}
     jedis:
       pool:
         max-active: 8
@@ -25,10 +27,6 @@ spring:
     redisson:
       config:
         singleServerConfig:
-          address: rediss://${REDIS_HOST:host.docker.internal}:${REDIS_PORT:6379}
-          password: null
-          clientName: null
-          database: 7
           idleConnectionTimeout: 10000
           pingTimeout: 1000
           connectTimeout: 10000
@@ -38,14 +36,18 @@ spring:
           reconnectionTimeout: 3000
           failedAttempts: 3
           subscriptionsPerConnection: 5
+          clientName: null
+          database: 0
+          password: null
           subscriptionConnectionMinimumIdleSize: 1
           subscriptionConnectionPoolSize: 50
           connectionMinimumIdleSize: 32
           connectionPoolSize: 64
+          dnsMonitoring: false
           dnsMonitoringInterval: 5000
+        threads: 0
         nettyThreads: 0
-        codec:
-          class: "org.redisson.codec.JsonJacksonCodec"
+        codec: "org.redisson.codec.JsonJacksonCodec"
         transportMode: "NIO"
   dubbo:
     application:
