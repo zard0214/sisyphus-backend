@@ -9,7 +9,7 @@ services:
         aliases:
           - sisyphus-gateway
     ports:
-      - 8001:8000
+      - 8001:8080
     env_file: .env
     environment:
       TZ: Asia/Shanghai

@@ -9,7 +9,7 @@ services:
         aliases:
           - sisyphus-auth-authorize
     ports:
-      - 8002:8000
+      - 8002:8080
     env_file: .env
     environment:
       TZ: Asia/Shanghai
