@@ -7,20 +7,20 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: 172.17.0.8:8848
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         file-extension: yml
         prefix: sisyphus-gateway
       discovery:
         group: SISYPHUS
-        server-addr: 172.17.0.8:8848
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         service: sisyphus-gateway
     sentinel:
       enabled: true
       eager: true
       transport:
-        dashboard: 172.17.0.3:8021
-        port: 8719
-        client-ip: 172.17.0.3
+        dashboard: ${SENTINEL_DASHBOARD_HOST:host.docker.internal}:${SENTINEL_DASHBOARD_PORT:8848}
+        port: ${SENTINEL_TRANSPORT_PORT:8719}
+        client-ip: ${SENTINEL_DASHBOARD_HOST:host.docker.internal}
       scg:
         fallback:
           mode: response
