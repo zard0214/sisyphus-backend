@@ -1,0 +1,88 @@
+spring:
+  redis:
+    host: ${REDIS_HOST:host.docker.internal}
+    port: ${REDIS_PORT:6379}
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 0
+    redisson:
+      config:
+        singleServerConfig:
+          idleConnectionTimeout: 10000
+          pingTimeout: 1000
+          connectTimeout: 10000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          reconnectionTimeout: 3000
+          failedAttempts: 3
+          subscriptionsPerConnection: 5
+          clientName: null
+          database: 0
+          password: null
+          subscriptionConnectionMinimumIdleSize: 1
+          subscriptionConnectionPoolSize: 50
+          connectionMinimumIdleSize: 32
+          connectionPoolSize: 64
+          dnsMonitoring: false
+          dnsMonitoringInterval: 5000
+        threads: 0
+        nettyThreads: 0
+        codec: "org.redisson.codec.JsonJacksonCodec"
+        transportMode: "NIO"
+  dubbo:
+    application:
+      id: com-saas-sisyphus
+      name: sisyphus
+    registry:
+      address: zookeeper://${ZOOKEEPER_HOST:host.docker.internal}:${ZOOKEEPER_PORT:2181}
+    server: true
+    protocol:
+      name: dubbo
+      port: 20880
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: ${DATASOURCE_USERNAME:nacos}
+          password: ${DATASOURCE_PASSWORD:nacos}
+          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+          url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+        salve:
+          one:
+            username: ${DATASOURCE_USERNAME:nacos}
+            password: ${DATASOURCE_PASSWORD:nacos}
+            driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+            url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+          two:
+            username: ${DATASOURCE_USERNAME:nacos}
+            password: ${DATASOURCE_PASSWORD:nacos}
+            driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+            url: jdbc:p6spy:mysql://${DATASOURCE_HOST:host.docker.internal}:${DATASOURCE_PORT:3306}/sisyphus_uac?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&charcterEncoding=UTF-8
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:h2:mem:test
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 30
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j,config
+      useGlobalDataSourceStat: true
+      stat:
+        log-slow-sql: true
+        merge-sql: true
+        slow-sql-millis: 2000

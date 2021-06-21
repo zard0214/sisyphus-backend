@@ -1,15 +1,15 @@
 version: '3'
 services:
   #授权服务
-  sisyphus-auth-authorize:
-    image: sisyphus-auth-authorize:0.0.1-SNAPSHOT
-    container_name: sisyphus-auth-authorize
+  sisyphus-udc:
+    image: sisyphus-udc:0.0.1-SNAPSHOT
+    container_name: sisyphus-udc
     networks:
       backend:
         aliases:
-          - sisyphus-auth-authorize
+          - sisyphus-udc
     ports:
-      - 8002:8000
+      - 8003:8000
     env_file: .env
     environment:
       TZ: Asia/Shanghai
