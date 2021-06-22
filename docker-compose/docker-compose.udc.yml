@@ -1,6 +1,6 @@
 version: '3'
 services:
-  #授权服务
+  #
   sisyphus-udc:
     image: sisyphus-udc:0.0.1-SNAPSHOT
     container_name: sisyphus-udc

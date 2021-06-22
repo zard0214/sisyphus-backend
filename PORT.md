@@ -10,6 +10,9 @@
 | sentinel-dashboard | 8021, 8719 |
 | dubbo-admin  | 7001 |
 
-| service  | port
-| :-----| ----:
-| mysql | 3306 |
+[comment]: <> (| druid  | 8888 |)
+
+| service  | test_port  | dev_port
+| :-----| ----:| ----:
+| sisyphus-gateway | 8081 |  8001 |
+| sisyphus-auth-authorize | 8082 |  8002 |

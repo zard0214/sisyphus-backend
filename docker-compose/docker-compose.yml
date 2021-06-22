@@ -130,7 +130,6 @@ services:
       backend:
         aliases:
           - sentinel-dashboard
-  ## fail
   dubbo-admin:
     image: chenchuxin/dubbo-admin
     container_name: dubbo-admin

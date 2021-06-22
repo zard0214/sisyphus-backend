@@ -1,6 +1,6 @@
 version: '3'
 services:
-  #授权服务
+  #网关服务
   sisyphus-gateway:
     image: sisyphus-gateway:0.0.1-SNAPSHOT
     container_name: sisyphus-gateway

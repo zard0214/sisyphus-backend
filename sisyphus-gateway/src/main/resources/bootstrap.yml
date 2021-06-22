@@ -19,7 +19,7 @@ spring:
       eager: true
       transport:
         dashboard: ${SENTINEL_DASHBOARD_HOST:localhost}:${SENTINEL_DASHBOARD_PORT:8848}
-        port: ${SENTINEL_TRANSPORT_PORT:8719}
+        port: ${SENTINEL_TRANSPORT_PORT:8021}
         client-ip: ${SENTINEL_DASHBOARD_HOST:localhost}
       scg:
         fallback:
