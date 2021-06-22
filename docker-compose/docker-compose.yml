@@ -130,5 +130,17 @@ services:
       backend:
         aliases:
           - sentinel-dashboard
+  ## fail
+  dubbo-admin:
+    image: chenchuxin/dubbo-admin
+    container_name: dubbo-admin
+    depends_on:
+      - zookeeper_1
+    ports:
+      - 7001:8080
+    networks:
+      backend:
+        aliases:
+          - dubbo-admin
 networks:
   backend:

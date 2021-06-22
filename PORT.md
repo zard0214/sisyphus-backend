@@ -1,4 +1,4 @@
-| service  | port 
+| midware  | port 
 | :-----| ----: 
 | nacos | 8848, 9848, 9555 | 
 | mysql | 3306 |
@@ -8,3 +8,8 @@
 | zookeeper_2 | 2182 |
 | zookeeper_3 | 2183 |
 | sentinel-dashboard | 8021, 8719 |
+| dubbo-admin  | 7001 |
+
+| service  | port
+| :-----| ----:
+| mysql | 3306 |
