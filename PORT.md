@@ -9,6 +9,7 @@
 | zookeeper_3 | 2183 |
 | sentinel-dashboard | 8021, 8719 |
 | dubbo-admin  | 7001 |
+| nginx  | 8080:80:443 |
 
 [comment]: <> (| druid  | 8888 |)
 
@@ -16,3 +17,4 @@
 | :-----| ----:| ----:
 | sisyphus-gateway | 8081 |  8001 |
 | sisyphus-auth-authorize | 8082 |  8002 |
+d

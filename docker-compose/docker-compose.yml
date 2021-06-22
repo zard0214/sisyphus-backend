@@ -1,5 +1,11 @@
 version : '3'
 services:
+  nginx:
+    image: nginx
+    ports:
+      - 8080:8080
+      - 80:80
+      - 443:443
   nacos:
     image: nacos/nacos-server:2.0.0-bugfix
     container_name: nacos-standalone
