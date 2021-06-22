@@ -9,7 +9,7 @@ services:
       - SPRING_DATASOURCE_PLATFORM=mysql
       - MYSQL_SERVICE_HOST=mysql
       - MYSQL_SERVICE_DB_NAME=nacos_devtest
-      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_PORT=3307
       - MYSQL_SERVICE_USER=nacos
       - MYSQL_SERVICE_PASSWORD=nacos
       - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
@@ -23,30 +23,47 @@ services:
     expose:
       - 8848
     depends_on:
-      - mysql
+      - nacos-mysql
     restart: on-failure
     networks:
       backend:
         aliases:
           - nacos-standalone
-  mysql:
-    container_name: mysql
+  nacos-mysql:
+    container_name: nacos-mysql
     image: nacos/nacos-mysql:5.7
     environment:
-      - YSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=nacos_devtest
       - MYSQL_USER=nacos
       - MYSQL_PASSWORD=nacos
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_ALLOW_EMPTY_PASSWORD=root
-      - MYSQL_RANDOM_ROOT_PASSWORD=root
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3307:3306"
     env_file: .env
     expose:
-      - 3306
+      - 3307
+    networks:
+      backend:
+        aliases:
+          - nacos-mysql
+  mysql:
+    container_name: mysql
+    image: mysql:5.7.31
+    restart: always
+    ports:
+      - 3306:3306
+    privileged: true
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_USER: 'root'
+      MYSQL_PASS: '123456'
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_general_ci',
+        '--max_connections=3000'
+    ]
     networks:
       backend:
         aliases:
