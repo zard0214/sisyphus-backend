@@ -15,7 +15,6 @@ services:
       - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
     volumes:
       - ./standalone-logs/:/home/nacos/logs
-    #      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
       - "8848:8848"
       - "9848:9848"
@@ -118,5 +117,18 @@ services:
       backend:
         aliases:
           - zookeeper_3
+  sentinel-dashboard:
+    image: registry.cn-hangzhou.aliyuncs.com/kancy/sentinel-dashboard-dynamic:1.7.2-beta
+    container_name: sentinel-dashboard
+    restart: on-failure
+    ports:
+      - "8021:8080"
+      - "8719:8719"
+    environment:
+      - "JAVA_OPTS=-Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -Dcsp.sentinel.api.port=8719"
+    networks:
+      backend:
+        aliases:
+          - sentinel-dashboard
 networks:
   backend:
