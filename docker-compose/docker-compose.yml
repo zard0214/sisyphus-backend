@@ -1,59 +1,57 @@
-version: "3"
+version : '3'
 services:
   nacos:
     image: nacos/nacos-server:2.0.0-bugfix
-    container_name: nacos
+    container_name: nacos-standalone
     environment:
       - PREFER_HOST_MODE=hostname
       - MODE=standalone
       - SPRING_DATASOURCE_PLATFORM=mysql
       - MYSQL_SERVICE_HOST=mysql
       - MYSQL_SERVICE_DB_NAME=nacos_devtest
-      - MYSQL_SERVICE_PORT=3307
+      - MYSQL_SERVICE_PORT=3306
       - MYSQL_SERVICE_USER=nacos
       - MYSQL_SERVICE_PASSWORD=nacos
       - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
     volumes:
       - ./standalone-logs/:/home/nacos/logs
+    #      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
       - "8848:8848"
       - "9848:9848"
       - "9555:9555"
-    env_file: .env
-    expose:
-      - 8848
     depends_on:
-      - nacos-mysql
+      - mysql
     restart: on-failure
     networks:
       backend:
         aliases:
           - nacos-standalone
-  nacos-mysql:
-    container_name: nacos-mysql
+  mysql:
+    container_name: mysql
     image: nacos/nacos-mysql:5.7
     environment:
+      - YSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=nacos_devtest
       - MYSQL_USER=nacos
       - MYSQL_PASSWORD=nacos
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=root
+      - MYSQL_RANDOM_ROOT_PASSWORD=root
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
-      - "3307:3306"
-    env_file: .env
-    expose:
-      - 3307
+      - "3306:3306"
     networks:
       backend:
         aliases:
-          - nacos-mysql
-  mysql:
-    container_name: mysql
+          - mysql
+  sisphus_mysql:
+    container_name: sisphus_mysql
     image: mysql:5.7.31
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
@@ -67,7 +65,7 @@ services:
     networks:
       backend:
         aliases:
-          - mysql
+          - sisphus_mysql
   redis:
     container_name: redis_1
     image: redis:alpine
