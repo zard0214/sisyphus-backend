@@ -25,7 +25,7 @@ public interface AuthUserService extends IService<AuthUser> {
 
     Collection<GrantedAuthority> loadUserAuthorities(Long userId);
 
-    LoginRespDTO loginResp(Long applicationId);
+    LoginRespDTO loginResp(Long tenantId);
 
     int updateUser(AuthUser authUser);
 

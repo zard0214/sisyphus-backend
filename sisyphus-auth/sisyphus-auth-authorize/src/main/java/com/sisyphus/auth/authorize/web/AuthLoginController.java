@@ -39,14 +39,14 @@ public class AuthLoginController extends BaseController {
     /**
      * 登录后获取用户信息
      *
-     * @param applicationId the access token
+     * @param tenantId the access token
      *
      * @return the wrapper
      */
-    @PostMapping(value = "/user/loginInfo/{applicationId}")
+    @PostMapping(value = "/user/loginInfo/{tenantId}")
     @ApiOperation(httpMethod = "POST", value = "登录成功获取用户菜单")
-    public ResponseDTO<LoginRespDTO> loginResp(@PathVariable Long applicationId) {
-        LoginRespDTO result = authUserService.loginResp(applicationId);
+    public ResponseDTO<LoginRespDTO> loginResp(@PathVariable Long tenantId) {
+        LoginRespDTO result = authUserService.loginResp(tenantId);
         return Response.success(result);
     }
 

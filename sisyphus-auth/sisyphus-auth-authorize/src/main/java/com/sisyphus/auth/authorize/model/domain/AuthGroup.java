@@ -49,10 +49,10 @@ public class AuthGroup extends BaseDO {
     private String contactName;
 
     /**
-     *  运营工作台ID
+     *  租户ID
      */
-    @TableField(value = "application_id")
-    private Long applicationId;
+    @TableField(value = "tenant_id")
+    private Long tenantId;
 
     /**
      * 手机号

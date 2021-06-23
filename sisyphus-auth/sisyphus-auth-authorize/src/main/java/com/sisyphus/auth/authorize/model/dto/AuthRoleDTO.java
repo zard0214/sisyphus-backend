@@ -31,6 +31,11 @@ public class AuthRoleDTO extends BaseDTO {
     private String dataScope;
 
     /**
+     *  租户ID
+     */
+    private Long tenantId;
+
+    /**
      * 状态
      */
     private String status;

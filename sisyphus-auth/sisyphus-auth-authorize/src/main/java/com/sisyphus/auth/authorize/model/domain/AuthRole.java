@@ -45,6 +45,12 @@ public class AuthRole extends BaseDO {
     private String dataScope;
 
     /**
+     *  租户ID
+     */
+    @TableField(value = "tenant_id")
+    private Long tenantId;
+
+    /**
      * 状态
      */
     @EnumValue

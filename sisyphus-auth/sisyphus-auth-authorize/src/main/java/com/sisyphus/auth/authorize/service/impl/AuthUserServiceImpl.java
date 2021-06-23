@@ -84,7 +84,7 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
     }
 
     @Override
-    public LoginRespDTO loginResp(Long applicationId) {
+    public LoginRespDTO loginResp(Long tenantId) {
         String loginName = SecurityUtils.getCurrentLoginName();
         if (StringUtils.isEmpty(loginName)) {
             log.error("操作超时, 请重新登录 loginName={}", loginName);
