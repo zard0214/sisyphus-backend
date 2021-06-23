@@ -1,13 +1,9 @@
 package com.sisyphus.common.support.config;
 
-//import com.sisyphus.common.support.interceptor.TokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * @author zhecheng.zhao
@@ -22,10 +18,4 @@ public class CoreConfiguration {
 		return new RestTemplate();
 	}
 
-//	@Bean
-//	@ConditionalOnMissingBean(HandlerInterceptor.class)
-//	@ConditionalOnProperty(prefix = "sisphus.token.interceptor", name = "enable", havingValue = "false")
-//	public TokenInterceptor tokenInterceptor() {
-//		return new TokenInterceptor();
-//	}
 }

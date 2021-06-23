@@ -38,7 +38,11 @@ management:
       exposure:
         include: "*"
 sisyphus:
+  token:
+    interceptor:
+      enable: true
   security:
+    jwtSigningKey: sisyphus
     oauth2:
       tokenStore: jwt
       clients[0]:

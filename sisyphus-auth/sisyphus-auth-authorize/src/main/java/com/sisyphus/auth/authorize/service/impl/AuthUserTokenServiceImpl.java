@@ -39,7 +39,7 @@ public class AuthUserTokenServiceImpl extends ServiceImpl<AuthUserTokenMapper, A
     @Resource
     private AuthUserTokenMapper authUserTokenMapper;
     @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
     @Resource
     private SecurityProperties securityProperties;
 
@@ -102,7 +102,6 @@ public class AuthUserTokenServiceImpl extends ServiceImpl<AuthUserTokenMapper, A
         uacUserToken.setUpdateInfo(loginAuthDto);
         uacUserToken.setGroupId(loginAuthDto.getGroupId());
         uacUserToken.setGroupName(loginAuthDto.getGroupName());
-//        uacUserToken.setId(generateId());
         authUserTokenMapper.insert(uacUserToken);
         AuthUserTokenDTO userTokenDto = new ModelMapper().map(uacUserToken, AuthUserTokenDTO.class);
         // 存入redis数据库
