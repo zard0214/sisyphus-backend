@@ -19,6 +19,7 @@ public class MybatisMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.strictInsertFill(metaObject, "gmtCreated", () -> LocalDateTime.now(), LocalDateTime.class);
+        this.strictInsertFill(metaObject, "isDeleted", () -> 0, Integer.class);
     }
 
     @Override

@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface AuthMenuService extends IService<AuthMenu> {
 
-    List<AuthMenuVO> findByRoles(List<AuthRoleDTO> authRoles);
+    List<AuthMenuVO> findMenuTreeByRoles(List<AuthRoleDTO> authRoles);
 }

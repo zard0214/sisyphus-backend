@@ -29,7 +29,7 @@ public class AuthMenuServiceImpl extends ServiceImpl<AuthMenuMapper, AuthMenu> i
     private AuthMenuMapper authMenuMapper;
 
     @Override
-    public List<AuthMenuVO> findByRoles(List<AuthRoleDTO> authRoles) {
+    public List<AuthMenuVO> findMenuTreeByRoles(List<AuthRoleDTO> authRoles) {
         return null;
     }
 }

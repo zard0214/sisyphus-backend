@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface AuthRoleService extends IService<AuthRole> {
 
-    List<AuthRoleDTO> findByUserId(Long id);
+    List<AuthRoleDTO> findByUserId(Long userId);
 }

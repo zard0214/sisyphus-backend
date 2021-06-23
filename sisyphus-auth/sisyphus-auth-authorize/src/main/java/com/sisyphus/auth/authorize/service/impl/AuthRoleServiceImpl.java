@@ -31,7 +31,7 @@ public class AuthRoleServiceImpl extends ServiceImpl<AuthRoleMapper, AuthRole> i
     private AuthRoleMapper authRoleMapper;
 
     @Override
-    public List<AuthRoleDTO> findByUserId(Long id) {
-        return null;
+    public List<AuthRoleDTO> findByUserId(Long userId) {
+        return authRoleMapper.findByUserId(userId);
     }
 }

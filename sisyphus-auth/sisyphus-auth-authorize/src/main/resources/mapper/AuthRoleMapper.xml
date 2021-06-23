@@ -8,10 +8,32 @@
         <result column="role_code" jdbcType="VARCHAR" property="roleCode"/>
         <result column="data_scope" jdbcType="VARCHAR" property="dataScope"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="creator_id" jdbcType="BIGINT" property="creatorId"/>
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
+        <result column="last_operator" jdbcType="VARCHAR" property="lastOperator"/>
+        <result column="last_operator_id" jdbcType="BIGINT" property="lastOperatorId"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status
+        ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status,
+        ${alias}.remark, ${alias}.creator, ${alias}.creator_id, ${alias}.gmt_created, ${alias}.last_operator,
+        ${alias}.last_operator_id, ${alias}.gmt_modified,
     </sql>
+
+    <select id="findByUserId" resultType="com.sisyphus.auth.authorize.model.dto.AuthRoleDTO">
+        select
+        <include refid="Base_Column_List">
+            <property name="alias" value="r"></property>
+        </include>
+        from
+        s_auth_role r
+        left join s_auth_user_role ur on ur.role_id = r.id
+        where
+        ur.user_id = #{userId,jdbcType=VARCHAR}
+    </select>
 
 </mapper>

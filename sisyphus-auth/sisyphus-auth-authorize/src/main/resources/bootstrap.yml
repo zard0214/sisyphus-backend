@@ -38,6 +38,13 @@ management:
       exposure:
         include: "*"
 sisyphus:
+  tenant:
+    enable: true
+    ignoreTables:
+      - s_auth_tenant
+      - s_auth_user
+      - s_auth_token
+    column: tenant_id
   token:
     interceptor:
       enable: true

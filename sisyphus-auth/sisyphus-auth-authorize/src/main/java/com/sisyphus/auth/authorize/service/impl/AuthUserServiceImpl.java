@@ -23,7 +23,6 @@ import com.sisyphus.common.base.dto.LoginAuthDTO;
 import com.sisyphus.provider.uac.api.model.dto.UacLogDTO;
 import com.sisyphus.provider.uac.api.service.UacLogDubboApi;
 import eu.bitwalker.useragentutils.UserAgent;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.modelmapper.ModelMapper;
@@ -104,12 +103,15 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
             throw new BizException(ErrorCodeEnum.UAC10011002, loginName);
         }
         LoginAuthDTO loginAuthDTO = new ModelMapper().map(authUserDTO, LoginAuthDTO.class);
-        List<AuthRoleDTO> authRoles = authRoleService.findByUserId(authUserDTO.getId());
+
         List<AuthMenuVO> authMenus = null;
+        List<AuthRoleDTO> authRoles = null;
+
+        authRoles = authRoleService.findByUserId(authUserDTO.getId());
         if (ObjectUtil.isEmpty(authUserDTO)) {
             log.info("找不到用户角色 userId={}", authUserDTO.getId());
         }else{
-            authMenus = authMenuService.findByRoles(authRoles);
+            authMenus = authMenuService.findMenuTreeByRoles(authRoles);
         }
         LoginRespDTO loginRespDTO = new LoginRespDTO(loginAuthDTO, authMenus, authRoles);
         return loginRespDTO;
