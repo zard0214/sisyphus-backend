@@ -1,8 +1,10 @@
 package com.sisyphus.auth.authorize.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import com.sisyphus.common.support.enums.LogTypeEnum;
 import com.sisyphus.common.support.util.RequestUtil;
 import com.sisyphus.auth.authorize.mapper.AuthUserMapper;
 import com.sisyphus.auth.authorize.model.SecurityUser;
@@ -15,6 +17,9 @@ import com.sisyphus.auth.authorize.service.AuthUserService;
 import com.sisyphus.auth.authorize.service.AuthUserTokenService;
 import com.sisyphus.auth.authorize.uitls.SecurityUtils;
 import com.sisyphus.common.base.dto.LoginAuthDTO;
+import com.sisyphus.provider.uac.api.model.dto.UacLogDTO;
+import com.sisyphus.provider.uac.api.service.UacLogDubboApi;
+import com.sisyphus.provider.udc.api.service.UdcExceptionLogDubboApi;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -48,6 +53,8 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
     private AuthUserMapper authUserMapper;
     @Resource
     private TaskExecutor taskExecutor;
+    @Reference(check = false)
+    private UacLogDubboApi uacLogDubboApi;
 
     @Override
     public AuthUserDTO findByPhone(String phone) {
@@ -128,17 +135,17 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
         taskExecutor.execute(() -> this.updateUser(uacUser));
 
         // 记录操作日志
-//        UacLog log = new UacLog();
-//        log.setGroupId(principal.getGroupId());
-//        log.setGroupName(principal.getGroupName());
-//        log.setIp(remoteAddr);
-//        log.setLocation(remoteLocation);
-//        log.setOs(os);
-//        log.setBrowser(browser);
-//        log.setRequestUrl(requestURI);
-//        log.setLogType(LogTypeEnum.LOGIN_LOG.getType());
-//        log.setLogName(LogTypeEnum.LOGIN_LOG.getName());
-//        taskExecutor.execute(() -> uacLogService.saveLog(log, loginAuthDto));
+        UacLogDTO log = new UacLogDTO();
+        log.setGroupId(principal.getGroupId());
+        log.setGroupName(principal.getGroupName());
+        log.setIp(remoteAddr);
+        log.setLocation(remoteLocation);
+        log.setOs(os);
+        log.setBrowser(browser);
+        log.setRequestUrl(requestURI);
+        log.setLogType(LogTypeEnum.LOGIN_LOG.getType());
+        log.setLogName(LogTypeEnum.LOGIN_LOG.getName());
+        taskExecutor.execute(() -> uacLogDubboApi.saveUacLog(log, loginAuthDto));
     }
 
     @Override

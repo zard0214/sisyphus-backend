@@ -17,3 +17,5 @@
 | :-----| ----:| ----:
 | sisyphus-gateway | 8081 |  8001 |
 | sisyphus-auth-authorize | 8082 |  8002 |
+| sisyphus-provider-uac | 8083 |  8003 |
+| sisyphus-provider-udc | 8084 |  8004 |

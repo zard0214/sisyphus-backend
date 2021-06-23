@@ -10,12 +10,16 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(
+        scanBasePackages = {
+                "com.sisyphus.common.support",
+                "com.sisyphus.provider.udc.service",
+        },
         exclude = {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,
                 MybatisAutoConfiguration.class})
 @EnableDiscoveryClient
 @MapperScan(basePackages = {
-        "com.sisyphus.provide.udc.mapper",
+        "com.sisyphus.provider.udc.mapper",
 })
 @EnableDubboConfiguration
 public class SisyphusProviderUdcApplication {

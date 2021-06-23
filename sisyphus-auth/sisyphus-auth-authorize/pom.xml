@@ -27,6 +27,14 @@
                     <artifactId>jsr305</artifactId>
                     <groupId>com.google.code.findbugs</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>HdrHistogram</artifactId>
+                    <groupId>org.hdrhistogram</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
 
@@ -76,6 +84,24 @@
             <groupId>com.saas.sisyphus.auth</groupId>
             <artifactId>sisyphus-auth-pc</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.saas.sisyphus.provider.api</groupId>
+            <artifactId>sisyphus-provider-uac-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
