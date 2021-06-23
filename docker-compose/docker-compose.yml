@@ -2,6 +2,7 @@ version : '3'
 services:
   nginx:
     image: nginx
+    container_name: nginx
     ports:
       - 8080:8080
       - 80:80
@@ -54,7 +55,6 @@ services:
   sisphus_mysql:
     container_name: sisphus_mysql
     image: mysql:5.7.31
-    restart: always
     ports:
       - 3307:3306
     privileged: true
@@ -74,7 +74,6 @@ services:
   redis:
     container_name: redis_1
     image: redis:alpine
-    restart: always
     ports:
       - 6379:6379
     env_file: .env
@@ -87,7 +86,6 @@ services:
   zookeeper_1:
     container_name: zookeeper_1
     image: zookeeper:latest
-    restart: always
     ports:
       - 2181:2181
     env_file: .env
@@ -100,7 +98,6 @@ services:
   zookeeper_2:
     container_name: zookeeper_2
     image: zookeeper:latest
-    restart: always
     ports:
       - 2182:2181
     env_file: .env
@@ -113,7 +110,6 @@ services:
   zookeeper_3:
     container_name: zookeeper_3
     image: zookeeper:latest
-    restart: always
     ports:
       - 2183:2181
     env_file: .env
@@ -123,29 +119,29 @@ services:
       backend:
         aliases:
           - zookeeper_3
-  sentinel-dashboard:
-    image: registry.cn-hangzhou.aliyuncs.com/kancy/sentinel-dashboard-dynamic:1.7.2-beta
-    container_name: sentinel-dashboard
-    restart: on-failure
-    ports:
-      - "8021:8080"
-      - "8719:8719"
-    environment:
-      - "JAVA_OPTS=-Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -Dcsp.sentinel.api.port=8719"
-    networks:
-      backend:
-        aliases:
-          - sentinel-dashboard
-  dubbo-admin:
-    image: chenchuxin/dubbo-admin
-    container_name: dubbo-admin
-    depends_on:
-      - zookeeper_1
-    ports:
-      - 7001:8080
-    networks:
-      backend:
-        aliases:
-          - dubbo-admin
+#  sentinel-dashboard:
+#    image: registry.cn-hangzhou.aliyuncs.com/kancy/sentinel-dashboard-dynamic:1.7.2-beta
+#    container_name: sentinel-dashboard
+#    restart: on-failure
+#    ports:
+#      - "8021:8080"
+#      - "8719:8719"
+#    environment:
+#      - "JAVA_OPTS=-Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -Dcsp.sentinel.api.port=8719"
+#    networks:
+#      backend:
+#        aliases:
+#          - sentinel-dashboard
+#  dubbo-admin:
+#    image: chenchuxin/dubbo-admin
+#    container_name: dubbo-admin
+#    depends_on:
+#      - zookeeper_1
+#    ports:
+#      - 7001:8080
+#    networks:
+#      backend:
+#        aliases:
+#          - dubbo-admin
 networks:
   backend:

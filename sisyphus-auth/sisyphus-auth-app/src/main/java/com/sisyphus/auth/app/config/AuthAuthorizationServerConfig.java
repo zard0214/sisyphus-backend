@@ -56,26 +56,13 @@ public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurer
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        InMemoryClientDetailsServiceBuilder inMemory = clients.inMemory();
-        OAuth2ClientProperties[] clientsInCustom = securityProperties.getOauth2().getClients();
-        for (OAuth2ClientProperties p : clientsInCustom) {
-            inMemory.withClient(p.getClientId())
-                    .secret(p.getClientSecret())
-                    .redirectUris(p.getRedirectUris())
-                    .authorizedGrantTypes(p.getAuthorizedGrantTypes())
-                    .accessTokenValiditySeconds(p.getAccessTokenValiditySeconds())
-                    .scopes(p.getScopes());
-        }
+        clients.withClientDetails(restClientDetailsService);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.authenticationManager(this.authenticationManager);
         endpoints.tokenStore(tokenStore);
-        /**
-         * 私有方法，但是在里面调用了accessTokenEnhancer.enhance所以这里使用链
-         * @see DefaultTokenServices#createAccessToken(org.springframework.security.oauth2.provider.OAuth2Authentication, org.springframework.security.oauth2.common.OAuth2RefreshToken)
-         */
         if (jwtAccessTokenConverter != null && jwtTokenEnhancer != null) {
             TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
             List<TokenEnhancer> enhancers = new ArrayList<>();
@@ -90,7 +77,7 @@ public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurer
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         // 这里使用什么密码需要 根据上面配置client信息里面的密码类型决定
         // 目前上面配置的是无加密的密码
         security.passwordEncoder(NoOpPasswordEncoder.getInstance());

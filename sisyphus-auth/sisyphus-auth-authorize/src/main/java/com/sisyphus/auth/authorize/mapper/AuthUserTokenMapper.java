@@ -1,7 +1,7 @@
 package com.sisyphus.auth.authorize.mapper;
 
 import com.sisyphus.auth.authorize.model.domain.AuthUserToken;
-import com.sisphus.common.support.mybatis.IMapper;
+import com.sisyphus.common.support.mybatis.IMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

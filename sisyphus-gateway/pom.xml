@@ -173,6 +173,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.saas.sisyphus.provider.api</groupId>
+            <artifactId>sisyphus-provider-udc-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

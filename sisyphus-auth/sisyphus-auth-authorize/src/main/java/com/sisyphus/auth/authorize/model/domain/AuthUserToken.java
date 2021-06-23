@@ -106,13 +106,13 @@ public class AuthUserToken extends BaseDO {
      * 访问token的生效时间(秒)
      */
     @TableField(value = "access_token_validity")
-    private String accessTokenValidity;
+    private Integer accessTokenValidity;
 
     /**
      * 刷新token的生效时间(秒)
      */
     @TableField(value = "refresh_token_validity")
-    private String refreshTokenValidity;
+    private Integer refreshTokenValidity;
 
     /**
      * 状态 0 在线 10已刷新 20 离线
@@ -137,6 +137,6 @@ public class AuthUserToken extends BaseDO {
      * 组织名称
      */
     @TableField(value = "group_name")
-    private Long groupName;
+    private String groupName;
 }
 

@@ -1,4 +1,4 @@
-package com.sisphus.common.support;
+package com.sisyphus.common.support;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

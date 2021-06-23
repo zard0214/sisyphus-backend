@@ -1,4 +1,4 @@
-package com.sisyphus.auth.authorize.handler;
+package com.sisyphus.gateway.handler;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.sisyphus.common.base.enums.ErrorCodeEnum;

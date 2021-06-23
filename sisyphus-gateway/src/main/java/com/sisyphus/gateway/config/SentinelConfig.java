@@ -60,7 +60,7 @@ public class SentinelConfig {
     private void initGatewayRules() {
          Set<GatewayFlowRule> rules = new HashSet<>();
          rules.add(new GatewayFlowRule("sisyphus-authorize")
-                .setCount(1)
+                .setCount(100)
                 .setIntervalSec(1)
         );
         GatewayRuleManager.loadRules(rules);

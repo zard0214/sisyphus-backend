@@ -1,4 +1,4 @@
-package com.sisphus.common.support.util;
+package com.sisyphus.common.support.util;
 
 import com.sisyphus.common.base.constant.GlobalConstant;
 import com.sisyphus.common.base.enums.ErrorCodeEnum;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -90,9 +91,8 @@ public class RequestUtil {
      *
      * @return the auth header
      */
-    public static String getAuthHeader(HttpServletRequest request) {
-
-        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+    public static String getAuthHeader(ServerHttpRequest request) {
+        String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if (StringUtils.isEmpty(authHeader)) {
             throw new BizException(ErrorCodeEnum.UAC10011040);
         }

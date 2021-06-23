@@ -1,4 +1,4 @@
-package com.sisphus.common.support.base;
+package com.sisyphus.common.support.base;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

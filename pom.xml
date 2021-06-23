@@ -38,6 +38,8 @@
         <flyway-core.version>7.9.0</flyway-core.version>
         <maven-plugin.version>2.4.5</maven-plugin.version>
         <hutool.version>3.0.7</hutool.version>
+        <userAgentUtils.version>1.20</userAgentUtils.version>
+        <modelmapper.version>2.3.8</modelmapper.version>
         <spring.security.version>4.2.20.RELEASE</spring.security.version>
         <spring.social.version>1.1.6.RELEASE</spring.social.version>
         <spring.security.starte.version>2.3.1.RELEASE</spring.security.starte.version>
@@ -406,6 +408,18 @@
                 <version>${hutool.version}</version>
             </dependency>
             <!-- hutool -->
+
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${userAgentUtils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

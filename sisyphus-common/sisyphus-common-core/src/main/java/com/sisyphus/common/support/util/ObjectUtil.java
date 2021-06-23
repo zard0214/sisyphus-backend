@@ -1,4 +1,4 @@
-package com.sisphus.common.support.util;
+package com.sisyphus.common.support.util;
 
 import java.util.Collection;
 import java.util.Map;

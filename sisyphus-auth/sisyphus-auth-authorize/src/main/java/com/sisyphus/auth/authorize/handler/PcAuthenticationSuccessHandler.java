@@ -1,9 +1,10 @@
 package com.sisyphus.auth.authorize.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sisyphus.auth.authorize.model.SecurityUser;
+import com.sisyphus.auth.authorize.service.AuthUserService;
 import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.properties.SecurityProperties;
-import com.sisyphus.common.base.wapper.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +15,7 @@ import org.springframework.security.oauth2.common.exceptions.UnapprovedClientAut
 import org.springframework.security.oauth2.provider.*;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -42,6 +44,9 @@ public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
     @Resource
     private AuthorizationServerTokenServices authorizationServerTokenServices;
+
+    @Resource
+    private AuthUserService authUserService;
 
     /**
      * @param request
@@ -77,12 +82,18 @@ public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHand
             throw new UnapprovedClientAuthenticationException("clientSecret不匹配:" + clientId);
         }
 
-        TokenRequest tokenRequest = new TokenRequest(MapUtils.EMPTY_SORTED_MAP, clientId, clientDetails.getScope(), "costom");
+        TokenRequest tokenRequest = new TokenRequest(MapUtils.EMPTY_SORTED_MAP, clientId, clientDetails.getScope(),
+                "refresh_token");
         OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
 
         OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
 
         OAuth2AccessToken accessToken = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
+        SecurityUser principal = (SecurityUser) authentication.getPrincipal();
+        authUserService.handlerLoginData(accessToken, principal, request);
+
+        log.info("用户【 {} 】记录登录日志", principal.getUsername());
+
         response.setContentType("application/json;charset=UTF-8");
         SecurityResult result = SecurityResult.ok(accessToken);
         response.getWriter().write(objectMapper.writeValueAsString(result));

@@ -13,6 +13,10 @@ spring:
         group: SISYPHUS
         server-addr: 172.17.0.8:8848
         service: sisyphus-uac
+sisyphus:
+  token:
+    interceptor:
+      enable: true
 management:
   endpoints:
     web:

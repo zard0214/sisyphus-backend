@@ -1,4 +1,4 @@
-package com.sisphus.common.support.mybatis;
+package com.sisyphus.common.support.mybatis;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.mapper.Mapper;

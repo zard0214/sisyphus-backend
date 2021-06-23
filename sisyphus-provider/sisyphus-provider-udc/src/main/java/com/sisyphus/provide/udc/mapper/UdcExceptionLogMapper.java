@@ -1,6 +1,6 @@
 package com.sisyphus.provide.udc.mapper;
 
-import com.sisphus.common.support.mybatis.IMapper;
+import com.sisyphus.common.support.mybatis.IMapper;
 import com.sisyphus.provide.udc.model.domain.UdcExceptionLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

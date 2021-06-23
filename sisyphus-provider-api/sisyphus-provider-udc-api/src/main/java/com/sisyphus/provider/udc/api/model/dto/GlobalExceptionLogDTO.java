@@ -1,13 +1,12 @@
 package com.sisyphus.provider.udc.api.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sisphus.common.support.util.ThreadLocalMap;
+import com.sisyphus.common.support.util.ThreadLocalMap;
 import com.sisyphus.common.base.constant.GlobalConstant;
 import com.sisyphus.common.base.dto.BaseDTO;
 import com.sisyphus.common.base.dto.LoginAuthDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;

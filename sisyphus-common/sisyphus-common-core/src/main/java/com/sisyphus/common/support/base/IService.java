@@ -1,4 +1,4 @@
-package com.sisphus.common.support.base;
+package com.sisyphus.common.support.base;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

@@ -1,6 +1,5 @@
-package com.sisyphus.auth.authorize.model.dto;
+package com.sisyphus.common.base.dto;
 
-import com.sisyphus.common.base.dto.BaseDTO;
 import lombok.Data;
 
 import java.util.Date;
@@ -80,12 +79,12 @@ public class AuthUserTokenDTO extends BaseDTO {
     /**
      * 访问token的生效时间(秒)
      */
-    private String accessTokenValidity;
+    private Integer accessTokenValidity;
 
     /**
      * 刷新token的生效时间(秒)
      */
-    private String refreshTokenValidity;
+    private Integer refreshTokenValidity;
 
     /**
      * 状态 0 在线 10已刷新 20 离线
@@ -105,5 +104,5 @@ public class AuthUserTokenDTO extends BaseDTO {
     /**
      * 组织名称
      */
-    private Long groupName;
+    private String groupName;
 }

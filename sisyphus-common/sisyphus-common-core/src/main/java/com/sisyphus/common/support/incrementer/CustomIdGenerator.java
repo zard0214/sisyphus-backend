@@ -1,4 +1,4 @@
-package com.sisphus.common.support.incrementer;
+package com.sisyphus.common.support.incrementer;
 
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import lombok.extern.slf4j.Slf4j;
