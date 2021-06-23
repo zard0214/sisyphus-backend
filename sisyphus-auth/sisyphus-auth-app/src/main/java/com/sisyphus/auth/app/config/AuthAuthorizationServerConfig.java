@@ -1,13 +1,11 @@
 package com.sisyphus.auth.app.config;
 
-import com.sisyphus.auth.core.properties.OAuth2ClientProperties;
 import com.sisyphus.auth.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -31,9 +29,6 @@ import java.util.List;
 public class AuthAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
-
-    @Resource
-    private SecurityProperties securityProperties;
 
     @Autowired(required = false)
     public TokenStore tokenStore;

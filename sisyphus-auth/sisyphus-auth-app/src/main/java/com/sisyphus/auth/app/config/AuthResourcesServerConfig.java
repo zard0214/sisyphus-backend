@@ -4,7 +4,6 @@ import com.sisyphus.auth.app.social.openid.OpenIdAuthenticationSecurityConfig;
 import com.sisyphus.auth.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.sisyphus.auth.core.authorize.AuthorizeConfigManager;
 import com.sisyphus.auth.core.properties.SecurityConstants;
-import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.auth.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,9 +22,6 @@ import javax.annotation.Resource;
 @Configuration
 @EnableResourceServer
 public class AuthResourcesServerConfig extends ResourceServerConfigurerAdapter {
-
-    @Resource
-    private SecurityProperties securityProperties;
 
     @Resource
     private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfigs;

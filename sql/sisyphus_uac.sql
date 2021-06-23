@@ -207,7 +207,7 @@ create table s_uac_application
 )
     comment '应用表' charset = utf8;
 
-create table s_uac_group
+create table s_auth_group
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -230,7 +230,7 @@ create table s_uac_group
 )
     comment '部门表' charset = utf8;
 
-create table s_uac_group_user
+create table s_auth_group_user
 (
     id               bigint auto_increment comment 'ID'
         primary key,

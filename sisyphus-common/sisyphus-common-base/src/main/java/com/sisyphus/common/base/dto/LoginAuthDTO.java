@@ -32,6 +32,8 @@ public class LoginAuthDTO implements Serializable {
     private String phone;
     @ApiModelProperty(value = "性别")
     private Integer gender;
+    @ApiModelProperty(value = "租户id")
+    private Long tenantId;
 
     public LoginAuthDTO() {
     }

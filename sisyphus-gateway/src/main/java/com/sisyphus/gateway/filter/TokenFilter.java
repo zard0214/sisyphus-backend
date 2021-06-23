@@ -33,6 +33,7 @@ public class TokenFilter implements WebFilter {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
+    private static final String MATE_TENANT_ID = "TenantId";
     private static final String OPTIONS = "OPTIONS";
     private static final String AUTH_PATH1 = "/auth";
     private static final String AUTH_LOGOUT_PATH1 = "/user/logout";
@@ -62,6 +63,11 @@ public class TokenFilter implements WebFilter {
         if (loginUser == null) {
             log.error("获取用户信息失败, 不允许操作");
             throw new GatewayException("获取用户信息失败, 不允许操作");
+        }
+        if(request.getHeaders().getFirst(MATE_TENANT_ID) != null){
+            Long tenantId = Long.valueOf(request.getHeaders().getFirst(MATE_TENANT_ID));
+            log.info("<== preHandle - 权限拦截器.  tenantId={}", tenantId);
+            loginUser.setTenantId(tenantId);
         }
         log.info("<== preHandle - 权限拦截器.  loginUser={}", loginUser);
         ThreadLocalMap.put(GlobalConstant.Sys.TOKEN_AUTH_DTO, loginUser);

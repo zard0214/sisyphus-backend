@@ -7,12 +7,19 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
+import com.sisyphus.auth.authorize.properties.TenantProperties;
+import com.sisyphus.common.base.constant.GlobalConstant;
+import com.sisyphus.common.base.dto.LoginAuthDTO;
+import com.sisyphus.common.support.util.ThreadLocalMap;
+import net.sf.jsqlparser.expression.NullValue;
+import net.sf.jsqlparser.expression.StringValue;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.LongValue;
+
+import javax.annotation.Resource;
 
 /**
  * @author zhecheng.zhao
@@ -22,9 +29,33 @@ import net.sf.jsqlparser.expression.LongValue;
 @MapperScan("com.sisyphus.auth.authorize.mapper")
 public class MybatisPlusConfig {
 
+    @Resource
+    private TenantProperties tenantProperties;
+
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {
+            @Override
+            public String getTenantIdColumn() {
+                return tenantProperties.getColumn();
+            }
+            @Override
+            public Expression getTenantId() {
+                LoginAuthDTO userAuth = (LoginAuthDTO) ThreadLocalMap.get(GlobalConstant.Sys.TOKEN_AUTH_DTO);
+                if (userAuth != null) {
+                    return new StringValue(String.valueOf(userAuth.getTenantId()));
+                }
+                return new NullValue();
+            }
+            @Override
+            public boolean ignoreTable(String tableName) {
+                return tenantProperties.getIgnoreTables().stream().anyMatch(
+                        (t) -> t.equalsIgnoreCase(tableName)
+                );
+            }
+        }));
+
         //乐观锁
         interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
         //防止全表更新与删除

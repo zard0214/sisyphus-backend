@@ -4,7 +4,13 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import com.sisyphus.auth.authorize.model.dto.AuthRoleDTO;
+import com.sisyphus.auth.authorize.model.vo.AuthMenuVO;
+import com.sisyphus.auth.authorize.service.*;
+import com.sisyphus.common.base.enums.ErrorCodeEnum;
+import com.sisyphus.common.base.exception.BizException;
 import com.sisyphus.common.support.enums.LogTypeEnum;
+import com.sisyphus.common.support.util.ObjectUtil;
 import com.sisyphus.common.support.util.RequestUtil;
 import com.sisyphus.auth.authorize.mapper.AuthUserMapper;
 import com.sisyphus.auth.authorize.model.SecurityUser;
@@ -12,17 +18,15 @@ import com.sisyphus.auth.authorize.model.domain.AuthAction;
 import com.sisyphus.auth.authorize.model.domain.AuthUser;
 import com.sisyphus.auth.authorize.model.dto.AuthUserDTO;
 import com.sisyphus.auth.authorize.model.dto.LoginRespDTO;
-import com.sisyphus.auth.authorize.service.AuthActionService;
-import com.sisyphus.auth.authorize.service.AuthUserService;
-import com.sisyphus.auth.authorize.service.AuthUserTokenService;
 import com.sisyphus.auth.authorize.uitls.SecurityUtils;
 import com.sisyphus.common.base.dto.LoginAuthDTO;
 import com.sisyphus.provider.uac.api.model.dto.UacLogDTO;
 import com.sisyphus.provider.uac.api.service.UacLogDubboApi;
-import com.sisyphus.provider.udc.api.service.UdcExceptionLogDubboApi;
 import eu.bitwalker.useragentutils.UserAgent;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,6 +49,10 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> implements AuthUserService {
 
+    @Resource
+    private AuthMenuService authMenuService;
+    @Resource
+    private AuthRoleService authRoleService;
     @Resource
     private AuthUserTokenService authUserTokenService;
     @Resource
@@ -91,16 +99,20 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
             Preconditions.checkArgument(StringUtils.isNotEmpty(loginName), "操作超时, 请重新登录");
         }
         AuthUserDTO authUserDTO = this.findByLoginName(loginName);
-//        if (PublicUtil.isEmpty(authUserDTO)) {
-//            log.info("找不到用户信息 loginName={}", loginName);
-//            throw new BizException(ErrorCodeEnum.UAC10011002, loginName);
-//        }
-//        LoginAuthDTO loginAuthDTO = new LoginAuthDTO();
-//        List<AuthMenuVO> authMenus = new LoginAuthDTO();
-//        List<AuthRoleDTO> authRoles = new LoginAuthDTO();
-//        LoginRespDTO loginRespDTO = new LoginRespDTO(loginAuthDTO, authMenus, authRoles);
-//        return loginRespDTO;
-        return new LoginRespDTO();
+        if (ObjectUtil.isEmpty(authUserDTO)) {
+            log.info("找不到用户信息 loginName={}", loginName);
+            throw new BizException(ErrorCodeEnum.UAC10011002, loginName);
+        }
+        LoginAuthDTO loginAuthDTO = new ModelMapper().map(authUserDTO, LoginAuthDTO.class);
+        List<AuthRoleDTO> authRoles = authRoleService.findByUserId(authUserDTO.getId());
+        List<AuthMenuVO> authMenus = null;
+        if (ObjectUtil.isEmpty(authUserDTO)) {
+            log.info("找不到用户角色 userId={}", authUserDTO.getId());
+        }else{
+            authMenus = authMenuService.findByRoles(authRoles);
+        }
+        LoginRespDTO loginRespDTO = new LoginRespDTO(loginAuthDTO, authMenus, authRoles);
+        return loginRespDTO;
     }
 
     @Override
@@ -123,10 +135,11 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
         uacUser.setId(userId);
         uacUser.setLastLoginTime(new Date());
         uacUser.setLastLoginLocation(remoteLocation);
+
         LoginAuthDTO loginAuthDto =
                 new LoginAuthDTO(userId, principal.getLoginName(),
                         principal.getUsername(), principal.getGroupId(),
-                        principal.getGroupName(), "email", "avatar", "phone", 1);
+                        principal.getGroupName(), "email", "avatar", "phone", 1, principal.getTenantId());
         // 记录token日志
         String accessToken = token.getValue();
         String refreshToken = token.getRefreshToken().getValue();

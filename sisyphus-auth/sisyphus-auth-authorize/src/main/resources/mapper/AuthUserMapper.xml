@@ -117,8 +117,8 @@
         </include>
         from
         s_auth_user u
-        left join s_uac_group_user gu on u.id = gu.user_id
-        left join s_uac_group g on gu.group_id = g.id
+        left join s_auth_group_user gu on u.id = gu.user_id
+        left join s_auth_group g on gu.group_id = g.id
         where u.id = #{userId}
     </select>
 

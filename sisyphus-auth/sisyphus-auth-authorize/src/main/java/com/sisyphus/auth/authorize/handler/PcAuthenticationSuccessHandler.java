@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisyphus.auth.authorize.model.SecurityUser;
 import com.sisyphus.auth.authorize.service.AuthUserService;
 import com.sisyphus.auth.core.SecurityResult;
-import com.sisyphus.auth.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -35,9 +34,6 @@ public class PcAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
     @Resource
     private ObjectMapper objectMapper;
-
-    @Resource
-    private SecurityProperties securityProperties;
 
     @Resource
     private ClientDetailsService clientDetailsService;

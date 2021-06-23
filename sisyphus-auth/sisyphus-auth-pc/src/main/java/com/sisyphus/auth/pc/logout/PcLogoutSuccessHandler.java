@@ -3,7 +3,6 @@ package com.sisyphus.auth.pc.logout;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisyphus.auth.core.SecurityResult;
 import com.sisyphus.auth.core.properties.SecurityProperties;
-import com.sisyphus.common.base.wapper.Response;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

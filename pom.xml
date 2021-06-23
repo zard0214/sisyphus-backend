@@ -86,10 +86,10 @@
         <module>sisyphus-provider</module>
         <module>sisyphus-generator</module>
 
-        <module>sisyphus-example</module>
-        <module>sisyphus-demo</module>
-        <module>sisyphus-designpattern</module>
-        <module>sisyphus-algorithm</module>
+<!--        <module>sisyphus-example</module>-->
+<!--        <module>sisyphus-demo</module>-->
+<!--        <module>sisyphus-designpattern</module>-->
+<!--        <module>sisyphus-algorithm</module>-->
     </modules>
 
     <developers>
