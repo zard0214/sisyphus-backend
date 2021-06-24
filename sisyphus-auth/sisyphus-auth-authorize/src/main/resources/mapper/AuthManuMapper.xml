@@ -14,4 +14,105 @@
         ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status
     </sql>
 
+    <sql id="Base_Where_Condition">
+        <if test="id != null and id !=''">
+            AND id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="version != null">
+            AND version = #{version,jdbcType=INTEGER}
+        </if>
+        <if test="menuCode != null and menuCode !=''">
+            AND menu_code = #{menuCode,jdbcType=VARCHAR}
+        </if>
+        <if test="menuName != null and menuName !=''">
+            AND menu_name = #{menuName,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status !=''">
+            AND status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="url != null and url !=''">
+            AND url = #{url,jdbcType=VARCHAR}
+        </if>
+        <if test="icon != null and icon !=''">
+            AND icon = #{icon,jdbcType=VARCHAR}
+        </if>
+        <if test="pid != null">
+            AND pid = #{pid,jdbcType=BIGINT}
+        </if>
+        <if test="level != null ">
+            AND level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="leaf != null">
+            AND leaf = #{leaf,jdbcType=INTEGER}
+        </if>
+        <if test="number != null">
+            AND number = #{number,jdbcType=INTEGER}
+        </if>
+        <if test="remark != null and remark !=''">
+            AND remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="creator != null and creator !=''">
+            AND creator = #{creator,jdbcType=VARCHAR}
+        </if>
+        <if test="creatorId != null and creatorId !=''">
+            AND creator_id = #{creatorId,jdbcType=BIGINT}
+        </if>
+        <if test="gmt_created != null">
+            AND gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+        </if>
+        <if test="lastOperator != null and lastOperator !=''">
+            AND last_operator = #{lastOperator,jdbcType=VARCHAR}
+        </if>
+        <if test="lastOperatorId != null and lastOperatorId !=''">
+            AND last_operator_id = #{lastOperatorId,jdbcType=BIGINT}
+        </if>
+        <if test="gmt_modified != null">
+            AND gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+        </if>
+    </sql>
+
+    <select id="findMenuVoListByUserId" resultType="com.sisyphus.auth.authorize.model.vo.AuthMenuVO">
+        SELECT
+            m.menu_code as menuCode,
+            m.menu_name as menuName,
+            m.url as url,
+            m.pid as pid,
+            m.id as id,
+            m.icon as icon
+        FROM
+            s_auth_role r,  s_auth_role_menu rm, s_auth_menu m, s_auth_user u , s_auth_user_role ur
+        WHERE
+            1=1
+          and	r.id = rm.role_id
+          and rm.menu_id = m.id
+          and u.id = ur.user_id
+          and ur.role_id = r.id
+          and u.id = #{userId,jdbcType=BIGINT}
+          and m.status='enable'
+        order by  m.level asc, m.number asc
+    </select>
+
+    <select id="listMenu" resultType="com.sisyphus.auth.authorize.model.domain.AuthMenu">
+        SELECT
+        <include refid="Base_Column_List" />
+        From
+        s_auth_menu m
+        WHERE m.id IN
+        <foreach collection="menuIdList" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectMenuList" resultMap="BaseResultMap" parameterType="com.sisyphus.auth.authorize.model.domain.AuthMenu">
+        SELECT
+        <include refid="Base_Column_List" />
+        From
+        pc_uac_menu m
+        WHERE
+        1 =1 <include refid="Base_Where_Condition" />
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+    </select>
+
 </mapper>

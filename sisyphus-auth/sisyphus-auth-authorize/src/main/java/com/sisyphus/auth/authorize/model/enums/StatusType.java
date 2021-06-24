@@ -26,7 +26,7 @@ public enum StatusType {
     /**
      * 名称
      */
-    final String name;
+    final String code;
     /**
      * 类型
      */

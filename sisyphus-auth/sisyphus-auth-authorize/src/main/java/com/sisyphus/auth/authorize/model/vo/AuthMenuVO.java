@@ -11,6 +11,13 @@ import java.util.List;
 @Data
 public class AuthMenuVO {
 
+    private Long id;
+
+    /**
+     * 父ID
+     */
+    private Long pid;
+
     /**
      * 菜单名
      */

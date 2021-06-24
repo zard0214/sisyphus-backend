@@ -111,7 +111,7 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
         if (ObjectUtil.isEmpty(authUserDTO)) {
             log.info("找不到用户角色 userId={}", authUserDTO.getId());
         }else{
-            authMenus = authMenuService.findMenuTreeByRoles(authRoles);
+            authMenus = authMenuService.findMenuTreeByRoles(loginAuthDTO.getUserId(), authRoles);
         }
         LoginRespDTO loginRespDTO = new LoginRespDTO(loginAuthDTO, authMenus, authRoles);
         return loginRespDTO;

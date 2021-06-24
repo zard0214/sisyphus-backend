@@ -6,6 +6,7 @@ import com.sisyphus.auth.authorize.model.vo.AuthMenuVO;
 import com.sisyphus.common.support.service.IService;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zhecheng.zhao
@@ -13,5 +14,9 @@ import java.util.List;
  */
 public interface AuthMenuService extends IService<AuthMenu> {
 
-    List<AuthMenuVO> findMenuTreeByRoles(List<AuthRoleDTO> authRoles);
+    List<AuthMenuVO> findMenuTreeByRoles(Long userId, List<AuthRoleDTO> authRoles);
+
+    List<AuthMenu> getMenuList(final Set<Long> menuIdList);
+
+    List<AuthMenu> selectMenuList(AuthMenu authMenu);
 }
