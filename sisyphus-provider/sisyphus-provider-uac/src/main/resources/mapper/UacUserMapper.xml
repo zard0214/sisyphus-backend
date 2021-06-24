@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisyphus.provider.uac.mapper.UacUserMapper">
+    <resultMap id="BaseResultMap" type="com.sisyphus.provider.uac.model.dto.UacUserDTO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
+        <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd"/>
+        <result column="user_code" jdbcType="VARCHAR" property="userCode"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="user_source" jdbcType="VARCHAR" property="userSource"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+        <result column="last_login_location" jdbcType="VARCHAR" property="lastLoginLocation"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="pwd_error_count" jdbcType="INTEGER" property="pwdErrorCount"/>
+        <result column="pwd_error_time" jdbcType="TIMESTAMP" property="pwdErrorTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ${alias}.id, ${alias}.version, ${alias}.login_name, ${alias}.login_pwd, ${alias}.user_code, ${alias}.user_name, ${alias}.phone, ${alias}.email,
+        ${alias}.status, ${alias}.user_source, ${alias}.type, ${alias}.last_login_ip, ${alias}.last_login_location, ${alias}.last_login_time,
+        ${alias}.remark, ${alias}.pwd_error_count, ${alias}.pwd_error_time
+    </sql>
+
+</mapper>
