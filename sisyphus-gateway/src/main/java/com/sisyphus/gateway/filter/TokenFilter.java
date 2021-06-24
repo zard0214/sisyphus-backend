@@ -37,6 +37,7 @@ public class TokenFilter implements WebFilter {
     private static final String OPTIONS = "OPTIONS";
     private static final String AUTH_PATH1 = "/auth";
     private static final String AUTH_LOGOUT_PATH1 = "/user/logout";
+    private static final String AUTH_LOGINFO_PATH1 = "/user/loginInfo";
     private static final String AUTH_PATH2 = "/oauth";
     private static final String AUTH_PATH3 = "/error";
     private static final String AUTH_PATH4 = "/api";
@@ -47,7 +48,8 @@ public class TokenFilter implements WebFilter {
         String uri = request.getURI().toString();
         log.info("<== preHandle - 权限拦截器.  url={}", uri);
         if (uri.contains(AUTH_PATH1)
-                && !uri.contains(AUTH_LOGOUT_PATH1)  || uri.contains(AUTH_PATH2) || uri.contains(AUTH_PATH3) || uri.contains(AUTH_PATH4)) {
+                && !uri.contains(AUTH_LOGOUT_PATH1)
+                && !uri.contains(AUTH_LOGINFO_PATH1)  || uri.contains(AUTH_PATH2) || uri.contains(AUTH_PATH3) || uri.contains(AUTH_PATH4)) {
             log.info("<== preHandle - 配置URL不走认证.  url={}", uri);
             return wfc.filter(swe);
         }
@@ -68,6 +70,7 @@ public class TokenFilter implements WebFilter {
             Long tenantId = Long.valueOf(request.getHeaders().getFirst(MATE_TENANT_ID));
             log.info("<== preHandle - 权限拦截器.  tenantId={}", tenantId);
             loginUser.setTenantId(tenantId);
+            ThreadLocalMap.put(GlobalConstant.Sys.TENANT_ID, tenantId);
         }
         log.info("<== preHandle - 权限拦截器.  loginUser={}", loginUser);
         ThreadLocalMap.put(GlobalConstant.Sys.TOKEN_AUTH_DTO, loginUser);

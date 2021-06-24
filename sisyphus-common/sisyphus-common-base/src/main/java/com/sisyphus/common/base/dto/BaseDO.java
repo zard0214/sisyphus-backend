@@ -88,7 +88,7 @@ public class BaseDO implements Serializable {
             this.gmtCreated = (this.gmtModified = new Date());
         }
         this.lastOperatorId = user.getUserId();
-        this.lastOperator = user.getLoginName() == null ? user.getLoginName() : user.getNickName();
+        this.lastOperator = user.getLoginName() == null ? user.getLoginName() : user.getUserName();
         this.gmtModified = new Date();
     }
 }

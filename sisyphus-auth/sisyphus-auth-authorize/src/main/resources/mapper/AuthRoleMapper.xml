@@ -21,7 +21,7 @@
     <sql id="Base_Column_List">
         ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status,
         ${alias}.remark, ${alias}.creator, ${alias}.creator_id, ${alias}.gmt_created, ${alias}.last_operator,
-        ${alias}.last_operator_id, ${alias}.gmt_modified,
+        ${alias}.last_operator_id, ${alias}.gmt_modified
     </sql>
 
     <select id="findByUserId" resultType="com.sisyphus.auth.authorize.model.dto.AuthRoleDTO">

@@ -75,7 +75,7 @@ public class AuthMenuServiceImpl extends ServiceImpl<AuthMenuMapper, AuthMenu> i
             menuList = new ArrayList<>(menuSet);
         }
         List<AuthMenuVO> list = getMenuVo(menuList);
-        if (!CollectionUtils.isEmpty(menuVoList)) {
+        if (!CollectionUtils.isEmpty(list)) {
             list.addAll(menuVoList);
         }
         // 2.递归成树

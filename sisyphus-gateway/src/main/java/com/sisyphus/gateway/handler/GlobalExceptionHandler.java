@@ -95,7 +95,8 @@ public class GlobalExceptionHandler {
     public ResponseDTO exception(Exception e) {
         log.info("保存全局异常信息 ex={}", e.getMessage(), e);
         taskExecutor.execute(() -> {
-            GlobalExceptionLogDTO exceptionLogDTO = new GlobalExceptionLogDTO();
+            GlobalExceptionLogDTO exceptionLogDTO = new GlobalExceptionLogDTO().
+                    getGlobalExceptionLogDto(e, profile, applicationName);
             udcExceptionLogDubboApi.saveAndSendExceptionLog(exceptionLogDTO);
         });
         return Response.failed();

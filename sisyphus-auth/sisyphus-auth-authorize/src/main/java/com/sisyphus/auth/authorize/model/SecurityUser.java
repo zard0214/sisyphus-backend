@@ -21,7 +21,7 @@ public class SecurityUser implements UserDetails {
 
     private static final long serialVersionUID = 312263123123123L;
 
-    private static final String ENABLE = StatusType.ENABLE.getName();
+    private static final String ENABLE = StatusType.ENABLE.getCode();
 
     private Collection<GrantedAuthority> authorities;
 

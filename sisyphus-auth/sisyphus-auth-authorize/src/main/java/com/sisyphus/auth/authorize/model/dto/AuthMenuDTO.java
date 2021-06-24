@@ -53,7 +53,7 @@ public class AuthMenuDTO extends BaseDTO {
     /**
      * 父级id
      */
-    private Integer pid;
+    private Long pid;
 
     /**
      * 层级

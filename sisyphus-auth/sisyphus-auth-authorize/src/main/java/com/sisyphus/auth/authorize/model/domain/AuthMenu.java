@@ -75,7 +75,7 @@ public class AuthMenu extends BaseDO {
      * 父级id
      */
     @TableField(value = "pid")
-    private Integer pid;
+    private Long pid;
 
     /**
      * 层级

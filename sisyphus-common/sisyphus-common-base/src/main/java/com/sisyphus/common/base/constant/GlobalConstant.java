@@ -92,6 +92,11 @@ public class GlobalConstant {
         public static final Long OPER_APPLICATION_ID = 1L;
 
         /**
+         * 租户ID
+         */
+        public static final String TENANT_ID = "TENANT_ID";
+
+        /**
          * The constant MENU_ROOT.
          */
         public static final String MENU_ROOT = "root";

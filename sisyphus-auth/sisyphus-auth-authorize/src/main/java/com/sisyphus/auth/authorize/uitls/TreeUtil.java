@@ -30,7 +30,6 @@ public class TreeUtil {
 			if (menuVo.getPid() == null) {
 				continue;
 			}
-
 			if (Objects.equals(menuVo.getPid(), parentId)) {
 				recursionFn(list, menuVo);
 				returnList.add(menuVo);

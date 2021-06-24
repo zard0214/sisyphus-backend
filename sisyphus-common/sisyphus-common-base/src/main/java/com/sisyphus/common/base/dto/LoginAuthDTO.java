@@ -19,7 +19,7 @@ public class LoginAuthDTO implements Serializable {
     @ApiModelProperty(value = "登录名")
     private String loginName;
     @ApiModelProperty(value = "昵称")
-    private String nickName;
+    private String userName;
     @ApiModelProperty(value = "组织ID")
     private Long groupId;
     @ApiModelProperty(value = "组织名称")
@@ -38,10 +38,10 @@ public class LoginAuthDTO implements Serializable {
     public LoginAuthDTO() {
     }
 
-    public LoginAuthDTO(Long userId, String loginName, String nickName) {
+    public LoginAuthDTO(Long userId, String loginName, String userName) {
         this.userId = userId;
         this.loginName = loginName;
-        this.nickName = nickName;
+        this.userName = userName;
     }
 
 

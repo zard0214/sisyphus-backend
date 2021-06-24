@@ -1,5 +1,6 @@
 package com.sisyphus.auth.authorize.service;
 
+import com.arronlong.httpclientutil.exception.HttpProcessException;
 import com.sisyphus.auth.authorize.model.domain.AuthUserToken;
 import com.sisyphus.common.support.service.IService;
 import com.sisyphus.common.base.dto.AuthUserTokenDTO;
@@ -35,4 +36,13 @@ public interface AuthUserTokenService extends IService<AuthUserToken> {
      * @param request
      */
     void saveUserToken(String accessToken, String refreshToken, LoginAuthDTO loginAuthDto, HttpServletRequest request);
+
+    /**
+     * 刷新token
+     * @param accessToken
+     * @param refreshToken
+     * @param request
+     * @return
+     */
+    String refreshToken(String accessToken, String refreshToken, HttpServletRequest request) throws HttpProcessException;
 }

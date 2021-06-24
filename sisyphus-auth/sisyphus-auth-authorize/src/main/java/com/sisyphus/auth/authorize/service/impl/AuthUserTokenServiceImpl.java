@@ -1,5 +1,11 @@
 package com.sisyphus.auth.authorize.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.arronlong.httpclientutil.HttpClientUtil;
+import com.arronlong.httpclientutil.common.HttpConfig;
+import com.arronlong.httpclientutil.common.HttpHeader;
+import com.arronlong.httpclientutil.exception.HttpProcessException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sisyphus.common.support.util.RedisKeyUtil;
@@ -16,13 +22,18 @@ import com.sisyphus.auth.core.properties.SecurityProperties;
 import com.sisyphus.common.base.dto.LoginAuthDTO;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.Header;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -42,6 +53,8 @@ public class AuthUserTokenServiceImpl extends ServiceImpl<AuthUserTokenMapper, A
     private RedisTemplate<Object, Object> redisTemplate;
     @Resource
     private SecurityProperties securityProperties;
+    @Value("${sisyphus.auth.refresh-token-url}")
+    private String refreshTokenUrl;
 
     @Override
     public AuthUserTokenDTO getByAccessToken(String accessToken) {
@@ -98,7 +111,7 @@ public class AuthUserTokenServiceImpl extends ServiceImpl<AuthUserTokenMapper, A
         uacUserToken.setRefreshTokenValidity(refreshTokenValiditySeconds);
         uacUserToken.setStatus(UserTokenStatusEnum.ON_LINE.getStatus());
         uacUserToken.setUserId(userId);
-        uacUserToken.setUserName(loginAuthDto.getNickName());
+        uacUserToken.setUserName(loginAuthDto.getUserName());
         uacUserToken.setUpdateInfo(loginAuthDto);
         uacUserToken.setGroupId(loginAuthDto.getGroupId());
         uacUserToken.setGroupName(loginAuthDto.getGroupName());
@@ -106,6 +119,36 @@ public class AuthUserTokenServiceImpl extends ServiceImpl<AuthUserTokenMapper, A
         AuthUserTokenDTO userTokenDto = new ModelMapper().map(uacUserToken, AuthUserTokenDTO.class);
         // 存入redis数据库
         updateRedisUserToken(accessToken, accessTokenValidateSeconds, userTokenDto);
+    }
+
+    @Override
+    public String refreshToken(String accessToken, String refreshToken, HttpServletRequest request) throws HttpProcessException {
+        String token;
+        Map<String, Object> map = new HashMap<>(2);
+        map.put("grant_type", "refresh_token");
+        map.put("refresh_token", refreshToken);
+
+        //插件式配置请求参数（网址、请求参数、编码、client）
+        Header[] headers = HttpHeader.custom().contentType(HttpHeader.Headers.APP_FORM_URLENCODED).authorization(request.getHeader(HttpHeaders.AUTHORIZATION)).build();
+        HttpConfig config = HttpConfig.custom().headers(headers).url(refreshTokenUrl).map(map);
+        token = HttpClientUtil.post(config);
+        JSONObject jsonObj = JSON.parseObject(token);
+        String accessTokenNew = (String) jsonObj.get("access_token");
+        String refreshTokenNew = (String) jsonObj.get("refresh_token");
+        String loginName = (String) jsonObj.get("loginName");
+        // 更新本次token数据
+        AuthUserTokenDTO tokenDto = this.getByAccessToken(accessToken);
+        tokenDto.setStatus(UserTokenStatusEnum.ON_REFRESH.getStatus());
+        AuthUserDTO authUser = authUserService.findByLoginName(loginName);
+
+        LoginAuthDTO loginAuthDTO =
+                new LoginAuthDTO(authUser.getId(), authUser.getLoginName(),
+                        authUser.getUserName(), authUser.getGroupId(),
+                        authUser.getGroupName(), "email", "avatar", "phone", 1, 1L);
+        this.updateUacUserToken(tokenDto, loginAuthDTO);
+        // 创建刷新token
+        this.saveUserToken(accessTokenNew, refreshTokenNew, loginAuthDTO, request);
+        return token;
     }
 
     private void updateRedisUserToken(String accessToken, int accessTokenValidateSeconds, AuthUserTokenDTO authUserTokenDTO) {

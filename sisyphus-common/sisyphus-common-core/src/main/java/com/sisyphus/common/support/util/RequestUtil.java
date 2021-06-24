@@ -3,6 +3,7 @@ package com.sisyphus.common.support.util;
 import com.sisyphus.common.base.constant.GlobalConstant;
 import com.sisyphus.common.base.enums.ErrorCodeEnum;
 import com.sisyphus.common.base.exception.BizException;
+import com.xiaoleilu.hutool.lang.Base64;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -97,6 +99,26 @@ public class RequestUtil {
             throw new BizException(ErrorCodeEnum.UAC10011040);
         }
         return authHeader;
+    }
+
+    public static String[] extractAndDecodeHeader(String header) throws IOException {
+
+        byte[] base64Token = header.substring(6).getBytes("UTF-8");
+        byte[] decoded;
+        try {
+            decoded = Base64.decode(base64Token);
+        } catch (IllegalArgumentException e) {
+            throw new IOException("Failed to decode basic authentication token");
+        }
+
+        String token = new String(decoded, "UTF-8");
+
+        int delim = token.indexOf(GlobalConstant.Symbol.MH);
+
+        if (delim == -1) {
+            throw new IOException("Invalid basic authentication token");
+        }
+        return new String[]{token.substring(0, delim), token.substring(delim + 1)};
     }
 
 }

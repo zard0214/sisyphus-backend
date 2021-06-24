@@ -60,6 +60,7 @@
         <aspects.version>4.3.9.RELEASE</aspects.version>
         <redisson-starter.version>3.15.5</redisson-starter.version>
 <!--        <jetcache-starter.version>2.6.0.M1</jetcache-starter.version>-->
+        <httpclientutil.version>1.0</httpclientutil.version>
         <jetcache-starter.version>2.5.9</jetcache-starter.version>
         <dubbo-boot-starter.version>2.0.0</dubbo-boot-starter.version>
         <fastjson.version>1.2.38</fastjson.version>
@@ -497,6 +498,12 @@
                 <groupId>org.apache.xmlgraphics</groupId>
                 <artifactId>batik-svggen</artifactId>
                 <version>${batik.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.arronlong.httpclientutil</groupId>
+                <artifactId>httpclientutil</artifactId>
+                <version>${httpclientutil.version}</version>
             </dependency>
 
             <dependency>

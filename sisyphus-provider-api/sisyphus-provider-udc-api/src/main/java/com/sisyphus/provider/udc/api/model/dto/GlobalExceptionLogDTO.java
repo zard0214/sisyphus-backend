@@ -32,7 +32,7 @@ public class GlobalExceptionLogDTO extends BaseDTO {
     private String profile;
 
     /**
-     * 应用名称
+     * app名称
      */
     private String applicationName;
 
@@ -105,7 +105,7 @@ public class GlobalExceptionLogDTO extends BaseDTO {
             loginAuthDTO = new LoginAuthDTO(-1L, "SYSTEM_TASK", "系统任务");
         }
         this.creatorId = loginAuthDTO.getUserId();
-        this.creator = loginAuthDTO.getNickName();
+        this.creator = loginAuthDTO.getUserName();
         this.applicationName = applicationName;
         return this;
     }

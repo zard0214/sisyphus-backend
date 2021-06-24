@@ -42,9 +42,9 @@ public class MybatisPlusConfig {
             }
             @Override
             public Expression getTenantId() {
-                LoginAuthDTO userAuth = (LoginAuthDTO) ThreadLocalMap.get(GlobalConstant.Sys.TOKEN_AUTH_DTO);
-                if (userAuth != null) {
-                    return new StringValue(String.valueOf(userAuth.getTenantId()));
+                Long tenantId = (Long) ThreadLocalMap.get(GlobalConstant.Sys.TENANT_ID);
+                if (tenantId != null) {
+                    return new StringValue(String.valueOf(tenantId));
                 }
                 return new NullValue();
             }
