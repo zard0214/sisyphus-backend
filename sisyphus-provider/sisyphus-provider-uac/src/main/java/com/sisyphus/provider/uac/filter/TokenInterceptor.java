@@ -1,4 +1,4 @@
-package com.sisyphus.auth.authorize.filter;
+package com.sisyphus.provider.uac.filter;
 
 import com.sisyphus.common.base.constant.GlobalConstant;
 import com.sisyphus.common.base.dto.AuthUserTokenDTO;

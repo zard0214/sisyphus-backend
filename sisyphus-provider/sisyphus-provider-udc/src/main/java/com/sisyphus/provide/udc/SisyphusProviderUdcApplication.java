@@ -11,8 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.sisyphus.common.support",
-                "com.sisyphus.provider.udc.service",
+                "com.sisyphus.common.support"
         },
         exclude = {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,

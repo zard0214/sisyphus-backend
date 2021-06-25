@@ -3,7 +3,7 @@ package com.sisyphus.provider.uac.web;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sisyphus.common.base.wapper.Response;
 import com.sisyphus.common.base.wapper.ResponseDTO;
-import com.sisyphus.provider.uac.model.dto.UacUserDTO;
+import com.sisyphus.provider.uac.model.domain.UacUser;
 import com.sisyphus.provider.uac.model.query.UacUserQuery;
 import com.sisyphus.provider.uac.service.UacUserService;
 import io.swagger.annotations.Api;
@@ -38,9 +38,9 @@ public class UacUserController {
      */
     @PostMapping(value = "/user/fetchUserListWithPage")
     @ApiOperation(httpMethod = "POST", value = "用户分页列表")
-    public ResponseDTO<Page<UacUserDTO>> fetchUserListWithPage(@ApiParam(name = "uacUserQuery", value = "用户查询条件")
+    public ResponseDTO<Page<UacUser>> fetchUserListWithPage(@ApiParam(name = "uacUserQuery", value = "用户查询条件")
                                                                    @RequestBody UacUserQuery uacUserQuery) {
-        Page<UacUserDTO> uacUserDTOPage = uacUserService.fetchUserListWithPage(uacUserQuery);
+        Page<UacUser> uacUserDTOPage = uacUserService.fetchUserListWithPage(uacUserQuery);
         return Response.success(uacUserDTOPage);
     }
 }

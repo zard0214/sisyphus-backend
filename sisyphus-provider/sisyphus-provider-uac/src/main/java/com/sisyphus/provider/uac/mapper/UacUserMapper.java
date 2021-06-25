@@ -1,7 +1,7 @@
 package com.sisyphus.provider.uac.mapper;
 
 import com.sisyphus.common.support.mybatis.IMapper;
-import com.sisyphus.provider.uac.model.dto.UacUserDTO;
+import com.sisyphus.provider.uac.model.domain.UacUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface UacUserMapper extends IMapper<UacUserDTO> {
+public interface UacUserMapper extends IMapper<UacUser> {
 
 }

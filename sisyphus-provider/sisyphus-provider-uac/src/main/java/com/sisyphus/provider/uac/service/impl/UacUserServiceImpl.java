@@ -1,30 +1,18 @@
 package com.sisyphus.provider.uac.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sisyphus.common.base.dto.LoginAuthDTO;
-import com.sisyphus.common.base.wapper.Response;
-import com.sisyphus.common.base.wapper.ResponseDTO;
-import com.sisyphus.provider.uac.api.model.dto.UacLogDTO;
-import com.sisyphus.provider.uac.api.service.UacLogDubboApi;
-import com.sisyphus.provider.uac.mapper.UacLogMapper;
 import com.sisyphus.provider.uac.mapper.UacUserMapper;
-import com.sisyphus.provider.uac.model.domain.UacLog;
 import com.sisyphus.provider.uac.model.domain.UacUser;
-import com.sisyphus.provider.uac.model.dto.UacUserDTO;
 import com.sisyphus.provider.uac.model.query.UacUserQuery;
 import com.sisyphus.provider.uac.service.UacUserService;
+import com.xiaoleilu.hutool.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.session.RowBounds;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author zhecheng.zhao
@@ -33,18 +21,27 @@ import java.util.Map;
 @Slf4j
 @Service("uacUserService")
 @Transactional(rollbackFor = Exception.class)
-public class UacUserServiceImpl extends ServiceImpl<UacUserMapper, UacUserDTO>
-        implements UacUserService {
+public class UacUserServiceImpl
+        extends ServiceImpl<UacUserMapper, UacUser> implements UacUserService {
 
     @Resource
     private UacUserMapper uacUserMapper;
 
     @Override
-    public Page<UacUserDTO> fetchUserListWithPage(UacUserQuery UacUserQuery) {
-        QueryWrapper<UacUserDTO> ew = new QueryWrapper<>();
-        ew.eq("login_name", UacUserQuery.getLoginName());
+    public Page<UacUser> fetchUserListWithPage(UacUserQuery UacUserQuery) {
+        QueryWrapper<UacUser> ew = new QueryWrapper<>();
+        if(!StrUtil.isBlank(UacUserQuery.getLoginName())){
+            ew.eq("login_name", UacUserQuery.getLoginName());
+        }
+        if(!StrUtil.isBlank(UacUserQuery.getPhone())){
+            ew.eq("phone", UacUserQuery.getPhone());
+        }
+        if(!StrUtil.isBlank(UacUserQuery.getEmail())){
+            ew.eq("email", UacUserQuery.getEmail());
+        }
         return uacUserMapper.selectPage(new Page<>(UacUserQuery.getPageNum(),
                         UacUserQuery.getPageSize()),
                 ew);
     }
+
 }

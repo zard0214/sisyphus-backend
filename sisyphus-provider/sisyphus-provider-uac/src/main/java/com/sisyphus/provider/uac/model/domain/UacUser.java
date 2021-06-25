@@ -135,12 +135,4 @@ public class UacUser  extends BaseDO {
     @TableField(value = "pwd_error_time")
     private Date pwdErrorTime;
 
-    /**
-     * 用户所属的组织ID
-     */
-    @ApiModelProperty(value = "用户所属的组织ID")
-    private Long groupId;
-
-    @ApiModelProperty(value = "用户所属的组织名称")
-    private String groupName;
 }

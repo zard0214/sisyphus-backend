@@ -14,6 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
                 "com.sisyphus.common.support",
                 "com.sisyphus.provider.uac.service",
                 "com.sisyphus.provider.uac.config",
+                "com.sisyphus.provider.uac.web",
         },
         exclude = {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,

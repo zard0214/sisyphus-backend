@@ -22,6 +22,10 @@ import reactor.core.publisher.Mono;
 @EnableReactiveMethodSecurity
 public class WebSecurityConfig {
 
+    /** 不校验url */
+    private static String[] DEFAULT_PERMIT_URL = {"/*", "/pay/alipayCallback",
+            "/druid/**", "/auth/**",  "/uac/**",  "/actuator/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs"};
+
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
@@ -31,7 +35,7 @@ public class WebSecurityConfig {
                  accessDeniedHandler((swe, e) -> Mono.fromRunnable(() ->
                          swe.getResponse().setStatusCode(HttpStatus.FORBIDDEN))).and()
                 .authorizeExchange()
-                .pathMatchers(SecurityConstants.DEFAULT_PERMIT_URL).permitAll()
+                .pathMatchers(this.DEFAULT_PERMIT_URL).permitAll()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyExchange().authenticated().and()
                 .csrf().disable()
