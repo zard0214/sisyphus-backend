@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8002
 spring:
   main:
     allow-bean-definition-overriding: true
@@ -38,12 +38,19 @@ management:
       exposure:
         include: "*"
 sisyphus:
+  auth:
+    active-user-url: http://localhost:8001/auth/auth/activeUser
+    refresh-token-url: http://localhost:8001/auth/oauth/token
   tenant:
     enable: true
     ignoreTables:
       - s_auth_tenant
+      - s_auth_menu
       - s_auth_user
       - s_auth_token
+      - s_auth_group_user
+      - s_auth_user_role
+      - s_auth_action
     column: tenant_id
   token:
     interceptor:
