@@ -86,6 +86,11 @@ public class UacUserDTO extends BaseDTO {
     private String remark;
 
     /**
+     * 头像
+     */
+    private String avatar;
+
+    /**
      * 租户id
      */
     private Long tenantId;

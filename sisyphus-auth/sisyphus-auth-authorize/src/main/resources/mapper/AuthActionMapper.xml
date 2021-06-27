@@ -12,7 +12,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        ${alias}.id, ${alias}.action_name, ${alias}.action_code, ${alias}.method, ${alias}.url, ${alias}.menu_id, ${alias}.status
+        ${alias}.id, ${alias}.action_name, ${alias}.action_code, ${alias}.method, ${alias}.menu_id, ${alias}.status
     </sql>
 
     <select id="getOwnUacActionListByUserId" resultType="com.sisyphus.auth.authorize.model.domain.AuthAction">

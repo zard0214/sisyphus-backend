@@ -77,16 +77,20 @@
 
     <!-- https://maven.aliyun.com/mvn/search !-->
     <modules>
-        <module>sisyphus-discovery</module>
-        <module>sisyphus-monitor</module>
-        <module>sisyphus-skywalking</module>
+
+
         <module>sisyphus-auth</module>
         <module>sisyphus-gateway</module>
         <module>sisyphus-provider-api</module>
-        <module>sisyphus-common</module>
         <module>sisyphus-provider</module>
-        <module>sisyphus-generator</module>
+        <module>sisyphus-common</module>
+        <module>sisyphus-infrastructure</module>
+        <module>sisyphus-domain</module>
 
+<!--        <module>sisyphus-monitor</module>-->
+<!--        <module>sisyphus-skywalking</module>-->
+<!--        <module>sisyphus-discovery</module>-->
+<!--        <module>sisyphus-generator</module>-->
 <!--        <module>sisyphus-example</module>-->
 <!--        <module>sisyphus-demo</module>-->
 <!--        <module>sisyphus-designpattern</module>-->

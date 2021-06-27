@@ -98,6 +98,12 @@ public class AuthMenu extends BaseDO {
     private Integer number;
 
     /**
+     * 备注
+     */
+    @TableField(value = "remark")
+    private String remark;
+
+    /**
      *  运营工作台ID
      */
     @TableField(value = "application_id")

@@ -114,6 +114,12 @@ public class AuthUser extends BaseDO {
     private String remark;
 
     /**
+     * 头像
+     */
+    @TableField(value = "avatar")
+    private String avatar;
+
+    /**
      * 最后登录时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

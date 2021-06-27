@@ -1,5 +1,6 @@
 package com.sisyphus.auth.authorize.model.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.sisyphus.common.base.dto.BaseDTO;
 import lombok.Data;
 
@@ -69,6 +70,11 @@ public class AuthMenuDTO extends BaseDTO {
      * 序号
      */
     private Integer number;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
     /**
      *  运营工作台ID

@@ -1,5 +1,6 @@
 package com.sisyphus.auth.authorize.model.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sisyphus.common.base.dto.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
@@ -85,6 +86,11 @@ public class AuthUserDTO extends BaseDTO {
      * 描述
      */
     private String remark;
+
+    /**
+     * 头像
+     */
+    private String avatar;
 
     /**
      * 租户id

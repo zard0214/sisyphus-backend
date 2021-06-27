@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sisyphus.auth.authorize.mapper.AuthMenuMapper">
-    <resultMap id="BaseResultMap" type="com.sisyphus.auth.authorize.model.dto.AuthRoleDTO">
+    <resultMap id="BaseResultMap" type="com.sisyphus.auth.authorize.model.dto.AuthMenuDTO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="version" jdbcType="INTEGER" property="version"/>
-        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
-        <result column="role_code" jdbcType="VARCHAR" property="roleCode"/>
-        <result column="data_scope" jdbcType="VARCHAR" property="dataScope"/>
+        <result column="menu_name" jdbcType="VARCHAR" property="menuName"/>
+        <result column="menu_code" jdbcType="VARCHAR" property="menuCode"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="visible" jdbcType="VARCHAR" property="visible"/>
+        <result column="menu_type" jdbcType="VARCHAR" property="menuType"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="pid" jdbcType="BIGINT" property="pid"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="leaf" jdbcType="INTEGER" property="leaf"/>
+        <result column="number" jdbcType="INTEGER" property="number"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        ${alias}.id, ${alias}.version, ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status
+        ${alias}.id, ${alias}.version, ${alias}.menu_name, ${alias}.menu_code, ${alias}.status, ${alias}.visible,
+        ${alias}.menu_type, ${alias}.url, ${alias}.icon, ${alias}.pid, ${alias}.level, ${alias}.number, ${alias}.remark
     </sql>
 
     <sql id="Base_Where_Condition">
@@ -57,8 +66,8 @@
         <if test="creatorId != null and creatorId !=''">
             AND creator_id = #{creatorId,jdbcType=BIGINT}
         </if>
-        <if test="gmt_created != null">
-            AND gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+        <if test="gmtCreated != null">
+            AND gmt_created = #{gmtCreated,jdbcTpe=TIMESTAMP}
         </if>
         <if test="lastOperator != null and lastOperator !=''">
             AND last_operator = #{lastOperator,jdbcType=VARCHAR}
@@ -66,7 +75,7 @@
         <if test="lastOperatorId != null and lastOperatorId !=''">
             AND last_operator_id = #{lastOperatorId,jdbcType=BIGINT}
         </if>
-        <if test="gmt_modified != null">
+        <if test="gmtModified != null">
             AND gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
         </if>
     </sql>
@@ -92,27 +101,31 @@
         order by  m.level asc, m.number asc
     </select>
 
-    <select id="listMenu" resultType="com.sisyphus.auth.authorize.model.domain.AuthMenu">
+    <select id="listMenu" resultType="com.sisyphus.auth.authorize.model.domain.AuthMenu"
+            parameterType="java.util.Set">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List">
+            <property name="alias" value="m"></property>
+        </include>
         From
         s_auth_menu m
         WHERE m.id IN
-        <foreach collection="menuIdList" item="item" index="index" open="(" close=")" separator=",">
-            #{item}
+        <foreach collection="menuIdList" item="val" index="index" open="(" close=")" separator=",">
+            #{val}
         </foreach>
     </select>
 
-    <select id="selectMenuList" resultMap="BaseResultMap" parameterType="com.sisyphus.auth.authorize.model.domain.AuthMenu">
+    <select id="selectMenuList" resultType="com.sisyphus.auth.authorize.model.domain.AuthMenu"
+            parameterType="com.sisyphus.auth.authorize.model.domain.AuthMenu">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List">
+            <property name="alias" value="m"></property>
+        </include>
         From
-        pc_uac_menu m
+        s_auth_menu m
         WHERE
         1 =1 <include refid="Base_Where_Condition" />
-        <if test="orderBy != null and orderBy != ''">
-            ORDER BY ${orderBy}
-        </if>
+
     </select>
 
 </mapper>

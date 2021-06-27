@@ -17,6 +17,7 @@
         <result column="last_login_location" jdbcType="VARCHAR" property="lastLoginLocation"/>
         <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
         <result column="pwd_error_count" jdbcType="INTEGER" property="pwdErrorCount"/>
         <result column="pwd_error_time" jdbcType="TIMESTAMP" property="pwdErrorTime"/>
     </resultMap>
@@ -24,7 +25,7 @@
     <sql id="Base_Column_List">
         ${alias}.id, ${alias}.version, ${alias}.login_name, ${alias}.login_pwd, ${alias}.user_code, ${alias}.user_name, ${alias}.phone, ${alias}.email,
         ${alias}.status, ${alias}.user_source, ${alias}.type, ${alias}.last_login_ip, ${alias}.last_login_location, ${alias}.last_login_time,
-        ${alias}.remark, ${alias}.pwd_error_count, ${alias}.pwd_error_time
+        ${alias}.remark, ${alias}.avatar, ${alias}.pwd_error_count, ${alias}.pwd_error_time
     </sql>
 
 </mapper>

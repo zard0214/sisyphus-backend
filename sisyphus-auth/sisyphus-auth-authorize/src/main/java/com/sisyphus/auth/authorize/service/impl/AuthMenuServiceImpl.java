@@ -72,7 +72,7 @@ public class AuthMenuServiceImpl extends ServiceImpl<AuthMenuMapper, AuthMenu> i
             for (final AuthMenu menu : ownMenuList) {
                 getPid(menuSet, menu, map);
             }
-            menuList = new ArrayList<>(menuSet);
+            menuList = new ArrayList(menuSet);
         }
         List<AuthMenuVO> list = getMenuVo(menuList);
         if (!CollectionUtils.isEmpty(list)) {

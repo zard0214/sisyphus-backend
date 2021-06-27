@@ -28,7 +28,6 @@ services:
       - "9555:9555"
     depends_on:
       - mysql
-    restart: on-failure
     networks:
       backend:
         aliases:

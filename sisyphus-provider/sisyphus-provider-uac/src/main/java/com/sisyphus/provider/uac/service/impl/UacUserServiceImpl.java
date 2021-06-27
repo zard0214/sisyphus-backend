@@ -31,13 +31,16 @@ public class UacUserServiceImpl
     public Page<UacUser> fetchUserListWithPage(UacUserQuery UacUserQuery) {
         QueryWrapper<UacUser> ew = new QueryWrapper<>();
         if(!StrUtil.isBlank(UacUserQuery.getLoginName())){
-            ew.eq("login_name", UacUserQuery.getLoginName());
+            ew.like("login_name", UacUserQuery.getLoginName());
         }
         if(!StrUtil.isBlank(UacUserQuery.getPhone())){
-            ew.eq("phone", UacUserQuery.getPhone());
+            ew.like("phone", UacUserQuery.getPhone());
         }
         if(!StrUtil.isBlank(UacUserQuery.getEmail())){
-            ew.eq("email", UacUserQuery.getEmail());
+            ew.like("email", UacUserQuery.getEmail());
+        }
+        if(!StrUtil.isBlank(UacUserQuery.getStatus())){
+            ew.eq("status", UacUserQuery.getStatus());
         }
         return uacUserMapper.selectPage(new Page<>(UacUserQuery.getPageNum(),
                         UacUserQuery.getPageSize()),

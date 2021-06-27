@@ -1,6 +1,7 @@
 package com.sisyphus.auth.authorize.service;
 
 import com.sisyphus.auth.authorize.model.domain.AuthMenu;
+import com.sisyphus.auth.authorize.model.dto.AuthMenuDTO;
 import com.sisyphus.auth.authorize.model.dto.AuthRoleDTO;
 import com.sisyphus.auth.authorize.model.vo.AuthMenuVO;
 import com.sisyphus.common.support.service.IService;

@@ -4,6 +4,7 @@ import com.sisyphus.auth.authorize.model.domain.AuthMenu;
 import com.sisyphus.auth.authorize.model.vo.AuthMenuVO;
 import com.sisyphus.common.support.mybatis.IMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,9 +18,9 @@ import java.util.Set;
 @Repository
 public interface AuthMenuMapper extends IMapper<AuthMenu> {
 
-    List<AuthMenuVO> findMenuVoListByUserId(Long userId);
+    List<AuthMenuVO> findMenuVoListByUserId(@Param("userId") Long userId);
 
-    List<AuthMenu> listMenu(Set<Long> menuIdList);
+    List<AuthMenu> listMenu(@Param("menuIdList") Set<Long> menuIdList);
 
     List<AuthMenu> selectMenuList(AuthMenu uacMenu);
 }
