@@ -123,4 +123,6 @@ public class UacUserDTO extends BaseDTO {
     @ApiModelProperty(value = "用户所属的组织名称")
     private String groupName;
 
+    private String roles;
+
 }

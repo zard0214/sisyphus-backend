@@ -22,7 +22,7 @@ import java.util.Date;
 @Data
 @TableName(value = "s_auth_user")
 @Alias(value = "authUser")
-public class UacUser  extends BaseDO {
+public class UacUser extends BaseDO {
 
     /**
      * 版本号

@@ -3,6 +3,7 @@ package com.sisyphus.provider.uac.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sisyphus.common.support.service.IService;
 import com.sisyphus.provider.uac.model.domain.UacUser;
+import com.sisyphus.provider.uac.model.dto.UacUserDTO;
 import com.sisyphus.provider.uac.model.query.UacUserQuery;
 
 /**
@@ -16,5 +17,5 @@ public interface UacUserService extends IService<UacUser> {
      * @param uacUserQuery
      * @return
      */
-    Page<UacUser> fetchUserListWithPage(UacUserQuery uacUserQuery);
+    Page<UacUserDTO> fetchUserListWithPage(UacUserQuery uacUserQuery);
 }
