@@ -1,6 +1,5 @@
 package com.sisyphus.gateway.config;
 
-import com.sisyphus.auth.core.properties.SecurityConstants;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,5 @@
 package com.sisyphus.auth.app.config;
 
-import com.sisyphus.auth.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

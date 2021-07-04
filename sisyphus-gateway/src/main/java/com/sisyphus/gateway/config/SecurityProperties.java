@@ -1,5 +1,9 @@
-package com.sisyphus.auth.core.properties;
+package com.sisyphus.gateway.config;
 
+import com.sisyphus.auth.core.properties.BrowserProperties;
+import com.sisyphus.auth.core.properties.OAuth2Properties;
+import com.sisyphus.auth.core.properties.SocialProperties;
+import com.sisyphus.auth.core.properties.ValidateCodeProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

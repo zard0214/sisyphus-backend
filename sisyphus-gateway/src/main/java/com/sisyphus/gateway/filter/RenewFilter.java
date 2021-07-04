@@ -1,5 +1,7 @@
 package com.sisyphus.gateway.filter;
 
+import com.sisyphus.common.base.enums.ErrorCodeEnum;
+import com.sisyphus.common.base.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.Order;
@@ -28,22 +30,28 @@ public class RenewFilter implements WebFilter {
 
     @Resource
     private JwtTokenStore jwtTokenStore;
+
     private static final int EXPIRES_IN = 60 * 20;
 
     @Override
     public Mono<Void> filter(ServerWebExchange swe, WebFilterChain wfc) {
-        log.info("RenewFilter - token续租...");
-        ServerHttpRequest request = swe.getRequest();
-        String token = StringUtils.substringAfter(request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION), "Bearer ");
-        if (org.apache.commons.lang.StringUtils.isEmpty(token)) {
-            return wfc.filter(swe);
-        }
-        OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
-        int expiresIn = oAuth2AccessToken.getExpiresIn();
+        try {
+            log.info("RenewFilter - token续租...");
+            ServerHttpRequest request = swe.getRequest();
+            String token = StringUtils.substringAfter(request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION), "Bearer ");
+            if (org.apache.commons.lang.StringUtils.isEmpty(token)) {
+                return wfc.filter(swe);
+            }
+            OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
+            int expiresIn = oAuth2AccessToken.getExpiresIn();
 
-        if (expiresIn < EXPIRES_IN) {
-            ServerHttpResponse servletResponse = swe.getResponse();
-            servletResponse.getHeaders().set("Renew-Header", "true");
+            if (expiresIn < EXPIRES_IN) {
+                ServerHttpResponse servletResponse = swe.getResponse();
+                servletResponse.getHeaders().set("Renew-Header", "true");
+            }
+        } catch (Exception e) {
+            log.error("RenewFilter - token续租. [FAIL] EXCEPTION={}", e.getMessage(), e);
+            throw new BizException(ErrorCodeEnum.UAC10011041);
         }
         return wfc.filter(swe);
     }

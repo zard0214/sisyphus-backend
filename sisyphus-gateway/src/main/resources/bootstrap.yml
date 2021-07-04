@@ -76,3 +76,56 @@ management:
     web:
       exposure:
         include: "*"
+sisyphus:
+  auth:
+    active-user-url: http://localhost:8001/auth/auth/activeUser
+    refresh-token-url: http://localhost:8001/auth/oauth/token
+  token:
+    interceptor:
+      enable: true
+  security:
+    jwtSigningKey: sisyphus
+    oauth2:
+      tokenStore: jwt
+      clients[0]:
+        clientId: sisyphus-client-uac
+        clientSecret: sisyphusClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+      clients[1]:
+        clientId: sisyphus-client-gateway
+        clientSecret: sisyphusClientSecret
+        accessTokenValidateSeconds: 7200
+        scope: "*"
+    social:
+      filterProcessesUrl: /qqLogin
+      weixin:
+        app-id: 1
+        app-secret: 1
+        providerId: callback.do
+      qq:
+        app-id: 1
+        app-secret: 1
+        providerId: callback.do
+    code:
+      image:
+        length: 4
+        width: 100
+        height: 30
+        expireIn: 30
+        url: /user/*
+      sms:
+        length: 6
+        expireIn: 60
+        url: /user/*
+    browser:
+      signInPage: /login.html
+      signInResponseType: REDIRECT
+      singInSuccessUrl: /manage.html
+      rememberMeSeconds: 294000
+      signOutUrl: /logout.html
+      signUpUrl: /sisyphus-signUp.html
+      session:
+        maximumSessions: 1
+        maxSessionsPreventsLogin: false
+        sessionInvalidUrl: /sisyphus-session-invalid.html
