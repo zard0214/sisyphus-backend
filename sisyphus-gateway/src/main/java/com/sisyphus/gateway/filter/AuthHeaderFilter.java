@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  * @date Created in 23/06/2021 01:36
  */
 @Slf4j
-@Order(0)
+@Order(-1)
 @Component
 public class AuthHeaderFilter implements WebFilter {
 
