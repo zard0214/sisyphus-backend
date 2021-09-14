@@ -125,6 +125,14 @@ services:
       backend:
         aliases:
           - zookeeper_3
+  nexus:
+    container_name: nexus
+    image: sonatype/nexus3:latest
+#    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - '8081:8081'
 #  sentinel-dashboard:
 #    image: registry.cn-hangzhou.aliyuncs.com/kancy/sentinel-dashboard-dynamic:1.7.2-beta
 #    container_name: sentinel-dashboard
