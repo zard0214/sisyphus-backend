@@ -2,6 +2,7 @@ package com.saas.sisyphus.chat.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.saas.sisyphus.chat.model.dto.TranslateResultDTO;
+import com.saas.sisyphus.chat.model.dto.TranslationResp;
 import com.saas.sisyphus.chat.service.ChatTranslateService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
@@ -20,10 +21,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.annotation.Nullable;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -41,12 +43,16 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
     private static Logger logger = LoggerFactory.getLogger(ChatTranslateService.class);
 
     private static final String YOUDAO_URL = "https://openapi.youdao.com/api";
+    private static final String YANDEX_URL = "https://translate.yandex.net/api/v1.5/tr.json/translate?";
 
     @Value("${ai.youdao.id}")
     public String APP_KEY;
 
     @Value("${ai.youdao.secret}")
     public String APP_SECRET;
+
+    @Value("${ai.yandex.secret}")
+    public String YANDEX_SECRET;
 
     @Override
     public String youdaoTranslate(String source, String from, String to) {
@@ -76,14 +82,26 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
     }
 
     @Override
+    public String yandexTranslate(String source, String from, String to) {
+        try {
+            return requestForYandex(source, from, to);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    @Override
     public String translate(String source) {
-        return "中文：" + youdaoTranslate(source, "auto", "zh-CHS") + "\n"
-                + "俄文：" + youdaoTranslate(source, "auto", "ru") + "\n"
-                + "英文：" + youdaoTranslate(source, "auto", "en");
+        return "中文：" + requestForYandex(source, detect(source +
+                "","zh","zh"), "zh") + "\n"
+                + "俄文：" + requestForYandex(source, detect(source +
+                "","zh","ru"), "ru") + "\n"
+                + "英文：" + requestForYandex(source, detect(source +
+                "","zh","en"), "en");
     }
 
     public String requestForHttp(String url,Map<String,String> params) throws IOException {
-
         /** 创建HttpClient */
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -119,7 +137,6 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
                 String json = EntityUtils.toString(httpEntity,"UTF-8");
                 EntityUtils.consume(httpEntity);
                 logger.info(json);
-                System.out.println(json);
                 return json;
             }
         }finally {
@@ -195,5 +212,66 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
         String result;
         return len <= 20 ? q : (q.substring(0, 10) + len + q.substring(len - 10, len));
     }
+    public static final String HOST = "translate.yandex.net";
+    public static final String PATH = "/api/v1.5/tr.json/";
 
+    public String requestForYandex(String text, String langFrom, String langTo) {
+        final String method = "translate";
+        String uri = "https://" + HOST + PATH + method;
+        uri += "?key=" + YANDEX_SECRET;
+        uri += "&lang=" + langFrom + "-" + langTo;
+        try {
+            uri += "&text=" +  URLEncoder.encode(text, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return getTranslate(requestForYandex(uri));
+    }
+
+    @Override
+    public String detect(String text, String langFrom, String langTo) {
+        final String method = "detect";
+        String uri = "https://" + HOST + PATH + method;
+        uri += "?key=" + YANDEX_SECRET;
+        //uri += "&hint=" + langFrom;// + "," + langTo; // works better without hints especially when strings are short
+        try {
+            uri += "&text=" +  URLEncoder.encode(text, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return getLang(requestForYandex(uri));
+    }
+
+    @Override
+    public String getLanguages(String ui) {
+        final String method = "getLangs";
+        String uri = "https://" + HOST + PATH + method;
+        uri += "?key=" + YANDEX_SECRET;
+        uri += "&ui=" + ui;
+
+        return requestForYandex(uri);
+    }
+
+    private String getLang(String result){
+        return JSON.parseObject(result, TranslationResp.class).getLang();
+    }
+
+    private String getTranslate(String result){
+        return JSON.parseObject(result, TranslationResp.class).getText().get(0);
+    }
+
+    @Nullable
+    private String requestForYandex(String uri) {
+        try {
+            URLConnection connection = new URL(uri).openConnection();
+            connection.setRequestProperty("Accept-Charset", "UTF-8");
+            InputStream response = connection.getInputStream();
+            java.util.Scanner s = new java.util.Scanner(response, "UTF-8").useDelimiter("\\A");
+            return s.hasNext() ? s.next() : "";
+        } catch (IOException e) {
+            return null;
+        }
+    }
 }

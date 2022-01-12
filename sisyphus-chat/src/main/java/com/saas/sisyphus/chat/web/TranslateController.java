@@ -58,15 +58,14 @@ public class TranslateController {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         Map<String, String> receiveMap = TransformUtils.xml2Map(request);
-        log.info("接收微信消息时获取到的信息为：" + receiveMap);
         String fromUserName = receiveMap.get("FromUserName");
         String toUserName = receiveMap.get("ToUserName");
         String msgType = receiveMap.get("MsgType");
         String content = receiveMap.get("Content");
         String msgId = receiveMap.get("MsgId");
         String message = "";
-        log.info("msgType :", msgType);
-        log.info("MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType) :", MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType));
+        log.info("msgType :" +  msgType);
+        log.info("MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType) :" +  MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType));
         if (MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType)) {
             message = new MessageUtils().initReplyTextMessage(fromUserName, toUserName, translateService.translate(content));
         }

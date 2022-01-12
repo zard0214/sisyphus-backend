@@ -49,3 +49,6 @@ ai:
   youdao:
     id: 7e12250d3fa6c43b
     secret: 46aHO6SsJU9kwTtmY65MlYKHmkm3f1NU
+  yandex:
+    key: sisyphus
+    secret: trnsl.1.1.20220112T123446Z.881ef240ca2389f4.3ceec44137ff01db64caff0b71aeadb07e8c0b54
