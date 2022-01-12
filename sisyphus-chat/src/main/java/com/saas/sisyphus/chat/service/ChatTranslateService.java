@@ -8,7 +8,7 @@ package com.saas.sisyphus.chat.service;
  */
 public interface ChatTranslateService {
 
-    String translate(String source, String from, String to);
+    String youdaoTranslate(String source, String from, String to);
 
     String translate(String source);
 }

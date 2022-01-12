@@ -32,7 +32,7 @@ public class TranslateController {
     @Resource
     private ChatTranslateService translateService;
 
-    @GetMapping("/verify_wx_token")
+    @GetMapping("/receiveMessage")
     public void login(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         request.setCharacterEncoding("UTF-8");
         String signature = request.getParameter("signature");
@@ -65,6 +65,8 @@ public class TranslateController {
         String content = receiveMap.get("Content");
         String msgId = receiveMap.get("MsgId");
         String message = "";
+        log.info("msgType :", msgType);
+        log.info("MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType) :", MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType));
         if (MessageTypeEnum.RECEIVE_MESSAGE_TEXT.getType().equals(msgType)) {
             message = new MessageUtils().initReplyTextMessage(fromUserName, toUserName, translateService.translate(content));
         }

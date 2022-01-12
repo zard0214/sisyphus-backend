@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 /**
  * @author zard
@@ -14,33 +13,13 @@ import java.util.List;
 @Data
 public class TranslateResultDTO {
 
-    @JsonProperty("orientation")
-    private String orientation;
-    @JsonProperty("lanFrom")
-    private String lanFrom;
-    @JsonProperty("textAngle")
-    private String textAngle;
     @JsonProperty("errorCode")
     private String errorCode;
-    @JsonProperty("lanTo")
-    private String lanTo;
-    @JsonProperty("resRegions")
-    private List<ResRegionsDTO> resRegions;
 
-    @NoArgsConstructor
-    @Data
-    public static class ResRegionsDTO {
-        @JsonProperty("boundingBox")
-        private String boundingBox;
-        @JsonProperty("linesCount")
-        private Integer linesCount;
-        @JsonProperty("lineheight")
-        private Integer lineheight;
-        @JsonProperty("context")
-        private String context;
-        @JsonProperty("linespace")
-        private Integer linespace;
-        @JsonProperty("tranContent")
-        private String tranContent;
-    }
+    @JsonProperty("query")
+    private String query;
+
+    @JsonProperty("translation")
+    private String translation;
+
 }

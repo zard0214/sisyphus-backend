@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReplyBaseMessage {
 
-    private String fromUserName;
+    private String FromUserName;
     //  开发者微信号
-    private String toUserName;
+    private String ToUserName;
     //  消息创建时间 （整型）
-    private String createTime;
-    private String msgType;
+    private String CreateTime;
+    private String MsgType;
     //  消息id，64位整型
-    private String mediaId;
+    private String MediaId;
 }

@@ -49,7 +49,7 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
     public String APP_SECRET;
 
     @Override
-    public String translate(String source, String from, String to) {
+    public String youdaoTranslate(String source, String from, String to) {
         Map<String,String> params = new HashMap<>();
         String q = source;
         String salt = String.valueOf(System.currentTimeMillis());
@@ -68,7 +68,7 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
         /** 处理结果 */
         try {
             String result = requestForHttp(YOUDAO_URL, params);
-            return JSON.parseObject(result, TranslateResultDTO.class).getResRegions().get(0).getTranContent();
+            return JSON.parseObject(result, TranslateResultDTO.class).getTranslation();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,9 +77,9 @@ public class ChatTranslateServiceImpl implements ChatTranslateService {
 
     @Override
     public String translate(String source) {
-        return "中文：" + translate(source, "auto", "zh-CHS") + "\n"
-                + "俄文：" + translate(source, "auto", "ru") + "\n"
-                + "英文：" + translate(source, "auto", "en");
+        return "中文：" + youdaoTranslate(source, "auto", "zh-CHS") + "\n"
+                + "俄文：" + youdaoTranslate(source, "auto", "ru") + "\n"
+                + "英文：" + youdaoTranslate(source, "auto", "en");
     }
 
     public String requestForHttp(String url,Map<String,String> params) throws IOException {

@@ -111,6 +111,10 @@
             <artifactId>sisyphus-common-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
 
     </dependencies>
     <!--    </dependencyManagement>-->
