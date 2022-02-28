@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.sisyphus.common.base.dto.LoginAuthDTO;
 import com.sisyphus.provider.uac.mapper.UacUserMapper;
 import com.sisyphus.provider.uac.model.domain.UacUser;
 import com.sisyphus.provider.uac.model.dto.UacUserDTO;

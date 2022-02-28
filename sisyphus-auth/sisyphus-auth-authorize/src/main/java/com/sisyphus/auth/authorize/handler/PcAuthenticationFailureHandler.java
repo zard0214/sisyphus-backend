@@ -30,7 +30,7 @@ public class PcAuthenticationFailureHandler implements AuthenticationFailureHand
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
-        log.info("登录失败 exception {}", exception);
+        log.info("登录失败 exception {}", exception.getMessage());
         String message = exception.getMessage();
         // 记录失败次数 和原因 ip等信息 5次登录失败,锁定用户, 不允许在此登录
         if(!(exception instanceof ValidateCodeException)){

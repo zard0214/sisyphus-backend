@@ -89,7 +89,7 @@
         inner join s_auth_user_role ur on u.id = ur.user_id
         inner join s_auth_role ar on ar.id = ur.role_id
         where
-        u.login_name= #{loginName,jdbcType=VARCHAR}
+        u.id= #{loginName,jdbcType=VARCHAR}
     </select>
 
     <select id="findActionsByUserId"  resultMap="ActionResultMap">
@@ -106,7 +106,7 @@
         inner join s_auth_menu am on am.id = arm.menu_id
         inner join s_auth_action aa on aa.menu_id = am.id
         where
-        u.login_name= #{loginName,jdbcType=VARCHAR}
+        u.id= #{loginName,jdbcType=VARCHAR}
     </select>
 
     <select id="findUserInfoByUserId" resultMap="BaseResultMap">

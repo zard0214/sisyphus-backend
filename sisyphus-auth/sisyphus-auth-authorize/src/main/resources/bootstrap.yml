@@ -49,6 +49,7 @@ sisyphus:
       - s_auth_user
       - s_auth_token
       - s_auth_role_action
+      - s_auth_group
       - s_auth_group_user
       - s_auth_user_role
       - s_auth_action
