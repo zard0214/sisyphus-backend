@@ -32,10 +32,10 @@ public class UacLogServiceImpl extends ServiceImpl<UacLogMapper, UacLog>
     private UacLogMapper uacLogMapper;
 
     @Override
-    public ResponseDTO saveUacLog(UacLogDTO uacLogDTP, LoginAuthDTO loginAuthDto) {
-        UacLog uacLog = new ModelMapper().map(uacLogDTP, UacLog.class);
-        uacLog.setCreator(loginAuthDto.getUserName());
-        uacLog.setCreatorId(loginAuthDto.getUserId());
+    public ResponseDTO saveUacLog(UacLogDTO uacLogDTO, LoginAuthDTO loginAuthDTO) {
+        UacLog uacLog = new ModelMapper().map(uacLogDTO, UacLog.class);
+        uacLog.setCreator(loginAuthDTO.getUserName());
+        uacLog.setCreatorId(loginAuthDTO.getUserId());
         uacLogMapper.insert(uacLog);
         return Response.success();
     }

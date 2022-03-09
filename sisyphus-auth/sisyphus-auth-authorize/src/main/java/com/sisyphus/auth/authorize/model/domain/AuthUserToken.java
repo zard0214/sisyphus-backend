@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_user_token")
+@TableName(value = "s_uac_user_token")
 @Alias(value = "authUserToken")
 public class AuthUserToken extends BaseDO {
 

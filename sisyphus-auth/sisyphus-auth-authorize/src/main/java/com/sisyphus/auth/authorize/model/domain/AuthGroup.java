@@ -14,7 +14,7 @@ import org.apache.ibatis.type.Alias;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_group")
+@TableName(value = "s_uac_group")
 @Alias(value = "authGroup")
 public class AuthGroup extends BaseDO {
 

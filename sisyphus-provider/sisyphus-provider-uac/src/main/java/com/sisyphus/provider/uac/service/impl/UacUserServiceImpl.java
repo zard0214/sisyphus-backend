@@ -57,8 +57,6 @@ public class UacUserServiceImpl
             List<UacUser> records = uacUserPage.getRecords();
             records.stream().forEach(uacUser -> {
                 UacUserDTO uacUserDTO = new UacUserDTO();
-//                List<AuthRoleDTO> authRoles = authRoleService.findByUserId(authUserDTO.getId());
-//                uacUserDTO.set
                 uacUserList.add(uacUserDTO);
             });
         }

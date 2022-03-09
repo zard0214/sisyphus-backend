@@ -30,8 +30,8 @@
             <property name="alias" value="r"></property>
         </include>
         from
-        s_auth_role r
-        left join s_auth_user_role ur on ur.role_id = r.id
+        s_uac_role r
+        left join s_uac_user_role ur on ur.role_id = r.id
         where
         ur.user_id = #{userId,jdbcType=VARCHAR}
     </select>

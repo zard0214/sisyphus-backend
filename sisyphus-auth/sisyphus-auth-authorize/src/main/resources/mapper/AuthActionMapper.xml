@@ -20,10 +20,10 @@
 <!--        <include refid="Base_Column_List">-->
 <!--            <property name="alias" value="a"></property>-->
 <!--        </include>-->
-<!--        from s_auth_role_action ra INNER JOIN s_auth_role r on ra.role_id = r.id-->
-<!--        INNER JOIN s_auth_user_role ru on ru.role_id = r.id-->
-<!--        INNER JOIN s_auth_user u on ru.user_id = u.id-->
-<!--        INNER JOIN s_auth_action a on ra.action_id = a.id-->
+<!--        from s_uac_role_action ra INNER JOIN s_uac_role r on ra.role_id = r.id-->
+<!--        INNER JOIN s_uac_user_role ru on ru.role_id = r.id-->
+<!--        INNER JOIN s_uac_user u on ru.user_id = u.id-->
+<!--        INNER JOIN s_uac_action a on ra.action_id = a.id-->
 <!--        where u.id = #{userId}-->
     </select>
 

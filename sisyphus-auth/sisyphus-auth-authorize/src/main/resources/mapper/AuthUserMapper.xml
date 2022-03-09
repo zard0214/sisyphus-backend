@@ -63,7 +63,7 @@
             <property name="alias" value="u"></property>
         </include>
         from
-        s_auth_user u
+        s_uac_user u
         where
         u.login_name= #{loginName,jdbcType=VARCHAR}
     </select>
@@ -74,7 +74,7 @@
             <property name="alias" value="u"></property>
         </include>
         from
-        s_auth_user u
+        s_uac_user u
         where
         u.phone= #{phone,jdbcType=VARCHAR}
     </select>
@@ -85,9 +85,9 @@
             <property name="alias" value="ar"></property>
         </include>
         from
-        s_auth_user u
-        inner join s_auth_user_role ur on u.id = ur.user_id
-        inner join s_auth_role ar on ar.id = ur.role_id
+        s_uac_user u
+        inner join s_uac_user_role ur on u.id = ur.user_id
+        inner join s_uac_role ar on ar.id = ur.role_id
         where
         u.id= #{loginName,jdbcType=VARCHAR}
     </select>
@@ -99,12 +99,12 @@
             <property name="alias" value="aa"></property>
         </include>
         from
-        s_auth_user u
-        inner join s_auth_user_role au on u.id = au.user_id
-        inner join s_auth_role ar on ar.id = au.role_id
-        inner join s_auth_role_menu arm on ar.id = arm.role_id
-        inner join s_auth_menu am on am.id = arm.menu_id
-        inner join s_auth_action aa on aa.menu_id = am.id
+        s_uac_user u
+        inner join s_uac_user_role au on u.id = au.user_id
+        inner join s_uac_role ar on ar.id = au.role_id
+        inner join s_uac_role_menu arm on ar.id = arm.role_id
+        inner join s_uac_menu am on am.id = arm.menu_id
+        inner join s_uac_action aa on aa.menu_id = am.id
         where
         u.id= #{loginName,jdbcType=VARCHAR}
     </select>
@@ -117,9 +117,9 @@
             <property name="alias" value="u"></property>
         </include>
         from
-        s_auth_user u
-        left join s_auth_group_user gu on u.id = gu.user_id
-        left join s_auth_group g on gu.group_id = g.id
+        s_uac_user u
+        left join s_uac_group_user gu on u.id = gu.user_id
+        left join s_uac_group g on gu.group_id = g.id
         where u.id = #{userId}
     </select>
 

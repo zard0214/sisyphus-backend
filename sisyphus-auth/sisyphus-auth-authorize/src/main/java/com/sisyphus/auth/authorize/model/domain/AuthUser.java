@@ -20,7 +20,7 @@ import java.util.Date;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_user")
+@TableName(value = "s_uac_user")
 @Alias(value = "authUser")
 public class AuthUser extends BaseDO {
 
