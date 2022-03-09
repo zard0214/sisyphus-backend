@@ -33,10 +33,10 @@ ADD ${JAR_FILE} app.jar
 #    wget "https://arthas.aliyun.com/arthas-boot.jar" -qO /opt/arthas-boot.jar && \
 #    echo "java -jar /opt/arthas-boot.jar --repo-mirror aliyun" > /usr/local/bin/arthas && \
 #    chmod a+x /usr/local/bin/arthas
-#
-#COPY ${APP_PATH} /app/${APP}
-#
-#WORKDIR /app/${APP}
+
+COPY ${APP_PATH} /app/${APP}
+
+WORKDIR /app/${APP}
 
 # 启动镜像自动运行程序
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","/app.jar"]
