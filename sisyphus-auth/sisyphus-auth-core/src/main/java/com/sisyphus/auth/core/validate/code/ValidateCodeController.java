@@ -1,6 +1,7 @@
 package com.sisyphus.auth.core.validate.code;
 
 import com.sisyphus.auth.core.properties.SecurityConstants;
+import com.sisyphus.common.base.exception.BizException;
 import com.sisyphus.common.base.wapper.ResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +26,13 @@ public class ValidateCodeController {
     private ValidateCodeProcessorHolder validateCodeProcessorHolder;
 
     @PostMapping(SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/{type}")
-    public void createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) throws Exception {
-        validateCodeProcessorHolder.findValidateCodeProcessor(type)
-                .create(new ServletWebRequest(request, response));
+    public void createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type){
+        try {
+            validateCodeProcessorHolder.findValidateCodeProcessor(type)
+                    .create(new ServletWebRequest(request, response));
+        }catch (Exception e){
+            System.out.println("---------: " + e);
+        }
     }
 
     @GetMapping(SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/{type}")
