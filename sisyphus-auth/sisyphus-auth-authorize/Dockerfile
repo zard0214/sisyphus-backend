@@ -38,5 +38,7 @@ COPY ${APP_PATH} /app/${APP}
 
 WORKDIR /app/${APP}
 
+RUN apk add --update font-adobe-100dpi ttf-dejavu fontconfig
+
 # 启动镜像自动运行程序
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8081","-jar","/app.jar"]
