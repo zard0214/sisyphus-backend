@@ -47,7 +47,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseDTO illegalArgumentException(IllegalArgumentException e) {
-        log.error("参数非法异常={}", e.getMessage(), e);
+        log.error("参数非法异常 ex={}", e.getMessage(), e);
         return Response.wrap(ErrorCodeEnum.GL99990100.code(), e.getMessage());
     }
 
@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseDTO businessException(BizException e) {
-        log.error("业务异常: {}", e.getMessage(), e);
+        log.error("业务异常 ex={}", e.getMessage(), e);
         return Response.wrap(e.getCode() == 0 ? ResponseDTO.ERROR_CODE : e.getCode(), e.getMessage());
     }
 
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     public ResponseDTO unAuthorizedException(AccessDeniedException e) {
-        log.error("业务异常: {}", e.getMessage(), e);
+        log.error("业务异常 ex={}", e.getMessage(), e);
         return Response.wrap(ErrorCodeEnum.GL99990401.code(), ErrorCodeEnum.GL99990401.msg());
     }
 

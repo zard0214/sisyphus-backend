@@ -8,7 +8,7 @@ MAINTAINER "Zhecheng.Zhao 710838967@qq.com"
 VOLUME /tmp
 
 # 暴露8080端口
-EXPOSE 8080
+EXPOSE 8080 8081
 
 # 添加变量，如果使用dockerfile-maven-plugin，则会自动替换这里的变量内容
 ARG JAR_FILE=target/sisyphus-authorize.jar
@@ -40,4 +40,3 @@ WORKDIR /app/${APP}
 
 # 启动镜像自动运行程序
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8081","-jar","/app.jar"]
-
