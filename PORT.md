@@ -19,4 +19,3 @@
 | sisyphus-auth-authorize | 8082 |  8002 |
 | sisyphus-provider-uac | 8083 |  8003 |
 | sisyphus-provider-udc | 8084 |  8004 |
-| sisyphus-provider-chat | 8085 |  8005 | 8055
