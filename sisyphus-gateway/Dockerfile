@@ -39,5 +39,5 @@ COPY ${APP_PATH} /app/${APP}
 WORKDIR /app/${APP}
 
 # 启动镜像自动运行程序
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8011","-jar","/app.jar"]
 

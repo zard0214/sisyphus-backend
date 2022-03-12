@@ -13,9 +13,9 @@
 
 [comment]: <> (| druid  | 8888 |)
 
-| service  | test_port  | dev_port
+| service  | test_port  | dev_port | debug_port
 | :-----| ----:| ----:
-| sisyphus-gateway | 8081 |  8001 |
-| sisyphus-auth-authorize | 8082 |  8002 |
-| sisyphus-provider-uac | 8083 |  8003 |
-| sisyphus-provider-udc | 8084 |  8004 |
+| sisyphus-gateway | 8081 | 8001 | 8011 |
+| sisyphus-auth-authorize | 8082 | 8002 |  8012 |
+| sisyphus-provider-uac | 8083 |  8003 |  8013 |
+| sisyphus-provider-udc | 8084 |  8004 |  8014 |
