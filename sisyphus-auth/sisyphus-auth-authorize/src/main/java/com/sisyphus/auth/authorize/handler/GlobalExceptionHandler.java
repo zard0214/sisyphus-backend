@@ -93,7 +93,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ResponseDTO exception(Exception e) {
-        log.info("保存全局异常信息 ex={}", e.getMessage(), e);
+        log.info("保存全局异常信息 ex={}", e);
         taskExecutor.execute(() -> {
             GlobalExceptionLogDTO exceptionLogDTO = new GlobalExceptionLogDTO();
             udcExceptionLogDubboApi.saveAndSendExceptionLog(exceptionLogDTO);
