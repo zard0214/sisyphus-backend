@@ -7,12 +7,12 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:localhost}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         file-extension: yml
         prefix: sisyphus-uac
       discovery:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:localhost}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         service: sisyphus-uac
 sisyphus:
   token:
