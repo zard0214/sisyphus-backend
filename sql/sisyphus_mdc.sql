@@ -1,13 +1,13 @@
 -- /*
 -- Navicat MySQL Data Transfer
--- Source Server         : paascloud-dev
+-- Source Server         : sisyphus
 -- Source Server Version : 50719
--- Source Host           : 192.168.241.21:3306
--- Source Database       : paascloud_mdc
+-- Source Host           :
+-- Source Database       : sisyphus_mdc
 -- Target Server Type    : MYSQL
 -- Target Server Version : 50719
 -- File Encoding         : 65001
--- Date: 2018-03-19 16:20:01
+-- Date:
 -- */
 --
 -- SET FOREIGN_KEY_CHECKS=0;

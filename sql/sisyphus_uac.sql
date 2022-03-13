@@ -1,3 +1,14 @@
+-- /*
+-- Navicat MySQL Data Transfer
+-- Source Server         : sisyphus
+-- Source Server Version : 50719
+-- Source Host           :
+-- Source Database       : sisyphus_uac
+-- Target Server Type    : MYSQL
+-- Target Server Version : 50719
+-- File Encoding         : 65001
+-- Date:
+-- */
 create table persistent_logins
 (
     username  varchar(64)                         not null,

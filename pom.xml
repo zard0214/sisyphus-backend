@@ -74,6 +74,7 @@
         <commons-io.version>2.2</commons-io.version>
         <dockerfile-version>1.4.9</dockerfile-version>
         <lombok.version>1.18.20</lombok.version>
+        <log4j-api.version>2.15.0</log4j-api.version>
     </properties>
 
     <modules>
@@ -218,6 +219,33 @@
                 <version>${spring.social.version}</version>
             </dependency>
             <!-- spring social -->
+
+            <!-- log4j2 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j2</artifactId>
+                <version>${spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j-api.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.commons</groupId>

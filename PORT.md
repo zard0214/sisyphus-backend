@@ -1,5 +1,5 @@
-| midware  | port 
-| :-----| ----: 
+| midware  | port |
+| :-----| ----: |
 | nacos | 8848, 9848, 9555 | 
 | mysql | 3306 |
 | sisphus_mysql | 3307 |
@@ -13,8 +13,8 @@
 
 [comment]: <> (| druid  | 8888 |)
 
-| service  | test_port  | dev_port | debug_port
-| :-----| ----:| ----:
+| service  | test_port  | dev_port | debug_port|
+| :-----| ----:| ----:| ----:|
 | sisyphus-gateway | 8081 | 8001 | 8011 |
 | sisyphus-auth-authorize | 8082 | 8002 |  8012 |
 | sisyphus-provider-uac | 8083 |  8003 |  8013 |
