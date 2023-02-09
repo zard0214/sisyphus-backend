@@ -1,3 +1,14 @@
+-- /*
+-- Navicat MySQL Data Transfer
+-- Source Server         : sisyphus
+-- Source Server Version : 50719
+-- Source Host           :
+-- Source Database       : sisyphus_uac
+-- Target Server Type    : MYSQL
+-- Target Server Version : 50719
+-- File Encoding         : 65001
+-- Date:
+-- */
 create table persistent_logins
 (
     username  varchar(64)                         not null,
@@ -7,7 +18,7 @@ create table persistent_logins
     last_used timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
 );
 
-create table s_auth_action
+create table s_uac_action
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -27,7 +38,7 @@ create table s_auth_action
 )
     comment '角色部门表' charset = utf8;
 
-create table s_auth_menu
+create table s_uac_menu
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -55,7 +66,7 @@ create table s_auth_menu
 )
     comment '菜单表' charset = utf8;
 
-create table s_auth_role
+create table s_uac_role
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -76,7 +87,7 @@ create table s_auth_role
 )
     comment '角色表' charset = utf8;
 
-create table s_auth_role_action
+create table s_uac_role_action
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -92,7 +103,7 @@ create table s_auth_role_action
 )
     comment '角色权限表' charset = utf8;
 
-create table s_auth_role_menu
+create table s_uac_role_menu
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -108,7 +119,7 @@ create table s_auth_role_menu
 )
     comment '角色菜单表' charset = utf8;
 
-create table s_auth_user
+create table s_uac_user
 (
     id                  bigint auto_increment comment 'ID'
         primary key,
@@ -139,7 +150,7 @@ create table s_auth_user
 )
     comment '操作员表' charset = utf8;
 
-create table s_auth_user_role
+create table s_uac_user_role
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -155,7 +166,7 @@ create table s_auth_user_role
 )
     comment '用户角色表' charset = utf8;
 
-create table s_auth_user_token
+create table s_uac_user_token
 (
     id                     bigint auto_increment comment 'ID'
         primary key,
@@ -207,7 +218,7 @@ create table s_uac_application
 )
     comment '应用表' charset = utf8;
 
-create table s_auth_group
+create table s_uac_group
 (
     id               bigint auto_increment comment 'ID'
         primary key,
@@ -230,7 +241,7 @@ create table s_auth_group
 )
     comment '部门表' charset = utf8;
 
-create table s_auth_group_user
+create table s_uac_group_user
 (
     id               bigint auto_increment comment 'ID'
         primary key,

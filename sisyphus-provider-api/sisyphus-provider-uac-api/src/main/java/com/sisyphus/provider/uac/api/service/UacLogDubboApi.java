@@ -12,8 +12,9 @@ public interface UacLogDubboApi {
 
     /**
      * save exception and send message
-     * @param uacLog
+     * @param uacLogDTO
+     * @param loginAuthDTO
      * @return
      */
-    ResponseDTO saveUacLog(UacLogDTO uacLog, LoginAuthDTO loginAuthDto);
+    ResponseDTO saveUacLog(UacLogDTO uacLogDTO, LoginAuthDTO loginAuthDTO);
 }

@@ -41,7 +41,7 @@
         <include refid="Base_Column_List"/>,
         (access_token_validity - TIMESTAMPDIFF(second, gmt_created, NOW())) as expiresIn
         from
-        s_auth_user_token
+        s_uac_user_token
         where
         1 = 1
         <if test="status != null">
@@ -58,11 +58,11 @@
         </if>
     </select>
   <select id="listOffLineTokenId" resultType="java.lang.Long">
-      select id from s_auth_user_token where TIMESTAMPDIFF(second, gmt_created, NOW()) > access_token_validity and status in (0,10);
+      select id from s_uac_user_token where TIMESTAMPDIFF(second, gmt_created, NOW()) > access_token_validity and status in (0,10);
   </select>
 
   <update id="batchUpdateTokenOffLine">
-    update s_auth_user_token set `status` = #{status}
+    update s_uac_user_token set `status` = #{status}
     where id in
     <foreach collection="tokenIdList" item="item" index="index" open="(" close=")" separator=",">
       #{item}

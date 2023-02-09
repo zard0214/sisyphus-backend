@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8080
   servlet:
     context-path: /
 spring:
@@ -7,12 +7,12 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:localhost}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         file-extension: yml
         prefix: sisyphus-udc
       discovery:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:localhost}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
         service: sisyphus-udc
 sisyphus:
   token:

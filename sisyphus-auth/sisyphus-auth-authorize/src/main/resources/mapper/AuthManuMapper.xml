@@ -89,7 +89,7 @@
             m.id as id,
             m.icon as icon
         FROM
-            s_auth_role r,  s_auth_role_menu rm, s_auth_menu m, s_auth_user u , s_auth_user_role ur
+            s_uac_role r,  s_uac_role_menu rm, s_uac_menu m, s_uac_user u , s_uac_user_role ur
         WHERE
             1=1
           and	r.id = rm.role_id
@@ -108,7 +108,7 @@
             <property name="alias" value="m"></property>
         </include>
         From
-        s_auth_menu m
+        s_uac_menu m
         WHERE m.id IN
         <foreach collection="menuIdList" item="val" index="index" open="(" close=")" separator=",">
             #{val}
@@ -122,7 +122,7 @@
             <property name="alias" value="m"></property>
         </include>
         From
-        s_auth_menu m
+        s_uac_menu m
         WHERE
         1 =1 <include refid="Base_Where_Condition" />
 

@@ -14,7 +14,7 @@ import org.apache.ibatis.type.Alias;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "s_auth_position")
+@TableName(value = "s_uac_position")
 @Alias(value = "authPosition")
 public class AuthPosition extends BaseDO {
 

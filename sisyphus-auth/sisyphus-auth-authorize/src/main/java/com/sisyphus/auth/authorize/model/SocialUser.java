@@ -6,7 +6,6 @@ import com.sisyphus.auth.authorize.model.enums.StatusType;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.security.SocialUserDetails;
 
 import java.util.ArrayList;
