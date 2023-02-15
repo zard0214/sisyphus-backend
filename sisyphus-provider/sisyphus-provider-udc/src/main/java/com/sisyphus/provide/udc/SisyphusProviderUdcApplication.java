@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(
         scanBasePackages = {
@@ -20,6 +21,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @MapperScan(basePackages = {
         "com.sisyphus.provider.udc.mapper",
 })
+@EnableSwagger2
 @EnableDubboConfiguration
 public class SisyphusProviderUdcApplication {
 

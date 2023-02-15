@@ -2,12 +2,12 @@ version: '3'
 services:
   #授权服务
   sisyphus-auth-authorize:
-    image: sisyphus-auth-authorize:0.0.1-SNAPSHOT
-    container_name: sisyphus-auth-authorize
-    networks:
-      backend:
-        aliases:
-          - sisyphus-auth-authorize
+    image: sisyphus-authorize:0.0.1-SNAPSHOT
+    container_name: sisyphus-authorize
+#    networks:
+#      backend:
+#        aliases:
+#          - sisyphus-auth-authorize
     ports:
       - 8002:8080
     env_file: .env

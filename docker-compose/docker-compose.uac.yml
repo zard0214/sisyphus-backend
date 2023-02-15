@@ -4,10 +4,10 @@ services:
   sisyphus-uac:
     image: sisyphus-uac:0.0.1-SNAPSHOT
     container_name: sisyphus-uac
-    networks:
-      backend:
-        aliases:
-          - sisyphus-uac
+#    networks:
+#      backend:
+#        aliases:
+#          - sisyphus-uac
     ports:
       - 8003:8080
     env_file: .env

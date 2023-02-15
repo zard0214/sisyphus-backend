@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   main:
     allow-bean-definition-overriding: true
@@ -7,20 +7,20 @@ spring:
     nacos:
       config:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:127.0.0.1}:${REGISTER_PORT:8848}
         file-extension: yml
         prefix: sisyphus-gateway
       discovery:
         group: SISYPHUS
-        server-addr: ${NACOS_HOST:host.docker.internal}:${REGISTER_PORT:8848}
+        server-addr: ${NACOS_HOST:127.0.0.1}:${REGISTER_PORT:8848}
         service: sisyphus-gateway
     sentinel:
       enabled: true
       eager: true
       transport:
-        dashboard: ${SENTINEL_DASHBOARD_HOST:host.docker.internal}:${SENTINEL_DASHBOARD_PORT:8848}
+        dashboard: ${SENTINEL_DASHBOARD_HOST:127.0.0.1}:${SENTINEL_DASHBOARD_PORT:8848}
         port: ${SENTINEL_TRANSPORT_PORT:8021}
-        client-ip: ${SENTINEL_DASHBOARD_HOST:host.docker.internal}
+        client-ip: ${SENTINEL_DASHBOARD_HOST:127.0.0.1}
       scg:
         fallback:
           mode: response

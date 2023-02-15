@@ -4,10 +4,10 @@ services:
   sisyphus-udc:
     image: sisyphus-udc:0.0.1-SNAPSHOT
     container_name: sisyphus-udc
-    networks:
-      backend:
-        aliases:
-          - sisyphus-udc
+#    networks:
+#      backend:
+#        aliases:
+#          - sisyphus-udc
     ports:
       - 8004:8080
     env_file: .env

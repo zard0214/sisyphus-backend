@@ -4,10 +4,10 @@ services:
   sisyphus-gateway:
     image: sisyphus-gateway:0.0.1-SNAPSHOT
     container_name: sisyphus-gateway
-    networks:
-      backend:
-        aliases:
-          - sisyphus-gateway
+#    networks:
+#      backend:
+#        aliases:
+#          - sisyphus-gateway
     ports:
       - 8001:8080
     env_file: .env
