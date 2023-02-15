@@ -9,7 +9,7 @@ services:
         aliases:
           - sisyphus-udc
     ports:
-      - 8003:8080
+      - 8004:8080
     env_file: .env
     environment:
       TZ: Asia/Shanghai

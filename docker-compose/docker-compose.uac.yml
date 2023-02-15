@@ -1,15 +1,15 @@
 version: '3'
 services:
   #
-  sisyphus-udc:
-    image: sisyphus-chat:0.0.1-SNAPSHOT
-    container_name: sisyphus-udc
+  sisyphus-uac:
+    image: sisyphus-uac:0.0.1-SNAPSHOT
+    container_name: sisyphus-uac
     networks:
       backend:
         aliases:
-          - sisyphus-chat
+          - sisyphus-uac
     ports:
-      - 8005:8080
+      - 8003:8080
     env_file: .env
     environment:
       TZ: Asia/Shanghai
